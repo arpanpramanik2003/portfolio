@@ -1,26 +1,40 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo, ReactNode } from 'react';
 import Image from 'next/image';
-import { Award, FileText, Trophy, ShieldCheck, Cloud, Briefcase, Eye, X } from 'lucide-react';
-import { ReactNode } from 'react';
+import {
+  Award,
+  FileText,
+  Trophy,
+  ShieldCheck,
+  Cloud,
+  Briefcase,
+  Eye,
+  X,
+  Calendar,
+  Building2,
+  Sparkles,
+  CheckCircle2,
+} from 'lucide-react';
 
 interface CertificateItem {
   id: number;
-  icon?: string;
   title: string;
+  category: string;
   issuer: string;
   year: string;
   article?: string;
   program?: string;
   event?: string;
   position?: string;
-  description?: string;
-  skills?: string[];
+  description: string;
+  skills: string[];
 }
 
 interface CertificatesClientProps {
   heading: string;
+  eyebrow?: string;
+  description?: string;
   certificates: CertificateItem[];
 }
 
@@ -34,29 +48,77 @@ const certificateImages: Record<number, string> = {
   7: '/images/certificates/Xeta_Labs_certificate.webp',
 };
 
-const certIconMap: Record<number, ReactNode> = {
-  1: <FileText size={17} className="text-terracotta" />,
-  2: <Trophy size={17} className="text-terracotta" />,
-  3: <Award size={17} className="text-terracotta" />,
-  4: <Award size={17} className="text-terracotta" />,
-  5: <Cloud size={17} className="text-terracotta" />,
-  6: <ShieldCheck size={17} className="text-terracotta" />,
-  7: <Briefcase size={17} className="text-terracotta" />,
+const certCategoryIconMap: Record<string, ReactNode> = {
+  'Research & Presentation': <FileText size={16} className="text-terracotta" />,
+  'Hackathons & Competitions': <Trophy size={16} className="text-terracotta" />,
+  'Academic Honors': <Award size={16} className="text-terracotta" />,
+  'Advanced Training': <Award size={16} className="text-terracotta" />,
+  'Cloud & Infrastructure': <Cloud size={16} className="text-terracotta" />,
+  'Industry Internships': <Briefcase size={16} className="text-terracotta" />,
 };
 
-const cleanTitle = (raw: string) => {
-  return raw.replace(/[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/gu, '').trim();
-};
+type FilterCategory = 'all' | 'research-honors' | 'internships' | 'training';
 
-const cleanDesc = (raw?: string) => {
-  if (!raw) return '';
-  return raw.replace(/[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/gu, '').trim();
-};
-
-export const CertificatesClient = ({ heading, certificates }: CertificatesClientProps) => {
+export const CertificatesClient = ({
+  heading,
+  eyebrow,
+  description,
+  certificates,
+}: CertificatesClientProps) => {
+  const [activeTab, setActiveTab] = useState<FilterCategory>('all');
   const [selectedCert, setSelectedCert] = useState<CertificateItem | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
+
+  const filteredCertificates = useMemo(() => {
+    if (activeTab === 'research-honors') {
+      return certificates.filter(
+        (c) =>
+          c.category === 'Research & Presentation' ||
+          c.category === 'Hackathons & Competitions' ||
+          c.category === 'Academic Honors'
+      );
+    }
+    if (activeTab === 'internships') {
+      return certificates.filter((c) => c.category === 'Industry Internships');
+    }
+    if (activeTab === 'training') {
+      return certificates.filter(
+        (c) =>
+          c.category === 'Cloud & Infrastructure' ||
+          c.category === 'Advanced Training'
+      );
+    }
+    return certificates;
+  }, [activeTab, certificates]);
+
+  const tabs = [
+    { id: 'all' as FilterCategory, label: 'All Credentials', count: certificates.length },
+    {
+      id: 'research-honors' as FilterCategory,
+      label: 'Research & Honors',
+      count: certificates.filter(
+        (c) =>
+          c.category === 'Research & Presentation' ||
+          c.category === 'Hackathons & Competitions' ||
+          c.category === 'Academic Honors'
+      ).length,
+    },
+    {
+      id: 'internships' as FilterCategory,
+      label: 'Industry Internships',
+      count: certificates.filter((c) => c.category === 'Industry Internships').length,
+    },
+    {
+      id: 'training' as FilterCategory,
+      label: 'Cloud & Training',
+      count: certificates.filter(
+        (c) =>
+          c.category === 'Cloud & Infrastructure' ||
+          c.category === 'Advanced Training'
+      ).length,
+    },
+  ];
 
   // Focus trapping and scroll locking
   useEffect(() => {
@@ -70,7 +132,6 @@ export const CertificatesClient = ({ heading, certificates }: CertificatesClient
           return;
         }
 
-        // Trap focus inside modal
         if (e.key === 'Tab' && modalRef.current) {
           const focusableElements = modalRef.current.querySelectorAll<HTMLElement>(
             'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
@@ -106,84 +167,136 @@ export const CertificatesClient = ({ heading, certificates }: CertificatesClient
   }, [selectedCert]);
 
   return (
-    <section id="certificates" className="py-24 px-6 border-t border-border-subtle bg-surface/30 transition-colors">
+    <section
+      id="certificates"
+      className="py-24 px-6 border-t border-border-subtle bg-surface/30 transition-colors"
+    >
       <div className="max-w-6xl mx-auto">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <p className="text-xs font-mono uppercase tracking-widest text-terracotta font-semibold mb-2">
-            Credentials &amp; Honors
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <p className="text-xs font-mono uppercase tracking-widest text-terracotta font-semibold mb-2 flex items-center justify-center gap-1.5">
+            <Sparkles size={14} />
+            <span>{eyebrow || 'Credentials & Honors'}</span>
           </p>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-text-main tracking-tight mb-4">
             {heading}
           </h2>
           <div className="w-12 h-0.5 bg-terracotta mx-auto mb-4" />
-          <p className="text-text-sub text-base sm:text-lg">
-            Verified academic presentations, hackathon awards, cloud certifications, and industry engineering credentials.
+          <p className="text-text-sub text-base sm:text-lg leading-relaxed">
+            {description ||
+              'Verified academic presentations, hackathon awards, cloud certifications, and industry engineering credentials.'}
           </p>
+        </div>
+
+        {/* Filter Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+          <div className="inline-flex items-center gap-1 p-1 rounded-xl bg-surface border border-border-subtle shadow-xs">
+            {tabs.map((tab) => {
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium transition-all duration-200 flex items-center gap-2 cursor-pointer ${
+                    isActive
+                      ? 'bg-card text-terracotta font-bold shadow-xs border border-border-subtle'
+                      : 'text-text-mute hover:text-text-main hover:bg-card/50'
+                  }`}
+                >
+                  <span>{tab.label}</span>
+                  <span
+                    className={`px-1.5 py-0.5 rounded text-[10px] ${
+                      isActive
+                        ? 'bg-terracotta/15 text-terracotta'
+                        : 'bg-surface/80 text-text-mute'
+                    }`}
+                  >
+                    {tab.count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Certificates Grid */}
         <div className="grid md:grid-cols-2 gap-6">
-          {certificates.map((cert) => {
-            const title = cleanTitle(cert.title);
-            const description = cleanDesc(cert.description);
-
+          {filteredCertificates.map((cert) => {
             return (
-              <div
+              <article
                 key={cert.id}
-                className="bg-card border border-border-subtle hover:border-terracotta/40 rounded-2xl p-6 shadow-sm flex flex-col justify-between transition-all group"
+                className="bg-card border border-border-subtle hover:border-terracotta/40 rounded-2xl p-6 sm:p-7 shadow-sm flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1 hover:shadow-md"
               >
                 <div>
-                  {/* Header Badge */}
-                  <div className="flex items-start justify-between gap-3 mb-3 pb-3 border-b border-border-subtle">
-                    <div className="flex items-center gap-2 text-xs font-mono text-terracotta font-medium">
-                      {certIconMap[cert.id] || <Award size={17} className="text-terracotta" />}
-                      <span>Issued {cert.year}</span>
+                  
+                  {/* Meta Header */}
+                  <div className="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-border-subtle/70">
+                    <div className="flex items-center gap-2">
+                      <span className="p-2 rounded-lg bg-surface border border-border-subtle">
+                        {certCategoryIconMap[cert.category] || (
+                          <Award size={16} className="text-terracotta" />
+                        )}
+                      </span>
+                      <span className="text-xs font-mono text-terracotta font-semibold">
+                        {cert.category}
+                      </span>
                     </div>
-                    <span className="text-[11px] font-mono text-text-mute px-2 py-0.5 bg-surface rounded border border-border-subtle">
-                      0{cert.id}
-                    </span>
+
+                    <div className="flex items-center gap-2">
+                      <span className="inline-flex items-center gap-1 text-[11px] font-mono text-text-mute">
+                        <Calendar size={12} className="opacity-70" />
+                        <span>{cert.year}</span>
+                      </span>
+                      <span className="text-[11px] font-mono text-text-mute px-2 py-0.5 bg-surface rounded border border-border-subtle">
+                        0{cert.id}
+                      </span>
+                    </div>
                   </div>
 
-                  <h3 className="font-serif text-xl font-bold text-text-main mb-2 group-hover:text-terracotta transition-colors">
-                    {title}
+                  {/* Title */}
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-text-main mb-2 group-hover:text-terracotta transition-colors leading-snug">
+                    {cert.title}
                   </h3>
 
+                  {/* Context Subtitle (Article, Event, Program, Position) */}
                   {cert.article && (
-                    <p className="text-text-main font-serif italic text-sm mb-2 text-terracotta">
+                    <p className="text-terracotta font-serif italic text-sm mb-2 leading-relaxed">
                       "{cert.article}"
                     </p>
                   )}
-
-                  {cert.program && (
-                    <p className="text-text-sub font-medium text-xs mb-2">
-                      {cert.program}
-                    </p>
-                  )}
-
                   {cert.event && (
                     <p className="text-text-sub font-medium text-xs mb-2">
-                      {cert.event}
+                      Event: {cert.event}
+                    </p>
+                  )}
+                  {cert.program && (
+                    <p className="text-text-sub font-medium text-xs mb-2">
+                      Program: {cert.program}
                     </p>
                   )}
 
-                  <p className="text-xs font-medium text-text-mute mb-3">
-                    {cert.issuer} {cert.position ? `• ${cert.position}` : ''}
+                  {/* Issuer details */}
+                  <div className="flex items-center gap-1.5 text-xs text-text-mute mb-3 font-medium">
+                    <Building2 size={13} className="text-terracotta flex-shrink-0" />
+                    <span>
+                      {cert.issuer}
+                      {cert.position ? ` · ${cert.position}` : ''}
+                    </span>
+                  </div>
+
+                  {/* Constructive Description */}
+                  <p className="text-text-sub text-xs sm:text-sm leading-relaxed mb-5">
+                    {cert.description}
                   </p>
 
-                  {description && (
-                    <p className="text-text-sub text-sm leading-relaxed mb-4">
-                      {description}
-                    </p>
-                  )}
-
-                  {cert.skills && (
-                    <div className="flex flex-wrap gap-1.5 mb-4">
+                  {/* Skills Tags */}
+                  {cert.skills && cert.skills.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 mb-5">
                       {cert.skills.map((skill, idx) => (
                         <span
                           key={idx}
-                          className="text-[11px] font-mono bg-surface border border-border-subtle text-text-sub px-2.5 py-0.5 rounded"
+                          className="text-[11px] font-mono bg-surface border border-border-subtle text-text-sub px-2.5 py-1 rounded-md"
                         >
                           {skill}
                         </span>
@@ -192,17 +305,17 @@ export const CertificatesClient = ({ heading, certificates }: CertificatesClient
                   )}
                 </div>
 
-                {/* View Document Button */}
+                {/* View Scan Button */}
                 {certificateImages[cert.id] && (
                   <button
                     onClick={() => setSelectedCert(cert)}
-                    className="w-full mt-3 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-surface hover:bg-card border border-border hover:border-terracotta/40 text-text-main hover:text-terracotta text-xs font-medium shadow-xs transition-colors cursor-pointer"
+                    className="w-full mt-2 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-surface hover:bg-card border border-border hover:border-terracotta/40 text-text-main hover:text-terracotta text-xs font-medium shadow-xs transition-colors cursor-pointer"
                   >
-                    <Eye size={14} />
-                    <span>View Document Scan</span>
+                    <Eye size={14} className="text-terracotta" />
+                    <span>View Verified Document Scan</span>
                   </button>
                 )}
-              </div>
+              </article>
             );
           })}
         </div>
@@ -221,15 +334,15 @@ export const CertificatesClient = ({ heading, certificates }: CertificatesClient
           <div
             ref={modalRef}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-2xl max-h-[88vh] bg-card border border-border rounded-2xl overflow-hidden shadow-2xl p-4 sm:p-5 flex flex-col"
+            className="relative w-full max-w-3xl max-h-[90vh] bg-card border border-border rounded-2xl overflow-hidden shadow-2xl p-4 sm:p-6 flex flex-col"
           >
             {/* Modal Header */}
             <div className="flex items-center justify-between pb-3 mb-3 border-b border-border-subtle">
               <div>
-                <h3 id="cert-modal-title" className="font-serif text-lg font-bold text-text-main">
-                  {cleanTitle(selectedCert.title)}
+                <h3 id="cert-modal-title" className="font-serif text-lg sm:text-xl font-bold text-text-main">
+                  {selectedCert.title}
                 </h3>
-                <p className="text-xs font-mono text-text-mute">
+                <p className="text-xs font-mono text-text-mute mt-0.5">
                   Issued by {selectedCert.issuer} · {selectedCert.year}
                 </p>
               </div>
@@ -247,12 +360,12 @@ export const CertificatesClient = ({ heading, certificates }: CertificatesClient
 
             {/* Certificate Image Scan via next/image */}
             <div className="overflow-y-auto rounded-lg bg-surface/50 border border-border-subtle p-2 flex items-center justify-center">
-              <div className="relative w-full h-[60vh] max-h-[68vh]">
+              <div className="relative w-full h-[60vh] max-h-[70vh]">
                 <Image
                   src={certificateImages[selectedCert.id]}
-                  alt={cleanTitle(selectedCert.title)}
+                  alt={selectedCert.title}
                   fill
-                  sizes="(max-width: 768px) 100vw, 700px"
+                  sizes="(max-width: 768px) 100vw, 800px"
                   className="object-contain rounded"
                 />
               </div>
