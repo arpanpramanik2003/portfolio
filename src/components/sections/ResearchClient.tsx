@@ -240,7 +240,7 @@ export const ResearchClient = ({ heading, papers }: ResearchClientProps) => {
                 <span className="block text-[11px] font-mono uppercase tracking-widest text-text-mute font-semibold mb-2">
                   Complete Abstract
                 </span>
-                <p className="text-text-main text-sm sm:text-[15px] leading-relaxed">
+                <p className="text-text-main text-sm sm:text-[15px] leading-relaxed text-justify">
                   {selectedPaper.abstract}
                 </p>
               </div>

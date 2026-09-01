@@ -134,7 +134,7 @@ export const ProjectsClient = ({
                       </p>
 
                       {/* Narrative Description */}
-                      <p className="text-text-sub text-xs sm:text-sm lg:text-base leading-relaxed mb-4 sm:mb-6">
+                      <p className="text-text-sub text-xs sm:text-sm lg:text-base leading-relaxed mb-4 sm:mb-6 text-justify">
                         {project.description}
                       </p>
 

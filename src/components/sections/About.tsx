@@ -38,11 +38,11 @@ export const About = () => {
   } = aboutData;
 
   return (
-    <section id="about" className="py-24 px-6 border-t border-border-subtle transition-colors">
-      <div className="max-w-6xl mx-auto">
+    <section id="about" className="py-20 sm:py-24 px-4 sm:px-6 border-t border-border-subtle transition-colors w-full overflow-hidden">
+      <div className="max-w-6xl mx-auto w-full">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
           <p className="text-xs font-mono uppercase tracking-widest text-terracotta font-semibold mb-2">
             {eyebrow || 'Background & Philosophy'}
           </p>
@@ -50,13 +50,13 @@ export const About = () => {
             {heading}
           </h2>
           <div className="w-12 h-0.5 bg-terracotta mx-auto mb-6" />
-          <p className="text-text-sub text-base sm:text-lg leading-relaxed">
+          <p className="text-text-sub text-sm sm:text-base md:text-lg leading-relaxed text-justify px-2">
             {summary}
           </p>
         </div>
 
         {/* Split Grid: Left Profile Panel & Right Engineering Content */}
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+        <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-start">
           
           {/* =========================================================================
              LEFT PANEL (5 Cols): Portrait, Academic Credentials, Interests
@@ -64,11 +64,11 @@ export const About = () => {
           <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-24">
             
             {/* Portrait & Core Identity Card */}
-            <div className="bg-card border border-border-subtle hover:border-terracotta/40 rounded-2xl p-6 shadow-sm transition-all duration-300 group hover:-translate-y-1 hover:shadow-md">
+            <div className="bg-card border border-border-subtle hover:border-terracotta/40 rounded-2xl p-5 sm:p-6 shadow-sm transition-all duration-300 group hover:-translate-y-1 hover:shadow-md">
               <div className="flex flex-col items-center text-center">
                 
                 {/* Photo Frame */}
-                <div className="relative w-36 h-36 sm:w-40 sm:h-40 rounded-2xl overflow-hidden border-2 border-border-subtle bg-surface mb-4 shadow-sm group-hover:border-terracotta/50 transition-colors">
+                <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-2xl overflow-hidden border-2 border-border-subtle bg-surface mb-4 shadow-sm group-hover:border-terracotta/50 transition-colors">
                   <Image
                     src="/images/profile.webp"
                     alt="Diya Chanda — AI Researcher & Machine Learning Engineer"
@@ -79,7 +79,7 @@ export const About = () => {
                   />
                 </div>
 
-                <h3 className="font-serif text-2xl font-bold text-text-main mb-1">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-text-main mb-1">
                   Diya Chanda
                 </h3>
                 <p className="text-xs font-mono text-terracotta font-medium mb-3">
@@ -94,7 +94,7 @@ export const About = () => {
             </div>
 
             {/* Academic Standings & Institutional Profile */}
-            <div className="bg-card border border-border-subtle rounded-2xl p-6 shadow-sm space-y-4">
+            <div className="bg-card border border-border-subtle rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
               <h4 className="text-xs font-mono uppercase tracking-widest text-terracotta font-semibold pb-2 border-b border-border-subtle/60 flex items-center gap-2">
                 <GraduationCap size={15} />
                 <span>Academic Profile</span>
@@ -121,7 +121,7 @@ export const About = () => {
                   <div className="flex-1 flex items-center justify-between">
                     <div>
                       <span className="block text-[11px] font-mono text-text-mute uppercase">Cumulative GPA</span>
-                      <span className="font-serif text-lg font-bold text-text-main">{academicProfile.cgpa}</span>
+                      <span className="font-serif text-base sm:text-lg font-bold text-text-main">{academicProfile.cgpa}</span>
                     </div>
                     <span className="px-2.5 py-1 rounded-md bg-terracotta/10 border border-terracotta/30 text-terracotta text-xs font-mono font-bold">
                       Top Decile
@@ -155,7 +155,7 @@ export const About = () => {
             </div>
 
             {/* Interests & Explorations Card */}
-            <div className="bg-card border border-border-subtle rounded-2xl p-6 shadow-sm space-y-3.5">
+            <div className="bg-card border border-border-subtle rounded-2xl p-5 sm:p-6 shadow-sm space-y-3.5">
               <h4 className="text-xs font-mono uppercase tracking-widest text-text-mute font-semibold flex items-center gap-1.5">
                 <Sparkles size={14} className="text-terracotta" />
                 <span>Interests &amp; Explorations</span>
@@ -185,10 +185,10 @@ export const About = () => {
           {/* =========================================================================
              RIGHT PANEL (7 Cols): Narrative, Core Pillars, Milestones, Mission
              ========================================================================= */}
-          <div className="lg:col-span-7 space-y-12">
+          <div className="lg:col-span-7 space-y-10 sm:space-y-12">
             
             {/* Core Engineering Pillars */}
-            <div className="space-y-6">
+            <div className="space-y-5 sm:space-y-6">
               <div>
                 <span className="text-xs font-mono uppercase tracking-widest text-terracotta font-semibold block mb-1">
                   Technical Pillars
@@ -214,11 +214,11 @@ export const About = () => {
                         </span>
                       </div>
 
-                      <h4 className="font-serif text-lg font-bold text-text-main mb-2 group-hover:text-terracotta transition-colors">
+                      <h4 className="font-serif text-base sm:text-lg font-bold text-text-main mb-2 group-hover:text-terracotta transition-colors">
                         {pillar.title}
                       </h4>
 
-                      <p className="text-text-sub text-xs sm:text-sm leading-relaxed">
+                      <p className="text-text-sub text-xs sm:text-sm leading-relaxed text-justify">
                         {pillar.description}
                       </p>
                     </div>
@@ -228,7 +228,7 @@ export const About = () => {
             </div>
 
             {/* Academic & Research Milestones Timeline */}
-            <div className="space-y-6">
+            <div className="space-y-5 sm:space-y-6">
               <div>
                 <span className="text-xs font-mono uppercase tracking-widest text-terracotta font-semibold block mb-1">
                   Trajectory
@@ -238,7 +238,7 @@ export const About = () => {
                 </h3>
               </div>
 
-              <div className="relative pl-6 sm:pl-8 border-l border-border-default space-y-10">
+              <div className="relative pl-6 sm:pl-8 border-l border-border-default space-y-8 sm:space-y-10">
                 {timeline.map((item: any, i: number) => (
                   <div key={i} className="relative group">
                     {/* Timeline Terracotta Bullet */}
@@ -251,17 +251,17 @@ export const About = () => {
                     </div>
 
                     {/* Title & Narrative */}
-                    <h4 className="font-serif text-lg font-bold text-text-main mb-1.5">
+                    <h4 className="font-serif text-base sm:text-lg font-bold text-text-main mb-1">
                       {item.title}
                     </h4>
 
                     {item.titleSecondary && (
-                      <p className="text-xs font-mono text-terracotta/90 font-medium mb-1">
+                      <p className="text-xs font-mono text-terracotta/90 font-medium mb-1.5">
                         {item.titleSecondary}
                       </p>
                     )}
 
-                    <p className="text-text-sub text-sm leading-relaxed">
+                    <p className="text-text-sub text-xs sm:text-sm leading-relaxed text-justify">
                       {item.description}
                     </p>
                   </div>
@@ -270,13 +270,13 @@ export const About = () => {
             </div>
 
             {/* Engineering Mission & Guiding Principles */}
-            <div className="bg-card border border-border-subtle rounded-2xl p-6 sm:p-7 shadow-sm space-y-6">
+            <div className="bg-card border border-border-subtle rounded-2xl p-5 sm:p-7 shadow-sm space-y-5 sm:space-y-6">
               <div>
                 <div className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-terracotta font-semibold mb-2.5">
                   <Compass size={14} />
                   <span>Engineering Mission</span>
                 </div>
-                <blockquote className="font-serif text-lg sm:text-xl italic text-text-main leading-relaxed border-l-2 border-terracotta/50 pl-4 my-2">
+                <blockquote className="font-serif text-base sm:text-lg italic text-text-main leading-relaxed border-l-2 border-terracotta/50 pl-3.5 sm:pl-4 my-2 text-justify">
                   "{mission}"
                 </blockquote>
               </div>
@@ -288,11 +288,11 @@ export const About = () => {
                   <Heart size={13} className="text-terracotta" />
                   <span>Guiding Principles</span>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {values.map((val: string, i: number) => (
                     <span
                       key={i}
-                      className="px-3 py-1.5 rounded-lg bg-surface border border-border-subtle text-text-main text-xs font-mono font-medium hover:border-terracotta/30 transition-colors"
+                      className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-surface border border-border-subtle text-text-main text-xs font-mono font-medium hover:border-terracotta/30 transition-colors"
                     >
                       {val}
                     </span>

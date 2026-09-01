@@ -298,7 +298,7 @@ export const CertificatesClient = ({
                   </div>
 
                   {/* Constructive Description */}
-                  <p className="text-text-sub text-xs sm:text-sm leading-relaxed mb-4">
+                  <p className="text-text-sub text-xs sm:text-sm leading-relaxed mb-4 text-justify">
                     {cert.description}
                   </p>
 
