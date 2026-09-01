@@ -74,6 +74,8 @@ const Navbar = () => {
             onClick={() => setOpen(!open)}
             className="p-2 rounded-lg border border-border-subtle bg-surface text-text-main"
             aria-label="Toggle navigation menu"
+            aria-expanded={open}
+            aria-controls="mobile-nav-drawer"
           >
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -82,7 +84,10 @@ const Navbar = () => {
 
       {/* Mobile Drawer */}
       {open && (
-        <div className="md:hidden bg-canvas border-b border-border px-6 py-6 transition-colors shadow-lg">
+        <div
+          id="mobile-nav-drawer"
+          className="md:hidden bg-canvas border-b border-border px-6 py-6 transition-colors shadow-lg"
+        >
           <ul className="flex flex-col gap-4 text-base font-medium text-text-sub">
             {navLinks.map((link) => (
               <li key={link.href}>

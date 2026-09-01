@@ -4,13 +4,13 @@ import data from "../../data/sections/certificates.json";
 import { Award, FileText, Trophy, ShieldCheck, Cloud, Briefcase, Eye, X } from "lucide-react";
 
 // Import certificate images
-import IEEECert from "../../assets/certificates/IEEE_certificate.png";
-import SIHCert from "../../assets/certificates/SIH_certificate.png";
-import MeritCert from "../../assets/certificates/Merit_certificate.png";
-import SttpCert from "../../assets/certificates/STTP_certificate.png";
-import AWSCert from "../../assets/certificates/AWS_certificate.png";
-import InternshipCert from "../../assets/certificates/Internship_certificate.png";
-import XetaCert from "../../assets/certificates/Xeta_Labs_certificate.png";
+import IEEECert from "../../assets/certificates/IEEE_certificate.webp";
+import SIHCert from "../../assets/certificates/SIH_certificate.webp";
+import MeritCert from "../../assets/certificates/Merit_certificate.webp";
+import SttpCert from "../../assets/certificates/STTP_certificate.webp";
+import AWSCert from "../../assets/certificates/AWS_certificate.webp";
+import InternshipCert from "../../assets/certificates/Internship_certificate.webp";
+import XetaCert from "../../assets/certificates/Xeta_Labs_certificate.webp";
 
 const certificateImages = {
   1: IEEECert,

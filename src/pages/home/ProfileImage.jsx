@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import profile from "../../assets/profile.jpeg";
+import profile from "../../assets/profile.webp";
 
 export default function ProfileImage() {
   return (
@@ -16,6 +16,9 @@ export default function ProfileImage() {
           <img
             src={profile}
             alt="Diya Chanda — AI Researcher & Full-Stack Developer"
+            width={176}
+            height={176}
+            loading="eager"
             className="w-full h-full object-cover object-center"
           />
         </div>
