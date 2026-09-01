@@ -392,7 +392,7 @@ export const CertificatesClient = ({
               <div className="relative w-full h-[55vh] sm:h-[65vh]">
                 <Image
                   src={certificateImages[selectedCert.id]}
-                  alt={selectedCert.title}
+                  alt={`${selectedCert.title} — Verified Credential Scan issued by ${selectedCert.issuer}`}
                   fill
                   sizes="(max-width: 768px) 100vw, 800px"
                   className="object-contain rounded"

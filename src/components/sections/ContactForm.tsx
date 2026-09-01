@@ -41,51 +41,59 @@ export const ContactForm = () => {
   };
 
   return (
-    <div className="bg-card border border-border-subtle rounded-2xl p-7 sm:p-8 shadow-sm">
-      <h3 className="font-serif text-xl font-bold text-text-main mb-6">
+    <div className="bg-card border border-border-subtle rounded-2xl p-6 sm:p-8 shadow-sm">
+      <h3 className="font-serif text-xl sm:text-2xl font-bold text-text-main mb-6">
         Send a Message
       </h3>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-xs font-mono font-medium text-text-sub uppercase mb-1.5">
-            Your Name
+          <label htmlFor="contact-name" className="block text-xs font-mono font-medium text-text-sub uppercase mb-1.5">
+            Your Name <span className="text-terracotta">*</span>
           </label>
           <input
+            id="contact-name"
             type="text"
             name="name"
+            autoComplete="name"
             value={formData.name}
             onChange={handleChange}
             required
+            aria-required="true"
             placeholder="Enter your name"
             className="w-full bg-surface border border-border-default focus:border-terracotta rounded-lg px-4 py-2.5 text-text-main placeholder:text-text-mute text-sm transition-colors outline-none"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-mono font-medium text-text-sub uppercase mb-1.5">
-            Email Address
+          <label htmlFor="contact-email" className="block text-xs font-mono font-medium text-text-sub uppercase mb-1.5">
+            Email Address <span className="text-terracotta">*</span>
           </label>
           <input
+            id="contact-email"
             type="email"
             name="email"
+            autoComplete="email"
             value={formData.email}
             onChange={handleChange}
             required
+            aria-required="true"
             placeholder="name@example.com"
             className="w-full bg-surface border border-border-default focus:border-terracotta rounded-lg px-4 py-2.5 text-text-main placeholder:text-text-mute text-sm transition-colors outline-none"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-mono font-medium text-text-sub uppercase mb-1.5">
-            Message
+          <label htmlFor="contact-message" className="block text-xs font-mono font-medium text-text-sub uppercase mb-1.5">
+            Message <span className="text-terracotta">*</span>
           </label>
           <textarea
+            id="contact-message"
             name="message"
             value={formData.message}
             onChange={handleChange}
             required
+            aria-required="true"
             placeholder="Write your note or project inquiry..."
             rows={4}
             className="w-full bg-surface border border-border-default focus:border-terracotta rounded-lg px-4 py-2.5 text-text-main placeholder:text-text-mute text-sm transition-colors outline-none resize-none"
@@ -100,7 +108,7 @@ export const ContactForm = () => {
           {loading ? (
             <>
               <Loader2 size={16} className="animate-spin" />
-              <span>Transmitting...</span>
+              <span>Transmitting Secure Message...</span>
             </>
           ) : (
             <>
@@ -110,16 +118,23 @@ export const ContactForm = () => {
           )}
         </button>
 
-        {/* Status Messages */}
         {submitted && (
-          <div className="p-3.5 rounded-lg bg-green-500/10 border border-green-500/30 text-green-700 dark:text-green-400 text-xs font-medium flex items-center gap-2">
+          <div
+            role="status"
+            aria-live="polite"
+            className="flex items-center gap-2 p-3.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-400 rounded-lg text-xs font-mono"
+          >
             <CheckCircle2 size={16} className="flex-shrink-0" />
-            <span>Message received! I will reply as soon as possible.</span>
+            <span>Thank you! Your message was transmitted directly to Diya.</span>
           </div>
         )}
 
         {error && (
-          <div className="p-3.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-800 dark:text-amber-300 text-xs font-medium flex items-center gap-2">
+          <div
+            role="alert"
+            aria-live="assertive"
+            className="flex items-center gap-2 p-3.5 bg-rose-500/10 border border-rose-500/30 text-rose-700 dark:text-rose-400 rounded-lg text-xs font-mono"
+          >
             <AlertCircle size={16} className="flex-shrink-0" />
             <span>{error}</span>
           </div>

@@ -90,9 +90,9 @@ export const ProjectsClient = ({
                   >
                     <Image
                       src={project.image}
-                      alt={project.title}
+                      alt={`${project.title} — ${project.tagline}`}
                       fill
-                      sizes="(max-width: 1024px) 100vw, 45vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 45vw"
                       className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
 
