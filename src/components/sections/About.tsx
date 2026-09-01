@@ -38,7 +38,7 @@ export const About = () => {
   } = aboutData;
 
   return (
-    <section id="about" className="py-20 sm:py-24 px-4 sm:px-6 border-t border-border-subtle transition-colors w-full overflow-hidden">
+    <section id="about" className="py-20 sm:py-24 px-4 sm:px-6 border-t border-border-subtle transition-colors w-full">
       <div className="max-w-6xl mx-auto w-full">
         
         {/* Section Header */}
@@ -61,7 +61,7 @@ export const About = () => {
           {/* =========================================================================
              LEFT PANEL (5 Cols): Portrait, Academic Credentials, Interests
              ========================================================================= */}
-          <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-24">
+          <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-28 lg:self-start">
             
             {/* Portrait & Core Identity Card */}
             <div className="bg-card border border-border-subtle hover:border-terracotta/40 rounded-2xl p-5 sm:p-6 shadow-sm transition-all duration-300 group hover:-translate-y-1 hover:shadow-md">

@@ -46,7 +46,7 @@ export const CustomCursor = () => {
       const target = e.target as HTMLElement | null;
       if (target) {
         const isInteractive = Boolean(
-          target.closest('a, button, [role="button"], input, select, textarea, label, [data-cursor="interactive"]')
+          target.closest('a, button, [role="button"], input, select, textarea, label, summary, [data-cursor="interactive"]')
         );
         const isText = Boolean(
           target.closest('h1, h2, h3, h4, p, blockquote, [data-cursor="text"]')
@@ -68,12 +68,12 @@ export const CustomCursor = () => {
     const onMouseEnter = () => setIsVisible(true);
 
     const render = () => {
-      const ease = 0.2;
+      const ease = 0.25;
       currentX += (mouseX - currentX) * ease;
       currentY += (mouseY - currentY) * ease;
 
       if (cursorRef.current) {
-        cursorRef.current.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+        cursorRef.current.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`;
       }
 
       rafId = requestAnimationFrame(render);
@@ -107,66 +107,66 @@ export const CustomCursor = () => {
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
       style={{
-        transform: 'translate3d(-100px, -100px, 0)',
+        transform: 'translate3d(-100px, -100px, 0) translate(-50%, -50%)',
       }}
     >
-      {/* Precision Editorial Reticle Frame */}
+      {/* Precision Reticle Frame centered on mouse pointer */}
       <div
-        className={`relative -top-1/2 -left-1/2 flex items-center justify-center transition-all duration-300 ease-out ${
+        className={`flex items-center justify-center transition-transform duration-200 ease-out origin-center ${
           isClicking ? 'scale-75' : 'scale-100'
         }`}
       >
         {hoverType === 'interactive' ? (
-          /* Interactive Focus Reticle (Diamond Frame + Crosshairs) */
+          /* Interactive Focus Reticle (Diamond Frame + Focal Core) */
           <svg
-            width="44"
-            height="44"
-            viewBox="0 0 44 44"
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
             fill="none"
             className="text-terracotta transition-transform duration-300 rotate-45"
           >
             {/* 4 Corner Framing Brackets */}
-            <path d="M4 14V4H14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            <path d="M40 14V4H30" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            <path d="M4 30V40H14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            <path d="M40 30V40H30" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            <path d="M4 12V4H12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            <path d="M36 12V4H28" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            <path d="M4 28V36H12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            <path d="M36 28V36H28" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
 
             {/* Central Precision Target */}
-            <circle cx="22" cy="22" r="3" fill="currentColor" />
+            <circle cx="20" cy="20" r="2.5" fill="currentColor" />
           </svg>
         ) : hoverType === 'text' ? (
           /* Editorial Optical Text Caret */
           <svg
-            width="20"
-            height="28"
-            viewBox="0 0 20 28"
+            width="16"
+            height="24"
+            viewBox="0 0 16 24"
             fill="none"
             className="text-terracotta transition-all duration-200"
           >
             {/* Top Serif */}
-            <line x1="4" y1="3" x2="16" y2="3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            <line x1="3" y1="2" x2="13" y2="2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             {/* Vertical Stem */}
-            <line x1="10" y1="3" x2="10" y2="25" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            <line x1="8" y1="2" x2="8" y2="22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             {/* Bottom Serif */}
-            <line x1="4" y1="25" x2="16" y2="25" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            <line x1="3" y1="22" x2="13" y2="22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
           </svg>
         ) : (
-          /* Default Precision Reticle (Corner Brackets + Central Dot) */
+          /* Default Precision Reticle (Corner Brackets + Central Focal Dot) */
           <svg
-            width="32"
-            height="32"
-            viewBox="0 0 32 32"
+            width="28"
+            height="28"
+            viewBox="0 0 28 28"
             fill="none"
             className="transition-all duration-300"
           >
             {/* 4 Crisp Corner Brackets */}
-            <path d="M3 10V3H10" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" className="text-text-main/80" />
-            <path d="M29 10V3H22" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" className="text-text-main/80" />
-            <path d="M3 22V29H10" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" className="text-text-main/80" />
-            <path d="M29 22V29H22" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" className="text-text-main/80" />
+            <path d="M3 9V3H9" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" className="text-text-main/80" />
+            <path d="M25 9V3H19" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" className="text-text-main/80" />
+            <path d="M3 19V25H9" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" className="text-text-main/80" />
+            <path d="M25 19V25H19" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" className="text-text-main/80" />
 
-            {/* Central Terracotta Focal Dot */}
-            <circle cx="16" cy="16" r="2" fill="var(--color-terracotta, #C25E38)" />
+            {/* Central Focal Dot */}
+            <circle cx="14" cy="14" r="2" fill="var(--color-terracotta, #C25E38)" />
           </svg>
         )}
       </div>
