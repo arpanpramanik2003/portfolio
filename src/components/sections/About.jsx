@@ -1,19 +1,13 @@
 import { motion } from "framer-motion";
 import aboutData from "../../data/sections/about.json";
-import { Cpu, Bot, Workflow, Code2, Microscope, GraduationCap, Compass, Sparkles } from "lucide-react";
+import { Cpu, Bot, Workflow, Code2, Microscope, Compass, Sparkles, ArrowRight } from "lucide-react";
 
 const highlightIcons = [
-  <Cpu size={22} className="text-terracotta" />,
-  <Bot size={22} className="text-terracotta" />,
-  <Workflow size={22} className="text-terracotta" />,
-  <Code2 size={22} className="text-terracotta" />,
-  <Microscope size={22} className="text-terracotta" />,
-];
-
-const timelineIcons = [
-  <GraduationCap size={18} className="text-terracotta" />,
-  <Microscope size={18} className="text-terracotta" />,
-  <Sparkles size={18} className="text-terracotta" />,
+  <Cpu size={20} className="text-terracotta" />,
+  <Bot size={20} className="text-terracotta" />,
+  <Workflow size={20} className="text-terracotta" />,
+  <Code2 size={20} className="text-terracotta" />,
+  <Microscope size={20} className="text-terracotta" />,
 ];
 
 const About = () => {
@@ -21,14 +15,14 @@ const About = () => {
 
   return (
     <section id="about" className="py-24 px-6 border-t border-border-subtle transition-colors">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <p className="text-xs font-mono uppercase tracking-widest text-terracotta font-semibold mb-2">
             Background &amp; Philosophy
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-text-main tracking-tight mb-6">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-text-main tracking-tight mb-4">
             {heading}
           </h2>
           <div className="w-12 h-0.5 bg-terracotta mx-auto mb-6" />
@@ -37,77 +31,78 @@ const About = () => {
           </p>
         </div>
 
-        {/* Highlights Row */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 mb-16">
+        {/* 5 Focus Badges */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-20">
           {highlights.map((item, i) => (
             <motion.div
               key={i}
               whileHover={{ y: -3 }}
-              className="bg-card border border-border-subtle hover:border-terracotta/40 rounded-xl p-4 text-center transition-all shadow-sm flex flex-col items-center justify-center gap-2.5"
+              className="bg-card/70 border border-border-subtle hover:border-terracotta/40 rounded-xl p-3.5 text-center transition-all shadow-xs flex flex-col items-center justify-center gap-2"
             >
               <div className="p-2 rounded-lg bg-surface border border-border-subtle">
-                {highlightIcons[i] || <Sparkles size={20} className="text-terracotta" />}
+                {highlightIcons[i] || <Sparkles size={18} className="text-terracotta" />}
               </div>
-              <p className="text-xs sm:text-sm font-medium text-text-main leading-snug">
+              <p className="text-xs font-medium text-text-main leading-snug">
                 {item.text}
               </p>
             </motion.div>
           ))}
         </div>
 
-        {/* Timeline & Mission Grid */}
-        <div className="grid lg:grid-cols-12 gap-10 items-start">
+        {/* Editorial Timeline & Philosophy Grid */}
+        <div className="grid lg:grid-cols-12 gap-12 items-start">
           
-          {/* Timeline Column (7 cols) */}
+          {/* Editorial Timeline (7 Cols) */}
           <div className="lg:col-span-7 space-y-6">
-            <h3 className="font-serif text-2xl font-bold text-text-main mb-6 flex items-center gap-2">
-              <span>Academic &amp; Research Journey</span>
+            <h3 className="font-serif text-2xl font-bold text-text-main mb-6">
+              Academic &amp; Research Milestones
             </h3>
 
-            <div className="relative pl-6 border-l-2 border-border-default space-y-8">
+            <div className="relative pl-6 sm:pl-8 border-l border-border-default space-y-10">
               {timeline.map((item, i) => (
                 <div key={i} className="relative group">
-                  {/* Node Dot */}
-                  <div className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-card border-2 border-terracotta group-hover:bg-terracotta transition-colors" />
+                  {/* Timeline Terracotta Bullet */}
+                  <div className="absolute -left-[31px] sm:-left-[39px] top-1 w-3.5 h-3.5 rounded-full bg-card border-2 border-terracotta group-hover:scale-125 transition-transform" />
 
-                  <div className="bg-card border border-border-subtle hover:border-border-default rounded-xl p-5 shadow-sm transition-all">
-                    <div className="flex items-center gap-2 text-xs font-mono font-medium text-terracotta mb-1.5">
-                      {timelineIcons[i] || <GraduationCap size={16} />}
-                      <span>{item.year}</span>
-                    </div>
-                    <h4 className="font-serif text-lg font-bold text-text-main mb-2">
-                      {item.title}
-                    </h4>
-                    <p className="text-text-sub text-sm leading-relaxed">
-                      {item.description}
-                    </p>
+                  {/* Date Tag */}
+                  <div className="text-xs font-mono font-medium text-terracotta mb-1 flex items-center gap-1.5">
+                    <span>{item.year}</span>
+                    <ArrowRight size={12} className="opacity-60" />
                   </div>
+
+                  {/* Title & Narrative */}
+                  <h4 className="font-serif text-lg font-bold text-text-main mb-2">
+                    {item.title}
+                  </h4>
+                  <p className="text-text-sub text-sm leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Mission & Core Values Column (5 cols) */}
+          {/* Mission & Guiding Principles (5 Cols) */}
           <div className="lg:col-span-5 space-y-6">
-            <h3 className="font-serif text-2xl font-bold text-text-main mb-6 flex items-center gap-2">
-              <span>Core Tenets</span>
+            <h3 className="font-serif text-2xl font-bold text-text-main mb-6">
+              Core Tenets
             </h3>
 
-            <div className="bg-card border border-border-subtle rounded-2xl p-6 sm:p-7 shadow-sm space-y-7">
-              {/* Mission */}
+            <div className="bg-card border border-border-subtle rounded-2xl p-6 sm:p-7 shadow-sm space-y-6">
+              {/* Mission Statement */}
               <div>
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-terracotta font-semibold mb-2">
-                  <Compass size={15} />
-                  <span>Mission</span>
+                <div className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-terracotta font-semibold mb-2.5">
+                  <Compass size={14} />
+                  <span>Engineering Mission</span>
                 </div>
-                <p className="text-text-main font-serif text-lg italic leading-relaxed">
+                <blockquote className="font-serif text-lg italic text-text-main leading-relaxed border-l-2 border-terracotta/40 pl-3.5 my-2">
                   "{mission}"
-                </p>
+                </blockquote>
               </div>
 
               <div className="w-full h-px bg-border-subtle" />
 
-              {/* Values */}
+              {/* Values / Principles */}
               <div>
                 <div className="text-xs font-mono uppercase tracking-wider text-text-mute font-semibold mb-3">
                   Guiding Principles
@@ -118,7 +113,7 @@ const About = () => {
                     return (
                       <span
                         key={i}
-                        className="px-3 py-1.5 rounded-lg bg-surface border border-border-subtle text-text-main text-xs font-medium"
+                        className="px-3 py-1.5 rounded-lg bg-surface border border-border-subtle text-text-main text-xs font-mono font-medium hover:border-terracotta/30 transition-colors"
                       >
                         {cleanVal}
                       </span>
