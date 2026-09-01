@@ -11,10 +11,10 @@ import { CustomCursor } from '../components/common/CustomCursor';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-canvas text-text-main transition-colors duration-300">
+    <div className="min-h-screen bg-canvas text-text-main transition-colors duration-300 w-full max-w-full overflow-x-hidden lg:overflow-x-visible">
       <CustomCursor />
       <Navbar />
-      <main>
+      <main className="w-full max-w-full overflow-x-hidden lg:overflow-x-visible">
         <Hero />
         <About />
         <Skills />

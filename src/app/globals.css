@@ -93,6 +93,9 @@
 html {
   scroll-behavior: smooth;
   color-scheme: light dark;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -100,10 +103,18 @@ body {
   background-color: var(--bg-canvas);
   color: var(--text-primary);
   min-height: 100vh;
-  overflow-x: clip;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@media (min-width: 1024px) {
+  html, body {
+    overflow-x: visible;
+  }
 }
 
 /* Subtle Editorial Canvas Tint */
