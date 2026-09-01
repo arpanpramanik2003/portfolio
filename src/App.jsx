@@ -1,4 +1,4 @@
-import CustomCursor from "./components/common/CustomCursor";
+import { ThemeProvider } from "./context/ThemeContext";
 import Navbar from "./components/common/Navbar";
 import Footer from "./components/common/Footer";
 
@@ -12,27 +12,21 @@ import Contact from "./components/sections/Contact";
 
 function App() {
   return (
-    <div className="relative bg-black min-h-screen overflow-x-hidden">
-      
-      {/* Custom Cursor (desktop only) */}
-      <CustomCursor />
-
-      {/* Main Layout */}
-      <Navbar />
-
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Certificates />
-        <Research />
-        <Contact />
-      </main>
-
-      <Footer />
-
-    </div>
+    <ThemeProvider>
+      <div className="relative bg-canvas text-text-main min-h-screen selection:bg-terracotta-subtle selection:text-terracotta transition-colors duration-300">
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Certificates />
+          <Research />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 

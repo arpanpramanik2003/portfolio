@@ -4,30 +4,24 @@ import profile from "../../assets/profile.jpeg";
 export default function ProfileImage() {
   return (
     <motion.div
-      className="profile-container"
-      initial={{ opacity: 0, scale: 0.5, y: 40 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="relative flex items-center justify-center"
     >
-      <motion.div
-        className="profile-ring"
-        animate={{
-          scale: [1, 1.08, 1],
-          boxShadow: [
-            "0 0 20px rgba(168, 85, 247, 0.3)",
-            "0 0 40px rgba(168, 85, 247, 0.6)",
-            "0 0 20px rgba(168, 85, 247, 0.3)",
-          ],
-        }}
-        transition={{
-          scale: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-          boxShadow: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-        }}
-      >
-        <div className="gradient-ring">
-          <img src={profile} alt="profile" />
+      {/* Outer Editorial Ring */}
+      <div className="relative p-1.5 rounded-full bg-gradient-to-tr from-terracotta/40 via-border to-terracotta/20 shadow-md">
+        {/* Inner Border */}
+        <div className="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-2 border-surface bg-surface shadow-inner">
+          <img
+            src={profile}
+            alt="Diya Chanda — AI Researcher & Full-Stack Developer"
+            className="w-full h-full object-cover object-center"
+          />
         </div>
-      </motion.div>
+      </div>
+      {/* Subtle Warm Accent Dot */}
+      <div className="absolute bottom-1 right-1 md:bottom-2 md:right-2 w-4 h-4 rounded-full bg-terracotta border-2 border-card shadow-sm" />
     </motion.div>
   );
 }
