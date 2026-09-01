@@ -85,16 +85,18 @@ export const Navbar = () => {
                     <a
                       href={link.href}
                       onClick={() => setActiveSection(link.id)}
-                      className={`px-3 py-1.5 rounded-lg transition-colors duration-200 relative font-mono text-[13px] inline-flex items-center gap-1.5 border focus:outline-none ${
+                      className={`px-3 py-1.5 rounded-lg transition-colors duration-200 relative font-mono text-[13px] inline-flex items-center justify-center border focus:outline-none font-medium select-none ${
                         isActive
-                          ? 'bg-surface text-terracotta font-bold border-border-subtle shadow-xs'
+                          ? 'bg-surface text-terracotta border-border-subtle shadow-xs'
                           : 'border-transparent text-text-sub hover:text-text-main hover:bg-surface/60'
                       }`}
                     >
                       <span>{link.label}</span>
-                      {isActive && (
-                        <span className="w-1.5 h-1.5 rounded-full bg-terracotta" />
-                      )}
+                      <span
+                        className={`absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-terracotta transition-opacity duration-200 ${
+                          isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                        }`}
+                      />
                     </a>
                   </li>
                 );
@@ -171,12 +173,16 @@ export const Navbar = () => {
                     }}
                     className={`flex items-center justify-between p-2.5 rounded-xl transition-colors ${
                       isActive
-                        ? 'bg-surface text-terracotta font-bold border border-border-subtle shadow-xs'
+                        ? 'bg-surface text-terracotta font-semibold border border-border-subtle shadow-xs'
                         : 'hover:bg-surface hover:text-terracotta'
                     }`}
                   >
                     <span className="flex items-center gap-2">
-                      {isActive && <span className="w-1.5 h-1.5 rounded-full bg-terracotta" />}
+                      <span
+                        className={`w-1.5 h-1.5 rounded-full bg-terracotta transition-opacity ${
+                          isActive ? 'opacity-100' : 'opacity-0'
+                        }`}
+                      />
                       <span>{link.label}</span>
                     </span>
                     <span className="text-xs text-text-mute font-sans">→</span>
