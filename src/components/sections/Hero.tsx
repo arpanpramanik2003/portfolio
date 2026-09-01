@@ -69,7 +69,7 @@ export const Hero = () => {
             href={heroData.resumeUrl || '/resume.pdf'}
             target="_blank"
             rel="noopener noreferrer"
-            download
+            download="Diya_Chanda_Resume.pdf"
             className="inline-flex items-center justify-center gap-2 bg-surface hover:bg-card border border-border hover:border-terracotta/50 text-text-main hover:text-terracotta font-medium px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg shadow-sm transition-all duration-200 text-xs sm:text-sm cursor-pointer flex-1 sm:flex-none"
           >
             <FileDown size={15} className="text-terracotta" />

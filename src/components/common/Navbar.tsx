@@ -111,7 +111,7 @@ export const Navbar = () => {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            download
+            download="Diya_Chanda_Resume.pdf"
             className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface hover:bg-card border border-border-subtle hover:border-terracotta/40 text-text-main hover:text-terracotta text-xs font-mono font-semibold shadow-xs transition-all duration-200"
           >
             <span>CV</span>
@@ -195,7 +195,7 @@ export const Navbar = () => {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                download
+                download="Diya_Chanda_Resume.pdf"
                 onClick={() => setOpen(false)}
                 className="flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-terracotta text-white font-medium text-xs font-mono text-center shadow-xs"
               >
