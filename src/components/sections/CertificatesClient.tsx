@@ -6,7 +6,6 @@ import {
   Award,
   FileText,
   Trophy,
-  ShieldCheck,
   Cloud,
   Briefcase,
   Eye,
@@ -14,7 +13,8 @@ import {
   Calendar,
   Building2,
   Sparkles,
-  CheckCircle2,
+  ChevronDown,
+  ChevronUp,
 } from 'lucide-react';
 
 interface CertificateItem {
@@ -67,10 +67,11 @@ export const CertificatesClient = ({
 }: CertificatesClientProps) => {
   const [activeTab, setActiveTab] = useState<FilterCategory>('all');
   const [selectedCert, setSelectedCert] = useState<CertificateItem | null>(null);
+  const [showAllCerts, setShowAllCerts] = useState<boolean>(false);
   const modalRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
 
-  const filteredCertificates = useMemo(() => {
+  const allFilteredCertificates = useMemo(() => {
     if (activeTab === 'research-honors') {
       return certificates.filter(
         (c) =>
@@ -91,6 +92,13 @@ export const CertificatesClient = ({
     }
     return certificates;
   }, [activeTab, certificates]);
+
+  const displayedCertificates = useMemo(() => {
+    if (activeTab === 'all' && !showAllCerts) {
+      return allFilteredCertificates.slice(0, 4);
+    }
+    return allFilteredCertificates;
+  }, [activeTab, showAllCerts, allFilteredCertificates]);
 
   const tabs = [
     { id: 'all' as FilterCategory, label: 'All Credentials', count: certificates.length },
@@ -120,7 +128,6 @@ export const CertificatesClient = ({
     },
   ];
 
-  // Focus trapping and scroll locking
   useEffect(() => {
     if (selectedCert) {
       previousFocusRef.current = document.activeElement as HTMLElement;
@@ -169,12 +176,12 @@ export const CertificatesClient = ({
   return (
     <section
       id="certificates"
-      className="py-24 px-6 border-t border-border-subtle bg-surface/30 transition-colors"
+      className="py-20 sm:py-24 px-4 sm:px-6 border-t border-border-subtle bg-surface/30 transition-colors w-full overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto w-full">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
           <p className="text-xs font-mono uppercase tracking-widest text-terracotta font-semibold mb-2 flex items-center justify-center gap-1.5">
             <Sparkles size={14} />
             <span>{eyebrow || 'Credentials & Honors'}</span>
@@ -183,85 +190,90 @@ export const CertificatesClient = ({
             {heading}
           </h2>
           <div className="w-12 h-0.5 bg-terracotta mx-auto mb-4" />
-          <p className="text-text-sub text-base sm:text-lg leading-relaxed">
+          <p className="text-text-sub text-sm sm:text-base md:text-lg leading-relaxed px-2">
             {description ||
               'Verified academic presentations, hackathon awards, cloud certifications, and industry engineering credentials.'}
           </p>
         </div>
 
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-          <div className="inline-flex items-center gap-1 p-1 rounded-xl bg-surface border border-border-subtle shadow-xs">
-            {tabs.map((tab) => {
-              const isActive = activeTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium transition-all duration-200 flex items-center gap-2 cursor-pointer ${
-                    isActive
-                      ? 'bg-card text-terracotta font-bold shadow-xs border border-border-subtle'
-                      : 'text-text-mute hover:text-text-main hover:bg-card/50'
-                  }`}
-                >
-                  <span>{tab.label}</span>
-                  <span
-                    className={`px-1.5 py-0.5 rounded text-[10px] ${
+        {/* Mobile Horizontal Scrollable Filter Tabs */}
+        <div className="w-full flex justify-center mb-10 sm:mb-12">
+          <div className="w-full max-w-full overflow-x-auto no-scrollbar py-1">
+            <div className="inline-flex sm:flex sm:flex-wrap items-center justify-start sm:justify-center gap-1.5 p-1 rounded-xl bg-surface border border-border-subtle shadow-xs min-w-max mx-auto">
+              {tabs.map((tab) => {
+                const isActive = activeTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => {
+                      setActiveTab(tab.id);
+                      if (tab.id !== 'all') setShowAllCerts(true);
+                    }}
+                    className={`px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium transition-all duration-200 flex items-center gap-1.5 sm:gap-2 cursor-pointer whitespace-nowrap ${
                       isActive
-                        ? 'bg-terracotta/15 text-terracotta'
-                        : 'bg-surface/80 text-text-mute'
+                        ? 'bg-card text-terracotta font-bold shadow-xs border border-border-subtle'
+                        : 'text-text-mute hover:text-text-main hover:bg-card/50'
                     }`}
                   >
-                    {tab.count}
-                  </span>
-                </button>
-              );
-            })}
+                    <span>{tab.label}</span>
+                    <span
+                      className={`px-1.5 py-0.5 rounded text-[10px] ${
+                        isActive
+                          ? 'bg-terracotta/15 text-terracotta'
+                          : 'bg-surface/80 text-text-mute'
+                      }`}
+                    >
+                      {tab.count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
 
         {/* Certificates Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {filteredCertificates.map((cert) => {
+        <div className="grid md:grid-cols-2 gap-5 sm:gap-6 mb-8">
+          {displayedCertificates.map((cert) => {
             return (
               <article
                 key={cert.id}
-                className="bg-card border border-border-subtle hover:border-terracotta/40 rounded-2xl p-6 sm:p-7 shadow-sm flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1 hover:shadow-md"
+                className="bg-card border border-border-subtle hover:border-terracotta/40 rounded-2xl p-5 sm:p-7 shadow-sm flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1 hover:shadow-md"
               >
                 <div>
                   
                   {/* Meta Header */}
-                  <div className="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-border-subtle/70">
+                  <div className="flex items-center justify-between gap-3 mb-3 sm:mb-4 pb-2.5 sm:pb-3 border-b border-border-subtle/70">
                     <div className="flex items-center gap-2">
-                      <span className="p-2 rounded-lg bg-surface border border-border-subtle">
+                      <span className="p-1.5 sm:p-2 rounded-lg bg-surface border border-border-subtle">
                         {certCategoryIconMap[cert.category] || (
-                          <Award size={16} className="text-terracotta" />
+                          <Award size={15} className="text-terracotta" />
                         )}
                       </span>
-                      <span className="text-xs font-mono text-terracotta font-semibold">
+                      <span className="text-[11px] sm:text-xs font-mono text-terracotta font-semibold">
                         {cert.category}
                       </span>
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <span className="inline-flex items-center gap-1 text-[11px] font-mono text-text-mute">
+                      <span className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-mono text-text-mute">
                         <Calendar size={12} className="opacity-70" />
                         <span>{cert.year}</span>
                       </span>
-                      <span className="text-[11px] font-mono text-text-mute px-2 py-0.5 bg-surface rounded border border-border-subtle">
+                      <span className="text-[10px] sm:text-[11px] font-mono text-text-mute px-2 py-0.5 bg-surface rounded border border-border-subtle">
                         0{cert.id}
                       </span>
                     </div>
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-text-main mb-2 group-hover:text-terracotta transition-colors leading-snug">
+                  <h3 className="font-serif text-lg sm:text-xl lg:text-2xl font-bold text-text-main mb-1.5 group-hover:text-terracotta transition-colors leading-snug">
                     {cert.title}
                   </h3>
 
-                  {/* Context Subtitle (Article, Event, Program, Position) */}
+                  {/* Context Subtitle */}
                   {cert.article && (
-                    <p className="text-terracotta font-serif italic text-sm mb-2 leading-relaxed">
+                    <p className="text-terracotta font-serif italic text-xs sm:text-sm mb-2 leading-relaxed">
                       "{cert.article}"
                     </p>
                   )}
@@ -279,24 +291,24 @@ export const CertificatesClient = ({
                   {/* Issuer details */}
                   <div className="flex items-center gap-1.5 text-xs text-text-mute mb-3 font-medium">
                     <Building2 size={13} className="text-terracotta flex-shrink-0" />
-                    <span>
+                    <span className="truncate">
                       {cert.issuer}
                       {cert.position ? ` · ${cert.position}` : ''}
                     </span>
                   </div>
 
                   {/* Constructive Description */}
-                  <p className="text-text-sub text-xs sm:text-sm leading-relaxed mb-5">
+                  <p className="text-text-sub text-xs sm:text-sm leading-relaxed mb-4">
                     {cert.description}
                   </p>
 
                   {/* Skills Tags */}
                   {cert.skills && cert.skills.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 mb-5">
+                    <div className="flex flex-wrap gap-1.5 mb-4 sm:mb-5">
                       {cert.skills.map((skill, idx) => (
                         <span
                           key={idx}
-                          className="text-[11px] font-mono bg-surface border border-border-subtle text-text-sub px-2.5 py-1 rounded-md"
+                          className="text-[10px] sm:text-[11px] font-mono bg-surface border border-border-subtle text-text-sub px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md"
                         >
                           {skill}
                         </span>
@@ -320,6 +332,23 @@ export const CertificatesClient = ({
           })}
         </div>
 
+        {/* See More Certificates Toggle */}
+        {activeTab === 'all' && allFilteredCertificates.length > 4 && (
+          <div className="flex justify-center mb-6">
+            <button
+              onClick={() => setShowAllCerts(!showAllCerts)}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-surface hover:bg-card border border-border hover:border-terracotta/50 text-text-main hover:text-terracotta text-xs sm:text-sm font-mono font-medium shadow-xs transition-all duration-200 cursor-pointer"
+            >
+              <span>
+                {showAllCerts
+                  ? 'Collapse Credentials'
+                  : `See All Credentials (${allFilteredCertificates.length - 4} more)`}
+              </span>
+              {showAllCerts ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            </button>
+          </div>
+        )}
+
       </div>
 
       {/* Accessible Lightbox Modal */}
@@ -329,20 +358,20 @@ export const CertificatesClient = ({
           role="dialog"
           aria-modal="true"
           aria-labelledby="cert-modal-title"
-          className="fixed inset-0 bg-black/80 backdrop-blur-xs z-50 flex items-center justify-center p-4 sm:p-6 animate-fadeIn"
+          className="fixed inset-0 bg-black/80 backdrop-blur-xs z-50 flex items-center justify-center p-3 sm:p-6 animate-fadeIn"
         >
           <div
             ref={modalRef}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-3xl max-h-[90vh] bg-card border border-border rounded-2xl overflow-hidden shadow-2xl p-4 sm:p-6 flex flex-col"
+            className="relative w-full max-w-3xl max-h-[92vh] bg-card border border-border rounded-2xl overflow-hidden shadow-2xl p-4 sm:p-6 flex flex-col"
           >
             {/* Modal Header */}
             <div className="flex items-center justify-between pb-3 mb-3 border-b border-border-subtle">
-              <div>
-                <h3 id="cert-modal-title" className="font-serif text-lg sm:text-xl font-bold text-text-main">
+              <div className="min-w-0 pr-3">
+                <h3 id="cert-modal-title" className="font-serif text-base sm:text-xl font-bold text-text-main truncate">
                   {selectedCert.title}
                 </h3>
-                <p className="text-xs font-mono text-text-mute mt-0.5">
+                <p className="text-[11px] sm:text-xs font-mono text-text-mute mt-0.5 truncate">
                   Issued by {selectedCert.issuer} · {selectedCert.year}
                 </p>
               </div>
@@ -352,7 +381,7 @@ export const CertificatesClient = ({
                 onClick={() => setSelectedCert(null)}
                 autoFocus
                 aria-label="Close document modal"
-                className="p-1.5 rounded-lg border border-border hover:border-terracotta text-text-sub hover:text-terracotta bg-surface transition-colors cursor-pointer"
+                className="p-1.5 rounded-lg border border-border hover:border-terracotta text-text-sub hover:text-terracotta bg-surface transition-colors cursor-pointer flex-shrink-0"
               >
                 <X size={18} />
               </button>
@@ -360,7 +389,7 @@ export const CertificatesClient = ({
 
             {/* Certificate Image Scan via next/image */}
             <div className="overflow-y-auto rounded-lg bg-surface/50 border border-border-subtle p-2 flex items-center justify-center">
-              <div className="relative w-full h-[60vh] max-h-[70vh]">
+              <div className="relative w-full h-[55vh] sm:h-[65vh]">
                 <Image
                   src={certificateImages[selectedCert.id]}
                   alt={selectedCert.title}
