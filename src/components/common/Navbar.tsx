@@ -8,24 +8,41 @@ import { Sun, Moon, Menu, X, ArrowUpRight } from 'lucide-react';
 export const Navbar = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
+  const [activeSection, setActiveSection] = useState<string>('home');
   const { theme, toggleTheme } = useTheme();
+
+  const navLinks = [
+    { label: 'About', href: '#about', id: 'about' },
+    { label: 'Skills', href: '#skills', id: 'skills' },
+    { label: 'Projects', href: '#projects', id: 'projects' },
+    { label: 'Certificates', href: '#certificates', id: 'certificates' },
+    { label: 'Research', href: '#research', id: 'research' },
+    { label: 'Contact', href: '#contact', id: 'contact' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
+      const scrollPosition = window.scrollY + 180;
       setScrolled(window.scrollY > 20);
+
+      const sectionIds = ['home', 'about', 'skills', 'projects', 'certificates', 'research', 'contact'];
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveSection(id);
+            break;
+          }
+        }
+      }
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const navLinks = [
-    { label: 'About', href: '#about' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Certificates', href: '#certificates' },
-    { label: 'Research', href: '#research' },
-    { label: 'Contact', href: '#contact' },
-  ];
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 px-3 sm:px-6 pt-2 sm:pt-3 transition-all duration-300">
@@ -39,6 +56,7 @@ export const Navbar = () => {
         {/* Brand Logo & Name */}
         <a
           href="#home"
+          onClick={() => setActiveSection('home')}
           className="flex items-center gap-2.5 group cursor-pointer"
         >
           <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-lg overflow-hidden border border-border-subtle bg-surface flex items-center justify-center p-0.5 group-hover:border-terracotta/50 transition-colors">
@@ -57,19 +75,30 @@ export const Navbar = () => {
         </a>
 
         {/* Desktop Menu Navigation */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-5 lg:gap-6">
           <nav>
             <ul className="flex items-center gap-1 text-xs font-medium text-text-sub">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="px-3 py-1.5 rounded-lg hover:text-terracotta hover:bg-surface/80 transition-all duration-200 relative group font-mono text-[13px]"
-                  >
-                    <span>{link.label}</span>
-                  </a>
-                </li>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.id;
+                return (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      onClick={() => setActiveSection(link.id)}
+                      className={`px-3 py-1.5 rounded-lg transition-colors duration-200 relative font-mono text-[13px] inline-flex items-center gap-1.5 border focus:outline-none ${
+                        isActive
+                          ? 'bg-surface text-terracotta font-bold border-border-subtle shadow-xs'
+                          : 'border-transparent text-text-sub hover:text-text-main hover:bg-surface/60'
+                      }`}
+                    >
+                      <span>{link.label}</span>
+                      {isActive && (
+                        <span className="w-1.5 h-1.5 rounded-full bg-terracotta" />
+                      )}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
 
@@ -130,18 +159,31 @@ export const Navbar = () => {
           className="md:hidden max-w-5xl mx-auto mt-2 bg-card/95 backdrop-blur-xl border border-border rounded-2xl p-5 transition-all shadow-xl animate-fadeIn"
         >
           <ul className="flex flex-col gap-2 text-sm font-medium text-text-main font-mono">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="flex items-center justify-between p-2.5 rounded-xl hover:bg-surface hover:text-terracotta transition-colors"
-                >
-                  <span>{link.label}</span>
-                  <span className="text-xs text-text-mute font-sans">→</span>
-                </a>
-              </li>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.id;
+              return (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    onClick={() => {
+                      setActiveSection(link.id);
+                      setOpen(false);
+                    }}
+                    className={`flex items-center justify-between p-2.5 rounded-xl transition-colors ${
+                      isActive
+                        ? 'bg-surface text-terracotta font-bold border border-border-subtle shadow-xs'
+                        : 'hover:bg-surface hover:text-terracotta'
+                    }`}
+                  >
+                    <span className="flex items-center gap-2">
+                      {isActive && <span className="w-1.5 h-1.5 rounded-full bg-terracotta" />}
+                      <span>{link.label}</span>
+                    </span>
+                    <span className="text-xs text-text-mute font-sans">→</span>
+                  </a>
+                </li>
+              );
+            })}
             <li className="pt-2 border-t border-border-subtle mt-1">
               <a
                 href="/resume.pdf"
