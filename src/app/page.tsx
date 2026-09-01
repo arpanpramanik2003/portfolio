@@ -7,10 +7,12 @@ import { Certificates } from '../components/sections/Certificates';
 import { Research } from '../components/sections/Research';
 import { Contact } from '../components/sections/Contact';
 import { Footer } from '../components/common/Footer';
+import { CustomCursor } from '../components/common/CustomCursor';
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-canvas text-text-main transition-colors duration-300">
+      <CustomCursor />
       <Navbar />
       <main>
         <Hero />
