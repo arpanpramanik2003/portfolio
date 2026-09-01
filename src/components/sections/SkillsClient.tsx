@@ -123,38 +123,36 @@ export const SkillsClient = ({
         </div>
 
         {/* Mobile Horizontal Scrollable Filter Tabs */}
-        <div className="w-full flex justify-center mb-10 sm:mb-12">
-          <div className="w-full max-w-full overflow-x-auto no-scrollbar py-1">
-            <div className="inline-flex sm:flex sm:flex-wrap items-center justify-start sm:justify-center gap-1.5 p-1 rounded-xl bg-surface border border-border-subtle shadow-xs min-w-max mx-auto">
-              {tabs.map((tab) => {
-                const isActive = activeTab === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    onClick={() => {
-                      setActiveTab(tab.id);
-                      if (tab.id !== 'all') setShowAllSkills(true);
-                    }}
-                    className={`px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors duration-200 flex items-center gap-1.5 sm:gap-2 cursor-pointer whitespace-nowrap focus:outline-none select-none border ${
+        <div className="w-full flex justify-start sm:justify-center mb-10 sm:mb-12 overflow-x-auto no-scrollbar py-1">
+          <div className="inline-flex sm:flex sm:flex-wrap items-center gap-1.5 p-1 rounded-xl bg-surface border border-border-subtle shadow-xs">
+            {tabs.map((tab) => {
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => {
+                    setActiveTab(tab.id);
+                    if (tab.id !== 'all') setShowAllSkills(true);
+                  }}
+                  className={`px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors duration-200 flex items-center gap-1.5 sm:gap-2 cursor-pointer whitespace-nowrap focus:outline-none select-none border ${
+                    isActive
+                      ? 'bg-card text-terracotta font-bold shadow-xs border-border-subtle'
+                      : 'border-transparent text-text-mute hover:text-text-main hover:bg-card/50'
+                  }`}
+                >
+                  <span>{tab.label}</span>
+                  <span
+                    className={`px-1.5 py-0.5 rounded text-[10px] ${
                       isActive
-                        ? 'bg-card text-terracotta font-bold shadow-xs border-border-subtle'
-                        : 'border-transparent text-text-mute hover:text-text-main hover:bg-card/50'
+                        ? 'bg-terracotta/15 text-terracotta'
+                        : 'bg-surface/80 text-text-mute'
                     }`}
                   >
-                    <span>{tab.label}</span>
-                    <span
-                      className={`px-1.5 py-0.5 rounded text-[10px] ${
-                        isActive
-                          ? 'bg-terracotta/15 text-terracotta'
-                          : 'bg-surface/80 text-text-mute'
-                      }`}
-                    >
-                      {tab.count}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
+                    {tab.count}
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
