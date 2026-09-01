@@ -41,3 +41,24 @@ export const LinkedinIcon: FC<IconProps> = ({ size = 16, className = '', ...prop
     <circle cx="4" cy="4" r="2" />
   </svg>
 );
+
+export const ResearchGateIcon: FC<IconProps> = ({ size = 16, className = '', ...props }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    {...props}
+  >
+    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a2.5 2.5 0 0 1-2.5-2.5z" />
+    <path d="M9 9h6" />
+    <path d="M9 13h6" />
+    <path d="M9 17h3" />
+    <path d="M4 6h16" />
+  </svg>
+);

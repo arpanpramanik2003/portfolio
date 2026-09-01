@@ -1,102 +1,169 @@
 import heroData from '../../data/sections/hero.json';
-import ProfileImage from '../home/ProfileImage';
+import researchData from '../../data/sections/research.json';
+import certificatesData from '../../data/sections/certificates.json';
+import projectsData from '../../data/sections/projects.json';
 import TypingSubtitle from '../home/TypingSubtitle';
 import { TextScramble } from '../common/TextScramble';
-import { ArrowUpRight, Mail, Sparkles, BookOpen, Award, FolderGit2 } from 'lucide-react';
+import { ArrowUpRight, Mail, FileDown, BookOpen, Award, FolderGit2, Sparkles } from 'lucide-react';
+import { GithubIcon, LinkedinIcon, ResearchGateIcon } from '../common/Icons';
 
 export const Hero = () => {
+  const papersCount = researchData.papers.length;
+  const certsCount = certificatesData.certificates.length;
+  const projectsCount = projectsData.projects.length;
+
+  const socials = heroData.socials || {
+    github: 'https://github.com/chandadiya2004',
+    linkedin: 'https://www.linkedin.com/in/diya-chanda2004/',
+    researchgate: 'https://www.researchgate.net/profile/Diya-Chanda',
+  };
+
   return (
     <section
       id="home"
-      className="relative min-h-[92vh] flex flex-col justify-center items-center px-6 pt-28 pb-16 transition-colors"
+      className="relative min-h-[95vh] flex flex-col justify-center items-center px-6 pt-32 pb-20 transition-colors"
     >
-      <div className="relative z-10 max-w-4xl mx-auto w-full">
+      <div className="relative z-10 max-w-5xl mx-auto w-full text-center flex flex-col items-center">
         
-        {/* Main Hero Header */}
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12 mb-12 text-center md:text-left">
-          
-          {/* Portrait Column */}
-          <div className="flex-shrink-0 flex flex-col items-center">
-            <ProfileImage />
-            {/* Status Chip */}
-            <div className="mt-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-border-subtle text-[11px] font-mono text-text-sub shadow-xs">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Open for Collaboration</span>
-            </div>
+        {/* Top Eyebrow Badges */}
+        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-8">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface border border-border-subtle text-xs font-mono font-medium text-text-sub shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span>Open for AI Research &amp; Engineering</span>
           </div>
 
-          {/* Text Content Column */}
-          <div className="flex-1">
-            
-            {/* Eyebrow Specialization */}
-            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-terracotta font-semibold mb-3">
-              <Sparkles size={14} />
-              <span>{heroData.title}</span>
-            </div>
-
-            {/* Name with subtle scramble-to-lock */}
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-text-main mb-3 leading-[1.1]">
-              <TextScramble text={heroData.name} />
-            </h1>
-
-            {/* Dynamic Typing Title */}
-            <div className="text-sm sm:text-base mb-5 min-h-[26px]">
-              <TypingSubtitle />
-            </div>
-
-            {/* Editorial Bio */}
-            <p className="text-text-sub text-sm sm:text-base leading-relaxed mb-8 max-w-xl">
-              {heroData.description}
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-3.5">
-              <a
-                href="#projects"
-                className="inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-hover text-white font-medium px-5 py-2.5 rounded-lg shadow-sm transition-all duration-200 text-xs sm:text-sm"
-              >
-                <span>{heroData.ctaPrimary}</span>
-                <ArrowUpRight size={15} />
-              </a>
-
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 bg-surface hover:bg-card border border-border hover:border-terracotta/40 text-text-main font-medium px-5 py-2.5 rounded-lg shadow-sm transition-all duration-200 text-xs sm:text-sm"
-              >
-                <Mail size={15} className="text-terracotta" />
-                <span>{heroData.ctaSecondary}</span>
-              </a>
-            </div>
-
+          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface border border-border-subtle text-xs font-mono font-medium text-terracotta shadow-xs">
+            <Sparkles size={13} />
+            <span>B.Tech CSE (AI &amp; ML)</span>
           </div>
-
         </div>
 
-        {/* Quick Highlights Ribbon */}
-        <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-8 border-t border-border-subtle">
-          <div className="bg-card/50 border border-border-subtle rounded-xl p-3 sm:p-4 text-center">
-            <div className="flex items-center justify-center gap-1.5 text-terracotta mb-1">
-              <BookOpen size={16} />
-              <span className="font-serif text-lg sm:text-2xl font-bold text-text-main">2</span>
-            </div>
-            <p className="text-[11px] sm:text-xs font-mono text-text-mute">IEEE Publications</p>
-          </div>
+        {/* Extra Large Centered Editorial Name */}
+        <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight text-text-main leading-[0.95] mb-6 select-none">
+          <TextScramble text={heroData.name} />
+        </h1>
 
-          <div className="bg-card/50 border border-border-subtle rounded-xl p-3 sm:p-4 text-center">
-            <div className="flex items-center justify-center gap-1.5 text-terracotta mb-1">
-              <Award size={16} />
-              <span className="font-serif text-lg sm:text-2xl font-bold text-text-main">7</span>
-            </div>
-            <p className="text-[11px] sm:text-xs font-mono text-text-mute">Honors &amp; Certs</p>
+        {/* Dynamic Typing Subtitle */}
+        <div className="mb-6 min-h-[30px] flex items-center justify-center">
+          <div className="px-4 py-1.5 rounded-full bg-surface/80 border border-border-subtle shadow-xs">
+            <TypingSubtitle />
           </div>
+        </div>
 
-          <div className="bg-card/50 border border-border-subtle rounded-xl p-3 sm:p-4 text-center">
-            <div className="flex items-center justify-center gap-1.5 text-terracotta mb-1">
-              <FolderGit2 size={16} />
-              <span className="font-serif text-lg sm:text-2xl font-bold text-text-main">5+</span>
+        {/* Editorial Bio */}
+        <p className="text-text-sub text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10 font-normal">
+          {heroData.description}
+        </p>
+
+        {/* Main CTA Actions */}
+        <div className="flex flex-wrap items-center justify-center gap-3.5 mb-10">
+          <a
+            href="#projects"
+            className="inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-hover text-white font-medium px-6 py-3 rounded-lg shadow-sm transition-all duration-200 text-sm"
+          >
+            <span>{heroData.ctaPrimary}</span>
+            <ArrowUpRight size={16} />
+          </a>
+
+          <a
+            href={heroData.resumeUrl || '/resume.pdf'}
+            target="_blank"
+            rel="noopener noreferrer"
+            download
+            className="inline-flex items-center gap-2 bg-surface hover:bg-card border border-border hover:border-terracotta/50 text-text-main hover:text-terracotta font-medium px-6 py-3 rounded-lg shadow-sm transition-all duration-200 text-sm cursor-pointer"
+          >
+            <FileDown size={16} className="text-terracotta" />
+            <span>Download Resume</span>
+          </a>
+
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 bg-surface hover:bg-card border border-border hover:border-terracotta/40 text-text-sub hover:text-text-main font-medium px-5 py-3 rounded-lg shadow-sm transition-all duration-200 text-sm"
+          >
+            <Mail size={16} />
+            <span>{heroData.ctaSecondary}</span>
+          </a>
+        </div>
+
+        {/* Social Quick-Links Ribbon */}
+        <div className="flex items-center justify-center gap-3 mb-16">
+          <a
+            href={socials.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Diya Chanda GitHub Profile"
+            className="p-2.5 rounded-lg bg-surface border border-border-subtle hover:border-terracotta/40 text-text-sub hover:text-terracotta hover:bg-card transition-all shadow-xs"
+          >
+            <GithubIcon size={18} />
+          </a>
+
+          <a
+            href={socials.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Diya Chanda LinkedIn Profile"
+            className="p-2.5 rounded-lg bg-surface border border-border-subtle hover:border-terracotta/40 text-text-sub hover:text-terracotta hover:bg-card transition-all shadow-xs"
+          >
+            <LinkedinIcon size={18} />
+          </a>
+
+          <a
+            href={socials.researchgate}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Diya Chanda ResearchGate Profile"
+            className="p-2.5 rounded-lg bg-surface border border-border-subtle hover:border-terracotta/40 text-text-sub hover:text-terracotta hover:bg-card transition-all shadow-xs"
+          >
+            <ResearchGateIcon size={18} />
+          </a>
+        </div>
+
+        {/* Dynamic Highlights Metric Ribbon */}
+        <div className="w-full grid grid-cols-3 gap-3 sm:gap-6 pt-10 border-t border-border-subtle">
+          <a
+            href="#research"
+            className="bg-card/60 hover:bg-card border border-border-subtle hover:border-terracotta/40 rounded-xl p-4 sm:p-5 text-center transition-all duration-200 group block shadow-xs"
+          >
+            <div className="flex items-center justify-center gap-2 text-terracotta mb-1.5">
+              <BookOpen size={18} />
+              <span className="font-serif text-2xl sm:text-3xl font-bold text-text-main group-hover:text-terracotta transition-colors">
+                {papersCount}
+              </span>
             </div>
-            <p className="text-[11px] sm:text-xs font-mono text-text-mute">AI / ML Projects</p>
-          </div>
+            <p className="text-xs sm:text-sm font-mono text-text-mute group-hover:text-text-sub transition-colors">
+              Published Papers
+            </p>
+          </a>
+
+          <a
+            href="#certificates"
+            className="bg-card/60 hover:bg-card border border-border-subtle hover:border-terracotta/40 rounded-xl p-4 sm:p-5 text-center transition-all duration-200 group block shadow-xs"
+          >
+            <div className="flex items-center justify-center gap-2 text-terracotta mb-1.5">
+              <Award size={18} />
+              <span className="font-serif text-2xl sm:text-3xl font-bold text-text-main group-hover:text-terracotta transition-colors">
+                {certsCount}
+              </span>
+            </div>
+            <p className="text-xs sm:text-sm font-mono text-text-mute group-hover:text-text-sub transition-colors">
+              Honors &amp; Certs
+            </p>
+          </a>
+
+          <a
+            href="#projects"
+            className="bg-card/60 hover:bg-card border border-border-subtle hover:border-terracotta/40 rounded-xl p-4 sm:p-5 text-center transition-all duration-200 group block shadow-xs"
+          >
+            <div className="flex items-center justify-center gap-2 text-terracotta mb-1.5">
+              <FolderGit2 size={18} />
+              <span className="font-serif text-2xl sm:text-3xl font-bold text-text-main group-hover:text-terracotta transition-colors">
+                {projectsCount}
+              </span>
+            </div>
+            <p className="text-xs sm:text-sm font-mono text-text-mute group-hover:text-text-sub transition-colors">
+              Engineered Systems
+            </p>
+          </a>
         </div>
 
       </div>
