@@ -135,10 +135,10 @@ export const SkillsClient = ({
                       setActiveTab(tab.id);
                       if (tab.id !== 'all') setShowAllSkills(true);
                     }}
-                    className={`px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium transition-all duration-200 flex items-center gap-1.5 sm:gap-2 cursor-pointer whitespace-nowrap ${
+                    className={`px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors duration-200 flex items-center gap-1.5 sm:gap-2 cursor-pointer whitespace-nowrap focus:outline-none select-none border ${
                       isActive
-                        ? 'bg-card text-terracotta font-bold shadow-xs border border-border-subtle'
-                        : 'text-text-mute hover:text-text-main hover:bg-card/50'
+                        ? 'bg-card text-terracotta font-bold shadow-xs border-border-subtle'
+                        : 'border-transparent text-text-mute hover:text-text-main hover:bg-card/50'
                     }`}
                   >
                     <span>{tab.label}</span>
