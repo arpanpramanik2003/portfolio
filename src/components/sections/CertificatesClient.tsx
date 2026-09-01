@@ -1,28 +1,40 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
-import data from "../../data/sections/certificates.json";
-import { Award, FileText, Trophy, ShieldCheck, Cloud, Briefcase, Eye, X } from "lucide-react";
+'use client';
 
-// Import certificate images
-import IEEECert from "../../assets/certificates/IEEE_certificate.webp";
-import SIHCert from "../../assets/certificates/SIH_certificate.webp";
-import MeritCert from "../../assets/certificates/Merit_certificate.webp";
-import SttpCert from "../../assets/certificates/STTP_certificate.webp";
-import AWSCert from "../../assets/certificates/AWS_certificate.webp";
-import InternshipCert from "../../assets/certificates/Internship_certificate.webp";
-import XetaCert from "../../assets/certificates/Xeta_Labs_certificate.webp";
+import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
+import { Award, FileText, Trophy, ShieldCheck, Cloud, Briefcase, Eye, X } from 'lucide-react';
+import { ReactNode } from 'react';
 
-const certificateImages = {
-  1: IEEECert,
-  2: SIHCert,
-  3: MeritCert,
-  4: SttpCert,
-  5: AWSCert,
-  6: InternshipCert,
-  7: XetaCert,
+interface CertificateItem {
+  id: number;
+  icon?: string;
+  title: string;
+  issuer: string;
+  year: string;
+  article?: string;
+  program?: string;
+  event?: string;
+  position?: string;
+  description?: string;
+  skills?: string[];
+}
+
+interface CertificatesClientProps {
+  heading: string;
+  certificates: CertificateItem[];
+}
+
+const certificateImages: Record<number, string> = {
+  1: '/images/certificates/IEEE_certificate.webp',
+  2: '/images/certificates/SIH_certificate.webp',
+  3: '/images/certificates/Merit_certificate.webp',
+  4: '/images/certificates/STTP_certificate.webp',
+  5: '/images/certificates/AWS_certificate.webp',
+  6: '/images/certificates/Internship_certificate.webp',
+  7: '/images/certificates/Xeta_Labs_certificate.webp',
 };
 
-const certIconMap = {
+const certIconMap: Record<number, ReactNode> = {
   1: <FileText size={17} className="text-terracotta" />,
   2: <Trophy size={17} className="text-terracotta" />,
   3: <Award size={17} className="text-terracotta" />,
@@ -32,35 +44,35 @@ const certIconMap = {
   7: <Briefcase size={17} className="text-terracotta" />,
 };
 
-const cleanTitle = (raw) => {
+const cleanTitle = (raw: string) => {
   return raw.replace(/[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/gu, '').trim();
 };
 
-const cleanDesc = (raw) => {
-  if (!raw) return "";
+const cleanDesc = (raw?: string) => {
+  if (!raw) return '';
   return raw.replace(/[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/gu, '').trim();
 };
 
-const Certificates = () => {
-  const [selectedCert, setSelectedCert] = useState(null);
-  const modalRef = useRef(null);
-  const previousFocusRef = useRef(null);
+export const CertificatesClient = ({ heading, certificates }: CertificatesClientProps) => {
+  const [selectedCert, setSelectedCert] = useState<CertificateItem | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
 
   // Focus trapping and scroll locking
   useEffect(() => {
     if (selectedCert) {
-      previousFocusRef.current = document.activeElement;
-      document.body.style.overflow = "hidden";
+      previousFocusRef.current = document.activeElement as HTMLElement;
+      document.body.style.overflow = 'hidden';
 
-      const handleKeyDown = (e) => {
-        if (e.key === "Escape") {
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
           setSelectedCert(null);
           return;
         }
 
         // Trap focus inside modal
-        if (e.key === "Tab" && modalRef.current) {
-          const focusableElements = modalRef.current.querySelectorAll(
+        if (e.key === 'Tab' && modalRef.current) {
+          const focusableElements = modalRef.current.querySelectorAll<HTMLElement>(
             'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
           );
           if (focusableElements.length === 0) return;
@@ -82,10 +94,10 @@ const Certificates = () => {
         }
       };
 
-      window.addEventListener("keydown", handleKeyDown);
+      window.addEventListener('keydown', handleKeyDown);
       return () => {
-        window.removeEventListener("keydown", handleKeyDown);
-        document.body.style.overflow = "unset";
+        window.removeEventListener('keydown', handleKeyDown);
+        document.body.style.overflow = 'unset';
         if (previousFocusRef.current) {
           previousFocusRef.current.focus();
         }
@@ -103,7 +115,7 @@ const Certificates = () => {
             Credentials &amp; Honors
           </p>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-text-main tracking-tight mb-4">
-            {data.heading}
+            {heading}
           </h2>
           <div className="w-12 h-0.5 bg-terracotta mx-auto mb-4" />
           <p className="text-text-sub text-base sm:text-lg">
@@ -113,7 +125,7 @@ const Certificates = () => {
 
         {/* Certificates Grid */}
         <div className="grid md:grid-cols-2 gap-6">
-          {data.certificates.map((cert) => {
+          {certificates.map((cert) => {
             const title = cleanTitle(cert.title);
             const description = cleanDesc(cert.description);
 
@@ -157,7 +169,7 @@ const Certificates = () => {
                   )}
 
                   <p className="text-xs font-medium text-text-mute mb-3">
-                    {cert.issuer} {cert.position ? `• ${cert.position}` : ""}
+                    {cert.issuer} {cert.position ? `• ${cert.position}` : ''}
                   </p>
 
                   {description && (
@@ -198,62 +210,58 @@ const Certificates = () => {
       </div>
 
       {/* Accessible Lightbox Modal */}
-      <AnimatePresence>
-        {selectedCert && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelectedCert(null)}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="cert-modal-title"
-            className="fixed inset-0 bg-black/80 backdrop-blur-xs z-50 flex items-center justify-center p-4 sm:p-6"
+      {selectedCert && (
+        <div
+          onClick={() => setSelectedCert(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="cert-modal-title"
+          className="fixed inset-0 bg-black/80 backdrop-blur-xs z-50 flex items-center justify-center p-4 sm:p-6 animate-fadeIn"
+        >
+          <div
+            ref={modalRef}
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-2xl max-h-[88vh] bg-card border border-border rounded-2xl overflow-hidden shadow-2xl p-4 sm:p-5 flex flex-col"
           >
-            <motion.div
-              ref={modalRef}
-              initial={{ scale: 0.96, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.96, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-2xl max-h-[88vh] bg-card border border-border rounded-2xl overflow-hidden shadow-2xl p-4 sm:p-5 flex flex-col"
-            >
-              {/* Modal Header */}
-              <div className="flex items-center justify-between pb-3 mb-3 border-b border-border-subtle">
-                <div>
-                  <h3 id="cert-modal-title" className="font-serif text-lg font-bold text-text-main">
-                    {cleanTitle(selectedCert.title)}
-                  </h3>
-                  <p className="text-xs font-mono text-text-mute">
-                    Issued by {selectedCert.issuer} · {selectedCert.year}
-                  </p>
-                </div>
-
-                {/* Close Button */}
-                <button
-                  onClick={() => setSelectedCert(null)}
-                  autoFocus
-                  aria-label="Close document modal"
-                  className="p-1.5 rounded-lg border border-border hover:border-terracotta text-text-sub hover:text-terracotta bg-surface transition-colors cursor-pointer"
-                >
-                  <X size={18} />
-                </button>
+            {/* Modal Header */}
+            <div className="flex items-center justify-between pb-3 mb-3 border-b border-border-subtle">
+              <div>
+                <h3 id="cert-modal-title" className="font-serif text-lg font-bold text-text-main">
+                  {cleanTitle(selectedCert.title)}
+                </h3>
+                <p className="text-xs font-mono text-text-mute">
+                  Issued by {selectedCert.issuer} · {selectedCert.year}
+                </p>
               </div>
 
-              {/* Certificate Image Scan */}
-              <div className="overflow-y-auto rounded-lg bg-surface/50 border border-border-subtle p-2 flex items-center justify-center">
-                <img
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedCert(null)}
+                autoFocus
+                aria-label="Close document modal"
+                className="p-1.5 rounded-lg border border-border hover:border-terracotta text-text-sub hover:text-terracotta bg-surface transition-colors cursor-pointer"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            {/* Certificate Image Scan via next/image */}
+            <div className="overflow-y-auto rounded-lg bg-surface/50 border border-border-subtle p-2 flex items-center justify-center">
+              <div className="relative w-full h-[60vh] max-h-[68vh]">
+                <Image
                   src={certificateImages[selectedCert.id]}
                   alt={cleanTitle(selectedCert.title)}
-                  className="w-full h-auto max-h-[68vh] object-contain rounded"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 700px"
+                  className="object-contain rounded"
                 />
               </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
 
-export default Certificates;
+export default CertificatesClient;

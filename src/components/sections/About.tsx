@@ -1,16 +1,15 @@
-import { motion } from "framer-motion";
-import aboutData from "../../data/sections/about.json";
-import { Cpu, Bot, Workflow, Code2, Microscope, Compass, Sparkles, ArrowRight } from "lucide-react";
+import aboutData from '../../data/sections/about.json';
+import { Cpu, Bot, Workflow, Code2, Microscope, Compass, Sparkles, ArrowRight } from 'lucide-react';
 
 const highlightIcons = [
-  <Cpu size={20} className="text-terracotta" />,
-  <Bot size={20} className="text-terracotta" />,
-  <Workflow size={20} className="text-terracotta" />,
-  <Code2 size={20} className="text-terracotta" />,
-  <Microscope size={20} className="text-terracotta" />,
+  <Cpu key="cpu" size={20} className="text-terracotta" />,
+  <Bot key="bot" size={20} className="text-terracotta" />,
+  <Workflow key="workflow" size={20} className="text-terracotta" />,
+  <Code2 key="code" size={20} className="text-terracotta" />,
+  <Microscope key="microscope" size={20} className="text-terracotta" />,
 ];
 
-const About = () => {
+export const About = () => {
   const { heading, summary, highlights, timeline, mission, values } = aboutData;
 
   return (
@@ -34,10 +33,9 @@ const About = () => {
         {/* 5 Focus Badges */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-20">
           {highlights.map((item, i) => (
-            <motion.div
+            <div
               key={i}
-              whileHover={{ y: -3 }}
-              className="bg-card/70 border border-border-subtle hover:border-terracotta/40 rounded-xl p-3.5 text-center transition-all shadow-xs flex flex-col items-center justify-center gap-2"
+              className="bg-card/70 border border-border-subtle hover:border-terracotta/40 rounded-xl p-3.5 text-center transition-all shadow-xs flex flex-col items-center justify-center gap-2 hover:-translate-y-0.5"
             >
               <div className="p-2 rounded-lg bg-surface border border-border-subtle">
                 {highlightIcons[i] || <Sparkles size={18} className="text-terracotta" />}
@@ -45,7 +43,7 @@ const About = () => {
               <p className="text-xs font-medium text-text-main leading-snug">
                 {item.text}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
 

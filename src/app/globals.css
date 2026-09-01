@@ -92,7 +92,7 @@ html {
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: var(--bg-canvas);
   color: var(--text-primary);
   min-height: 100vh;
@@ -144,17 +144,4 @@ body::before {
   ::-webkit-scrollbar-thumb:hover {
     background: var(--text-muted);
   }
-}
-
-/* ==========================================================================
-   EDITORIAL UTILITY CLASSES
-   ========================================================================== */
-
-.editorial-heading {
-  font-family: 'Newsreader', Georgia, serif;
-  letter-spacing: -0.02em;
-}
-
-.editorial-mono {
-  font-family: 'JetBrains Mono', monospace;
 }

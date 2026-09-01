@@ -1,24 +1,24 @@
-import { motion } from "framer-motion";
-import skillsData from "../../data/sections/skills.json";
-import { Code, Globe, Brain, Database, Cloud, Layers } from "lucide-react";
+import skillsData from '../../data/sections/skills.json';
+import { Code, Globe, Brain, Database, Cloud, Layers } from 'lucide-react';
+import { ReactNode } from 'react';
 
-const categoryIconMap = {
-  "Programming Languages": <Code size={19} className="text-terracotta" />,
-  "Web Development": <Globe size={19} className="text-terracotta" />,
-  "AI / ML / Deep Learning": <Brain size={19} className="text-terracotta" />,
-  "Databases": <Database size={19} className="text-terracotta" />,
-  "DevOps & Deployment": <Cloud size={19} className="text-terracotta" />,
+const categoryIconMap: Record<string, ReactNode> = {
+  'Programming Languages': <Code size={19} className="text-terracotta" />,
+  'Web Development': <Globe size={19} className="text-terracotta" />,
+  'AI / ML / Deep Learning': <Brain size={19} className="text-terracotta" />,
+  'Databases': <Database size={19} className="text-terracotta" />,
+  'DevOps & Deployment': <Cloud size={19} className="text-terracotta" />,
 };
 
-const categoryDescriptions = {
-  "Programming Languages": "Core algorithmic problem solving and low-level development",
-  "Web Development": "Modern frontend interfaces, reactive frameworks, and backend API routing",
-  "AI / ML / Deep Learning": "Neural architectures, computer vision, LLM orchestration, and scientific analysis",
-  "Databases": "Structured relational models, key-value stores, and document databases",
-  "DevOps & Deployment": "Cloud infrastructure, containerization, and automated CI/CD pipelines",
+const categoryDescriptions: Record<string, string> = {
+  'Programming Languages': 'Core algorithmic problem solving and low-level development',
+  'Web Development': 'Modern frontend interfaces, reactive frameworks, and backend API routing',
+  'AI / ML / Deep Learning': 'Neural architectures, computer vision, LLM orchestration, and scientific analysis',
+  'Databases': 'Structured relational models, key-value stores, and document databases',
+  'DevOps & Deployment': 'Cloud infrastructure, containerization, and automated CI/CD pipelines',
 };
 
-const Skills = () => {
+export const Skills = () => {
   return (
     <section id="skills" className="py-24 px-6 border-t border-border-subtle bg-surface/30 transition-colors">
       <div className="max-w-5xl mx-auto">
@@ -40,12 +40,8 @@ const Skills = () => {
         {/* Categories Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillsData.categories.map((category, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
               className="bg-card border border-border-subtle hover:border-terracotta/40 rounded-2xl p-6 shadow-sm transition-all flex flex-col justify-between group"
             >
               <div>
@@ -66,7 +62,7 @@ const Skills = () => {
 
                 {/* Subtitle / Description */}
                 <p className="text-xs text-text-mute mb-4 leading-relaxed">
-                  {categoryDescriptions[category.title] || "Core technologies and libraries"}
+                  {categoryDescriptions[category.title] || 'Core technologies and libraries'}
                 </p>
 
                 {/* Skills Chips */}
@@ -81,7 +77,7 @@ const Skills = () => {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 

@@ -1,9 +1,9 @@
-import { motion } from "framer-motion";
-import data from "../../data/sections/projects.json";
-import { ExternalLink, FolderGit2, ArrowUpRight } from "lucide-react";
-import { GithubIcon } from "../common/Icons";
+import Image from 'next/image';
+import data from '../../data/sections/projects.json';
+import { FolderGit2, ArrowUpRight } from 'lucide-react';
+import { GithubIcon } from '../common/Icons';
 
-const Projects = () => {
+export const Projects = () => {
   return (
     <section id="projects" className="py-24 px-6 border-t border-border-subtle transition-colors">
       <div className="max-w-6xl mx-auto">
@@ -25,29 +25,26 @@ const Projects = () => {
         {/* Asymmetric Bento-Style Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {data.projects.map((project, index) => {
-            // First project takes a wider 2-col bento span on larger viewports
             const isFeatured = index === 0;
 
             return (
-              <motion.div
+              <div
                 key={project.id}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
                 className={`bg-card border border-border-subtle hover:border-terracotta/40 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1 hover:shadow-lg hover:shadow-terracotta/10 ${
-                  isFeatured ? "md:col-span-2 lg:col-span-2" : ""
+                  isFeatured ? 'md:col-span-2 lg:col-span-2' : ''
                 }`}
               >
                 <div>
                   {/* Project Image Preview */}
                   <div className={`relative overflow-hidden bg-surface border-b border-border-subtle ${
-                    isFeatured ? "h-56 sm:h-64" : "h-44"
+                    isFeatured ? 'h-56 sm:h-64' : 'h-44'
                   }`}>
-                    <img
+                    <Image
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                      fill
+                      sizes={isFeatured ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
+                      className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                     
                     {/* Category Overlay Tag */}
@@ -71,7 +68,7 @@ const Projects = () => {
                     </div>
 
                     <h3 className={`font-serif font-bold text-text-main group-hover:text-terracotta transition-colors mb-3 ${
-                      isFeatured ? "text-2xl" : "text-xl"
+                      isFeatured ? 'text-2xl' : 'text-xl'
                     }`}>
                       {project.title}
                     </h3>
@@ -120,7 +117,7 @@ const Projects = () => {
                     </a>
                   )}
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

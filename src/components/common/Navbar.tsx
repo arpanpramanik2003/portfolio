@@ -1,18 +1,20 @@
-import { useState } from "react";
-import { useTheme } from "../../hooks/useTheme";
-import { Sun, Moon, Menu, X } from "lucide-react";
+'use client';
 
-const Navbar = () => {
-  const [open, setOpen] = useState(false);
+import { useState } from 'react';
+import { useTheme } from '../../hooks/useTheme';
+import { Sun, Moon, Menu, X } from 'lucide-react';
+
+export const Navbar = () => {
+  const [open, setOpen] = useState<boolean>(false);
   const { theme, toggleTheme } = useTheme();
 
   const navLinks = [
-    { label: "About", href: "#about" },
-    { label: "Skills", href: "#skills" },
-    { label: "Projects", href: "#projects" },
-    { label: "Certificates", href: "#certificates" },
-    { label: "Research", href: "#research" },
-    { label: "Contact", href: "#contact" },
+    { label: 'About', href: '#about' },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Certificates', href: '#certificates' },
+    { label: 'Research', href: '#research' },
+    { label: 'Contact', href: '#contact' },
   ];
 
   return (
@@ -49,10 +51,10 @@ const Navbar = () => {
           {/* Theme Switcher */}
           <button
             onClick={toggleTheme}
-            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-            className="p-2 rounded-lg border border-border-subtle bg-surface hover:border-terracotta/40 text-text-sub hover:text-terracotta transition-all shadow-sm"
+            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            className="p-2 rounded-lg border border-border-subtle bg-surface hover:border-terracotta/40 text-text-sub hover:text-terracotta transition-all shadow-sm cursor-pointer"
           >
-            {theme === "dark" ? (
+            {theme === 'dark' ? (
               <Sun size={17} className="stroke-[2.2]" />
             ) : (
               <Moon size={17} className="stroke-[2.2]" />
@@ -64,10 +66,10 @@ const Navbar = () => {
         <div className="flex items-center gap-3 md:hidden">
           <button
             onClick={toggleTheme}
-            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
             className="p-2 rounded-lg border border-border-subtle bg-surface text-text-sub hover:text-terracotta transition-colors"
           >
-            {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
+            {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
           </button>
 
           <button

@@ -1,8 +1,7 @@
-import { motion } from "framer-motion";
-import data from "../../data/sections/research.json";
-import { BookOpen, ExternalLink, Sparkles } from "lucide-react";
+import data from '../../data/sections/research.json';
+import { BookOpen, ExternalLink, Sparkles } from 'lucide-react';
 
-const Research = () => {
+export const Research = () => {
   return (
     <section id="research" className="py-24 px-6 border-t border-border-subtle transition-colors">
       <div className="max-w-6xl mx-auto">
@@ -23,13 +22,9 @@ const Research = () => {
 
         {/* Papers List */}
         <div className="space-y-8">
-          {data.papers.map((paper, index) => (
-            <motion.div
+          {data.papers.map((paper) => (
+            <div
               key={paper.id}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
               className="bg-card border border-border-subtle hover:border-terracotta/40 rounded-2xl p-6 sm:p-8 shadow-sm transition-all group"
             >
               <div className="flex flex-col lg:flex-row gap-6 lg:items-start justify-between">
@@ -56,9 +51,9 @@ const Research = () => {
                   {/* Authors with Diya Chanda Highlighted */}
                   <p className="text-xs sm:text-sm text-text-sub leading-relaxed">
                     <span className="font-semibold text-text-main">Authors: </span>
-                    {paper.authors.split(",").map((author, i, arr) => {
+                    {paper.authors.split(',').map((author, i, arr) => {
                       const trimmed = author.trim();
-                      const isDiya = trimmed.toLowerCase().includes("diya chanda");
+                      const isDiya = trimmed.toLowerCase().includes('diya chanda');
                       return (
                         <span key={i}>
                           {isDiya ? (
@@ -68,7 +63,7 @@ const Research = () => {
                           ) : (
                             <span>{trimmed}</span>
                           )}
-                          {i < arr.length - 1 ? ", " : ""}
+                          {i < arr.length - 1 ? ', ' : ''}
                         </span>
                       );
                     })}
@@ -96,7 +91,7 @@ const Research = () => {
                 </div>
 
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 

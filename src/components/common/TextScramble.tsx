@@ -1,24 +1,31 @@
-import { useState, useEffect } from "react";
+'use client';
 
-const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+import { useState, useEffect, FC } from 'react';
 
-export const TextScramble = ({ text, className = "" }) => {
-  const [displayText, setDisplayText] = useState(text);
+const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+interface TextScrambleProps {
+  text: string;
+  className?: string;
+}
+
+export const TextScramble: FC<TextScrambleProps> = ({ text, className = '' }) => {
+  const [displayText, setDisplayText] = useState<string>(text);
 
   useEffect(() => {
     let iteration = 0;
     const interval = setInterval(() => {
       setDisplayText(
         text
-          .split("")
+          .split('')
           .map((char, index) => {
-            if (char === " ") return " ";
+            if (char === ' ') return ' ';
             if (index < iteration) {
               return text[index];
             }
             return CHARS[Math.floor(Math.random() * CHARS.length)];
           })
-          .join("")
+          .join('')
       );
 
       if (iteration >= text.length) {

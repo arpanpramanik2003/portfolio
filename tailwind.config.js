@@ -1,16 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   darkMode: ["class", '[data-theme="dark"]'],
   theme: {
     extend: {
       fontFamily: {
-        serif: ['Newsreader', 'Georgia', 'serif'],
-        sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        serif: ['var(--font-serif)', 'Newsreader', 'Georgia', 'serif'],
+        sans: ['var(--font-sans)', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-mono)', 'JetBrains Mono', 'monospace'],
       },
       colors: {
         canvas: 'var(--bg-canvas)',
@@ -32,4 +32,4 @@ export default {
     },
   },
   plugins: [],
-}
+};
