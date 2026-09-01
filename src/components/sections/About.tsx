@@ -56,59 +56,59 @@ export const About = () => {
         </div>
 
         {/* Split Grid: Left Profile Panel & Right Engineering Content */}
-        <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-start">
+        <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-start relative">
           
           {/* =========================================================================
-             LEFT PANEL (5 Cols): Portrait, Academic Credentials, Interests
+             LEFT PANEL (5 Cols): Pinned Sticky Identity & Academic Profile
              ========================================================================= */}
-          <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-28 lg:self-start">
+          <div className="lg:col-span-5 space-y-5 lg:sticky lg:top-24 lg:self-start">
             
             {/* Portrait & Core Identity Card */}
-            <div className="bg-card border border-border-subtle hover:border-terracotta/40 rounded-2xl p-5 sm:p-6 shadow-sm transition-all duration-300 group hover:-translate-y-1 hover:shadow-md">
-              <div className="flex flex-col items-center text-center">
-                
+            <div className="bg-card border border-border-subtle hover:border-terracotta/40 rounded-2xl p-5 shadow-sm transition-all duration-300 group hover:-translate-y-1 hover:shadow-md">
+              <div className="flex items-center gap-4 text-left">
                 {/* Photo Frame */}
-                <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-2xl overflow-hidden border-2 border-border-subtle bg-surface mb-4 shadow-sm group-hover:border-terracotta/50 transition-colors">
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-border-subtle bg-surface shadow-sm group-hover:border-terracotta/50 transition-colors flex-shrink-0">
                   <Image
                     src="/images/profile.webp"
                     alt="Diya Chanda — AI Researcher & Machine Learning Engineer"
                     fill
-                    sizes="(max-width: 768px) 160px, 160px"
+                    sizes="(max-width: 768px) 96px, 96px"
                     priority
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
                 </div>
 
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-text-main mb-1">
-                  Diya Chanda
-                </h3>
-                <p className="text-xs font-mono text-terracotta font-medium mb-3">
-                  {academicProfile.specialization}
-                </p>
-
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface border border-border-subtle text-[11px] font-mono text-text-mute">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>Batch {academicProfile.batch}</span>
+                <div className="min-w-0">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-text-main truncate mb-0.5">
+                    Diya Chanda
+                  </h3>
+                  <p className="text-xs font-mono text-terracotta font-medium truncate mb-2">
+                    {academicProfile.specialization}
+                  </p>
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface border border-border-subtle text-[10px] font-mono text-text-mute">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span>Batch {academicProfile.batch}</span>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Academic Standings & Institutional Profile */}
-            <div className="bg-card border border-border-subtle rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+            <div className="bg-card border border-border-subtle rounded-2xl p-5 shadow-sm space-y-3.5">
               <h4 className="text-xs font-mono uppercase tracking-widest text-terracotta font-semibold pb-2 border-b border-border-subtle/60 flex items-center gap-2">
                 <GraduationCap size={15} />
                 <span>Academic Profile</span>
               </h4>
 
-              <div className="space-y-3.5 text-xs sm:text-sm">
+              <div className="space-y-3 text-xs sm:text-sm">
                 
                 {/* Institution */}
                 <div className="flex items-start gap-3">
                   <div className="p-2 rounded-lg bg-surface border border-border-subtle text-terracotta flex-shrink-0">
-                    <GraduationCap size={16} />
+                    <GraduationCap size={15} />
                   </div>
                   <div>
-                    <span className="block text-[11px] font-mono text-text-mute uppercase">Institution</span>
+                    <span className="block text-[10px] font-mono text-text-mute uppercase">Institution</span>
                     <span className="font-medium text-text-main">{academicProfile.institution}</span>
                   </div>
                 </div>
@@ -116,14 +116,14 @@ export const About = () => {
                 {/* CGPA Badge */}
                 <div className="flex items-start gap-3">
                   <div className="p-2 rounded-lg bg-surface border border-border-subtle text-terracotta flex-shrink-0">
-                    <Award size={16} />
+                    <Award size={15} />
                   </div>
                   <div className="flex-1 flex items-center justify-between">
                     <div>
-                      <span className="block text-[11px] font-mono text-text-mute uppercase">Cumulative GPA</span>
+                      <span className="block text-[10px] font-mono text-text-mute uppercase">Cumulative GPA</span>
                       <span className="font-serif text-base sm:text-lg font-bold text-text-main">{academicProfile.cgpa}</span>
                     </div>
-                    <span className="px-2.5 py-1 rounded-md bg-terracotta/10 border border-terracotta/30 text-terracotta text-xs font-mono font-bold">
+                    <span className="px-2 py-0.5 rounded-md bg-terracotta/10 border border-terracotta/30 text-terracotta text-[11px] font-mono font-bold">
                       Top Decile
                     </span>
                   </div>
@@ -132,10 +132,10 @@ export const About = () => {
                 {/* Research Focus */}
                 <div className="flex items-start gap-3">
                   <div className="p-2 rounded-lg bg-surface border border-border-subtle text-terracotta flex-shrink-0">
-                    <Microscope size={16} />
+                    <Microscope size={15} />
                   </div>
                   <div>
-                    <span className="block text-[11px] font-mono text-text-mute uppercase">Research Focus</span>
+                    <span className="block text-[10px] font-mono text-text-mute uppercase">Research Focus</span>
                     <span className="font-medium text-text-main">{academicProfile.researchFocus}</span>
                   </div>
                 </div>
@@ -143,10 +143,10 @@ export const About = () => {
                 {/* Location */}
                 <div className="flex items-start gap-3">
                   <div className="p-2 rounded-lg bg-surface border border-border-subtle text-terracotta flex-shrink-0">
-                    <MapPin size={16} />
+                    <MapPin size={15} />
                   </div>
                   <div>
-                    <span className="block text-[11px] font-mono text-text-mute uppercase">Location</span>
+                    <span className="block text-[10px] font-mono text-text-mute uppercase">Location</span>
                     <span className="font-medium text-text-main">{academicProfile.location}</span>
                   </div>
                 </div>
@@ -155,7 +155,7 @@ export const About = () => {
             </div>
 
             {/* Interests & Explorations Card */}
-            <div className="bg-card border border-border-subtle rounded-2xl p-5 sm:p-6 shadow-sm space-y-3.5">
+            <div className="bg-card border border-border-subtle rounded-2xl p-5 shadow-sm space-y-3">
               <h4 className="text-xs font-mono uppercase tracking-widest text-text-mute font-semibold flex items-center gap-1.5">
                 <Sparkles size={14} className="text-terracotta" />
                 <span>Interests &amp; Explorations</span>
@@ -167,7 +167,7 @@ export const About = () => {
                   return (
                     <span
                       key={i}
-                      className={`px-2.5 py-1 rounded-md text-xs font-mono font-medium transition-colors cursor-default ${
+                      className={`px-2.5 py-1 rounded-md text-[11px] font-mono font-medium transition-colors cursor-default ${
                         isSpecial
                           ? 'bg-terracotta/10 border border-terracotta/30 text-terracotta'
                           : 'bg-surface border border-border-subtle text-text-main hover:border-terracotta/40'
