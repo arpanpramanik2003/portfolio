@@ -141,7 +141,10 @@ export default function RootLayout({
       <head>
         <StructuredData />
       </head>
-      <body className="antialiased selection:bg-terracotta/20 selection:text-terracotta">
+      <body
+        suppressHydrationWarning
+        className="antialiased selection:bg-terracotta/20 selection:text-terracotta"
+      >
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
