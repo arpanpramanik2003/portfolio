@@ -65,6 +65,7 @@ export const Navbar = () => {
               alt="Diya Chanda Logo"
               width={32}
               height={32}
+              priority
               className="w-full h-full object-contain"
             />
           </div>
