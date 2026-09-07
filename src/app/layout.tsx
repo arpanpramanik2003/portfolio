@@ -120,6 +120,11 @@ export const metadata: Metadata = {
     apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
   },
   manifest: '/manifest.json',
+  verification: {
+    google:
+      process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION ||
+      'DgWUYbYjs7ksUTmBAM02lYUhcDVcuZre7V3cTYHIlj4',
+  },
 };
 
 export default function RootLayout({
