@@ -18,44 +18,13 @@ export const StructuredData = () => {
         ],
       },
       {
-        '@type': 'Person',
-        '@id': `${baseUrl}/#person`,
-        name: 'Diya Chanda',
-        givenName: 'Diya',
-        familyName: 'Chanda',
-        jobTitle: 'AI Researcher & Machine Learning Engineer',
-        description:
-          'Undergraduate AI researcher specializing in explainable deep learning, computer vision, and agricultural intelligence systems. Published author at IEEE ICRITO and Springer LNNS.',
-        url: baseUrl,
-        image: `${baseUrl}/images/profile.webp`,
-        sameAs: [
-          'https://github.com/chandadiya2004',
-          'https://www.linkedin.com/in/diya-chanda2004/',
-          'https://www.researchgate.net/profile/Diya-Chanda',
-        ],
-        alumniOf: {
-          '@type': 'EducationalOrganization',
-          name: 'The Neotia University',
-          department: 'Computer Science & Engineering (AI & ML)',
-        },
-        knowsAbout: [
-          'Artificial Intelligence',
-          'Deep Learning',
-          'Computer Vision',
-          'Explainable AI (XAI)',
-          'Natural Language Processing',
-          'Full-Stack Web Development',
-          'PyTorch',
-          'FastAPI',
-          'Next.js',
-          'PostgreSQL',
-        ],
-      },
-      {
         '@type': 'ProfilePage',
         '@id': `${baseUrl}/#profilepage`,
         url: baseUrl,
         name: 'Diya Chanda — AI Researcher & Machine Learning Engineer Portfolio',
+        description:
+          'Undergraduate AI researcher and software engineer specializing in explainable deep learning, computer vision, and agricultural intelligence systems. Published IEEE and Springer author.',
+        inLanguage: 'en-US',
         isPartOf: {
           '@type': 'WebSite',
           '@id': `${baseUrl}/#website`,
@@ -65,8 +34,39 @@ export const StructuredData = () => {
             '@id': `${baseUrl}/#organization`,
           },
         },
-        about: {
+        mainEntity: {
+          '@type': 'Person',
           '@id': `${baseUrl}/#person`,
+          name: 'Diya Chanda',
+          givenName: 'Diya',
+          familyName: 'Chanda',
+          jobTitle: 'AI Researcher & Machine Learning Engineer',
+          description:
+            'Undergraduate AI researcher specializing in explainable deep learning, computer vision, and agricultural intelligence systems. Published author at IEEE ICRITO and Springer LNNS.',
+          url: baseUrl,
+          image: `${baseUrl}/images/profile.webp`,
+          sameAs: [
+            'https://github.com/chandadiya2004',
+            'https://www.linkedin.com/in/diya-chanda2004/',
+            'https://www.researchgate.net/profile/Diya-Chanda',
+          ],
+          alumniOf: {
+            '@type': 'EducationalOrganization',
+            name: 'The Neotia University',
+            department: 'Computer Science & Engineering (AI & ML)',
+          },
+          knowsAbout: [
+            'Artificial Intelligence',
+            'Deep Learning',
+            'Computer Vision',
+            'Explainable AI (XAI)',
+            'Natural Language Processing',
+            'Full-Stack Web Development',
+            'PyTorch',
+            'FastAPI',
+            'Next.js',
+            'PostgreSQL',
+          ],
         },
         primaryImageOfPage: {
           '@type': 'ImageObject',
