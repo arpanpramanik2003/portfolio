@@ -103,12 +103,12 @@ export const SkillsClient = ({
   return (
     <section
       id="skills"
-      className="py-20 sm:py-24 px-4 sm:px-6 border-t border-border-subtle bg-surface/20 transition-colors w-full overflow-hidden"
+      className="py-16 sm:py-24 px-3.5 sm:px-6 border-t border-border-subtle bg-surface/20 transition-colors w-full max-w-full overflow-hidden"
     >
       <div className="max-w-6xl mx-auto w-full">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
           <p className="text-xs font-mono uppercase tracking-widest text-terracotta font-semibold mb-2 flex items-center justify-center gap-1.5">
             <Layers size={14} />
             <span>{eyebrow || 'Architecture & Engineering Tooling'}</span>
@@ -117,14 +117,14 @@ export const SkillsClient = ({
             {heading}
           </h2>
           <div className="w-12 h-0.5 bg-terracotta mx-auto mb-4" />
-          <p className="text-text-sub text-sm sm:text-base md:text-lg leading-relaxed px-2">
+          <p className="text-text-sub text-xs sm:text-base md:text-lg leading-relaxed text-justify px-1 sm:px-2">
             {description}
           </p>
         </div>
 
         {/* Mobile Horizontal Scrollable Filter Tabs */}
-        <div className="w-full flex justify-start sm:justify-center mb-10 sm:mb-12 overflow-x-auto no-scrollbar py-1">
-          <div className="inline-flex sm:flex sm:flex-wrap items-center gap-1.5 p-1 rounded-xl bg-surface border border-border-subtle shadow-xs">
+        <div className="w-full flex justify-start sm:justify-center mb-8 sm:mb-12 overflow-x-auto no-scrollbar py-1 px-1">
+          <div className="inline-flex sm:flex sm:flex-wrap items-center gap-1 sm:gap-1.5 p-1 rounded-xl bg-surface border border-border-subtle shadow-xs">
             {tabs.map((tab) => {
               const isActive = activeTab === tab.id;
               return (
@@ -134,7 +134,7 @@ export const SkillsClient = ({
                     setActiveTab(tab.id);
                     if (tab.id !== 'all') setShowAllSkills(true);
                   }}
-                  className={`px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors duration-200 flex items-center gap-1.5 sm:gap-2 cursor-pointer whitespace-nowrap focus:outline-none select-none border ${
+                  className={`px-2.5 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-medium transition-colors duration-200 flex items-center gap-1.5 sm:gap-2 cursor-pointer whitespace-nowrap focus:outline-none select-none border ${
                     isActive
                       ? 'bg-card text-terracotta font-bold shadow-xs border-border-subtle'
                       : 'border-transparent text-text-mute hover:text-text-main hover:bg-card/50'
@@ -157,42 +157,42 @@ export const SkillsClient = ({
         </div>
 
         {/* Bespoke Capabilities Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
           {displayedCategories.map((category) => (
             <div
               key={category.id}
-              className="bg-card border border-border-subtle hover:border-terracotta/40 rounded-2xl p-5 sm:p-7 shadow-sm transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 hover:shadow-md"
+              className="bg-card border border-border-subtle hover:border-terracotta/40 rounded-2xl p-4 sm:p-7 shadow-sm transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 hover:shadow-md w-full min-w-0"
             >
               <div>
                 
                 {/* Domain Card Header */}
-                <div className="flex items-start justify-between gap-3 mb-4 pb-3 border-b border-border-subtle/60">
-                  <div className="flex items-center gap-2.5 sm:gap-3">
-                    <div className="p-2 sm:p-2.5 rounded-xl bg-surface border border-border-subtle group-hover:border-terracotta/40 transition-colors">
-                      {iconMap[category.id] || <Layers size={20} className="text-terracotta" />}
+                <div className="flex items-start justify-between gap-2.5 sm:gap-3 mb-3.5 sm:mb-4 pb-3 border-b border-border-subtle/60">
+                  <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                    <div className="p-1.5 sm:p-2.5 rounded-xl bg-surface border border-border-subtle group-hover:border-terracotta/40 transition-colors flex-shrink-0">
+                      {iconMap[category.id] || <Layers size={18} className="text-terracotta" />}
                     </div>
-                    <div>
-                      <h3 className="font-serif text-base sm:text-lg font-bold text-text-main group-hover:text-terracotta transition-colors">
+                    <div className="min-w-0">
+                      <h3 className="font-serif text-base sm:text-lg font-bold text-text-main group-hover:text-terracotta transition-colors truncate">
                         {category.title}
                       </h3>
-                      <span className="text-[10px] font-mono text-terracotta font-medium uppercase tracking-wider">
+                      <span className="text-[10px] font-mono text-terracotta font-medium uppercase tracking-wider block">
                         {category.tag}
                       </span>
                     </div>
                   </div>
 
-                  <span className="text-[10px] sm:text-[11px] font-mono text-text-mute px-2 py-0.5 rounded bg-surface border border-border-subtle flex-shrink-0">
+                  <span className="text-[10px] sm:text-[11px] font-mono text-text-mute px-1.5 sm:px-2 py-0.5 rounded bg-surface border border-border-subtle flex-shrink-0">
                     {category.skills.length} tools
                   </span>
                 </div>
 
                 {/* Scope Description */}
-                <p className="text-xs text-text-sub leading-relaxed mb-5 sm:mb-6">
+                <p className="text-xs text-text-sub leading-relaxed text-justify mb-4 sm:mb-6">
                   {category.scope}
                 </p>
 
                 {/* Interactive Skills Chip Matrix */}
-                <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-2 w-full">
                   {category.skills.map((skill, idx) => {
                     const isHovered = activeSkill === skill;
                     return (
@@ -200,14 +200,14 @@ export const SkillsClient = ({
                         key={idx}
                         onMouseEnter={() => setActiveSkill(skill)}
                         onMouseLeave={() => setActiveSkill(null)}
-                        className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-mono font-medium transition-all duration-200 cursor-default ${
+                        className={`inline-flex items-center gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-medium transition-all duration-200 cursor-default max-w-full break-words ${
                           isHovered
                             ? 'bg-terracotta text-white shadow-xs scale-105'
                             : 'bg-surface hover:bg-surface/90 border border-border-subtle hover:border-terracotta/50 text-text-main'
                         }`}
                       >
                         <span
-                          className={`w-1.5 h-1.5 rounded-full ${
+                          className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
                             isHovered ? 'bg-white' : 'bg-terracotta'
                           }`}
                         />
@@ -224,10 +224,10 @@ export const SkillsClient = ({
 
         {/* Expand / Collapse "See More Skills" Button (when in All view) */}
         {activeTab === 'all' && allFilteredCategories.length > 3 && (
-          <div className="flex justify-center mb-14">
+          <div className="flex justify-center mb-10 sm:mb-14">
             <button
               onClick={() => setShowAllSkills(!showAllSkills)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-surface hover:bg-card border border-border hover:border-terracotta/50 text-text-main hover:text-terracotta text-xs sm:text-sm font-mono font-medium shadow-xs transition-all duration-200 cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-surface hover:bg-card border border-border hover:border-terracotta/50 text-text-main hover:text-terracotta text-xs sm:text-sm font-mono font-medium shadow-xs transition-all duration-200 cursor-pointer"
             >
               <span>
                 {showAllSkills
@@ -240,36 +240,36 @@ export const SkillsClient = ({
         )}
 
         {/* Architectural Highlights Banner */}
-        <div className="bg-card border border-border-subtle rounded-2xl p-5 sm:p-8 shadow-sm">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-terracotta font-semibold mb-4">
+        <div className="bg-card border border-border-subtle rounded-2xl p-4 sm:p-8 shadow-sm w-full">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-terracotta font-semibold mb-3 sm:mb-4">
             <Sparkles size={14} />
             <span>Core Engineering Synthesis</span>
           </div>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 pt-2">
-            <div className="space-y-1.5 border-l-2 border-terracotta/40 pl-3.5 sm:pl-4">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3.5 sm:gap-6 pt-2">
+            <div className="space-y-1.5 border-l-2 border-terracotta/40 pl-3 sm:pl-4">
               <h4 className="font-serif text-sm sm:text-base font-bold text-text-main">
                 Deep Learning Research
               </h4>
-              <p className="text-xs text-text-sub leading-relaxed">
+              <p className="text-xs text-text-sub leading-relaxed text-justify">
                 PyTorch &amp; TensorFlow workflows optimizing multi-task CNNs and ViTs with Grad-CAM visual interpretability.
               </p>
             </div>
 
-            <div className="space-y-1.5 border-l-2 border-terracotta/40 pl-3.5 sm:pl-4">
+            <div className="space-y-1.5 border-l-2 border-terracotta/40 pl-3 sm:pl-4">
               <h4 className="font-serif text-sm sm:text-base font-bold text-text-main">
                 Grounded Retrieval (RAG)
               </h4>
-              <p className="text-xs text-text-sub leading-relaxed">
+              <p className="text-xs text-text-sub leading-relaxed text-justify">
                 LangChain and vector similarity pipelines ensuring verified knowledge retrieval and hallucination mitigation.
               </p>
             </div>
 
-            <div className="space-y-1.5 border-l-2 border-terracotta/40 pl-3.5 sm:pl-4 sm:col-span-2 md:col-span-1">
+            <div className="space-y-1.5 border-l-2 border-terracotta/40 pl-3 sm:pl-4 sm:col-span-2 md:col-span-1">
               <h4 className="font-serif text-sm sm:text-base font-bold text-text-main">
                 Full-Stack Systems
               </h4>
-              <p className="text-xs text-text-sub leading-relaxed">
+              <p className="text-xs text-text-sub leading-relaxed text-justify">
                 FastAPI, React.js, PostgreSQL, and Dockerized microservices architected for low-latency asynchronous throughput.
               </p>
             </div>
