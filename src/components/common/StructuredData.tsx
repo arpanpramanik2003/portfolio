@@ -1,3 +1,5 @@
+import researchData from '../../data/sections/research.json';
+
 export const StructuredData = () => {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://diyachanda.tech';
 
@@ -73,79 +75,22 @@ export const StructuredData = () => {
           url: `${baseUrl}/images/profile.webp`,
         },
       },
-      /* Published Research Papers Schema */
-      {
+      /* Published Research Papers Schema - dynamically synced from research.json */
+      ...researchData.papers.map((paper) => ({
         '@type': 'ScholarlyArticle',
-        headline:
-          'FruitQ-GradeX: Explainable Deep Learning Framework for Fruit Quality Classification',
-        name: 'FruitQ-GradeX: Explainable Deep Learning Framework for Fruit Quality Classification',
-        author: [
-          { '@type': 'Person', name: 'Diya Chanda' },
-          { '@type': 'Person', name: 'Arpan Pramanik' },
-          { '@type': 'Person', name: 'Sayan Banerjee' },
-          { '@type': 'Person', name: 'Dr. Debasis De' },
-        ],
-        datePublished: '2025-05-15',
-        publisher: { '@type': 'Organization', name: 'IEEE' },
-        publication: 'IEEE ICRITO 2025',
-        sameAs: 'https://doi.org/10.1109/ICRITO66076.2025.11241706',
-        description:
-          'Hybrid CNN-Vision Transformer architecture with Grad-CAM visual interpretability achieving 99.29% accuracy on fruit quality classification.',
-      },
-      {
-        '@type': 'ScholarlyArticle',
-        headline:
-          'Hyperspectral Fruit and Vegetable Classification: A Deep Learning Approach with XAI',
-        name: 'Hyperspectral Fruit and Vegetable Classification: A Deep Learning Approach with XAI',
-        author: [
-          { '@type': 'Person', name: 'Diya Chanda' },
-          { '@type': 'Person', name: 'Arpan Pramanik' },
-          { '@type': 'Person', name: 'Sayan Banerjee' },
-          { '@type': 'Person', name: 'Dr. Debasis De' },
-        ],
-        datePublished: '2025-03-20',
-        publisher: { '@type': 'Organization', name: 'Springer' },
-        publication: 'Springer LNNS Vol. 1915 / ICDMIS 2025',
-        sameAs: 'https://doi.org/10.1007/978-3-032-21901-5_35',
-        description:
-          'Deep convolutional neural network for hyperspectral agricultural crop classification with Grad-CAM and Integrated Gradients XAI.',
-      },
-      {
-        '@type': 'ScholarlyArticle',
-        headline:
-          'CropSense: Multimodal Deep Learning for Crop Yield Estimation and Disease Identification',
-        name: 'CropSense: Multimodal Deep Learning for Crop Yield Estimation and Disease Identification',
-        author: [
-          { '@type': 'Person', name: 'Arpan Pramanik' },
-          { '@type': 'Person', name: 'Diya Chanda' },
-          { '@type': 'Person', name: 'Sayan Banerjee' },
-          { '@type': 'Person', name: 'Dr. Debasis De' },
-        ],
-        datePublished: '2025-05-15',
-        publisher: { '@type': 'Organization', name: 'IEEE' },
-        publication: 'IEEE ICRITO 2025',
-        sameAs: 'https://doi.org/10.1109/ICRITO66076.2025.11241535',
-        description:
-          'Multimodal deep learning integrating multispectral aerial imagery and IoT soil telemetry for crop yield estimation.',
-      },
-      {
-        '@type': 'ScholarlyArticle',
-        headline:
-          'Quality Assessment and Classification in Solanaceous Crops Using Deep Learning and Explainable AI',
-        name: 'Quality Assessment and Classification in Solanaceous Crops Using Deep Learning and Explainable AI',
-        author: [
-          { '@type': 'Person', name: 'Sayan Banerjee' },
-          { '@type': 'Person', name: 'Arpan Pramanik' },
-          { '@type': 'Person', name: 'Diya Chanda' },
-          { '@type': 'Person', name: 'Dr. Debasis De' },
-        ],
-        datePublished: '2025-01-18',
-        publisher: { '@type': 'Organization', name: 'IEEE' },
-        publication: 'IEEE COMPUTINGCON 2025',
-        sameAs: 'https://doi.org/10.1109/COMPUTINGCON64838.2025.11376762',
-        description:
-          'Deep convolutional architectures for quality assessment in Solanaceous agricultural crops with explainable AI heatmap validation.',
-      },
+        headline: paper.title,
+        name: paper.title,
+        author: paper.authors.map((authorName: string) =>
+          authorName === 'Diya Chanda'
+            ? { '@type': 'Person', '@id': `${baseUrl}/#person`, name: authorName }
+            : { '@type': 'Person', name: authorName }
+        ),
+        datePublished: paper.date,
+        publisher: { '@type': 'Organization', name: paper.publisher },
+        publication: paper.publishedIn,
+        sameAs: paper.doiLink,
+        description: paper.abstract,
+      })),
       /* Production Software Systems Schema */
       {
         '@type': 'SoftwareApplication',
