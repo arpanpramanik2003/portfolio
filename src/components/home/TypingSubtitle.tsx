@@ -41,10 +41,10 @@ export default function TypingSubtitle() {
   }, [displayedText, isDeleting, currentIndex]);
 
   return (
-    <div className="inline-flex items-center gap-1.5 font-mono text-xs sm:text-sm text-text-sub">
-      <span className="text-terracotta font-bold">&gt;</span>
-      <span className="text-text-main font-medium">{displayedText}</span>
-      <span className="w-1.5 h-4 bg-terracotta inline-block animate-pulse" />
+    <div className="inline-flex items-center gap-1.5 font-mono text-[11px] sm:text-xs md:text-sm text-text-sub max-w-full">
+      <span className="text-terracotta font-bold flex-shrink-0">&gt;</span>
+      <span className="text-text-main font-medium truncate">{displayedText}</span>
+      <span className="w-1.5 h-3.5 sm:h-4 bg-terracotta inline-block animate-pulse flex-shrink-0" />
     </div>
   );
 }

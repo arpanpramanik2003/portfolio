@@ -38,55 +38,55 @@ export const About = () => {
   } = aboutData;
 
   return (
-    <section id="about" className="py-20 sm:py-24 px-4 sm:px-6 border-t border-border-subtle transition-colors w-full max-w-full overflow-hidden lg:overflow-visible">
+    <section id="about" className="py-16 sm:py-24 px-3.5 sm:px-6 border-t border-border-subtle transition-colors w-full max-w-full overflow-hidden lg:overflow-visible">
       <div className="max-w-6xl mx-auto w-full">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <p className="text-xs font-mono uppercase tracking-widest text-terracotta font-semibold mb-2">
             {eyebrow || 'Background & Philosophy'}
           </p>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-text-main tracking-tight mb-4">
             {heading}
           </h2>
-          <div className="w-12 h-0.5 bg-terracotta mx-auto mb-6" />
-          <p className="text-text-sub text-sm sm:text-base md:text-lg leading-relaxed text-justify px-1 sm:px-2">
+          <div className="w-12 h-0.5 bg-terracotta mx-auto mb-4 sm:mb-6" />
+          <p className="text-text-sub text-xs sm:text-base md:text-lg leading-relaxed text-justify px-1 sm:px-2">
             {summary}
           </p>
         </div>
 
         {/* Split Grid: Left Profile Panel & Right Engineering Content */}
-        <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-start relative w-full">
+        <div className="grid lg:grid-cols-12 gap-6 sm:gap-10 lg:gap-12 items-start relative w-full">
           
           {/* =========================================================================
              LEFT PANEL (5 Cols): Pinned Sticky Identity & Academic Profile
              ========================================================================= */}
-          <div className="lg:col-span-5 space-y-5 lg:sticky lg:top-24 lg:self-start w-full">
+          <div className="lg:col-span-5 space-y-4 sm:space-y-5 lg:sticky lg:top-24 lg:self-start w-full min-w-0">
             
             {/* Portrait & Core Identity Card */}
             <div className="bg-card border border-border-subtle hover:border-terracotta/40 rounded-2xl p-4 sm:p-5 shadow-sm transition-all duration-300 group hover:-translate-y-1 hover:shadow-md w-full">
-              <div className="flex items-center gap-3.5 sm:gap-4 text-left">
+              <div className="flex items-center gap-3 sm:gap-4 text-left">
                 {/* Photo Frame */}
-                <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border-2 border-border-subtle bg-surface shadow-sm group-hover:border-terracotta/50 transition-colors flex-shrink-0">
+                <div className="relative w-14 h-14 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border-2 border-border-subtle bg-surface shadow-sm group-hover:border-terracotta/50 transition-colors flex-shrink-0">
                   <Image
                     src="/images/profile.webp"
                     alt="Diya Chanda — AI Researcher & Machine Learning Engineer"
                     fill
-                    sizes="(max-width: 768px) 80px, 80px"
+                    sizes="(max-width: 768px) 70px, 80px"
                     priority
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
                 </div>
 
                 <div className="min-w-0 flex-1">
-                  <h3 className="font-serif text-lg sm:text-xl font-bold text-text-main truncate mb-0.5">
+                  <h3 className="font-serif text-base sm:text-xl font-bold text-text-main truncate mb-0.5">
                     Diya Chanda
                   </h3>
-                  <p className="text-xs font-mono text-terracotta font-medium truncate mb-1.5">
+                  <p className="text-xs font-mono text-terracotta font-medium leading-snug break-words mb-1.5">
                     {academicProfile.specialization}
                   </p>
                   <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface border border-border-subtle text-[10px] font-mono text-text-mute">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
                     <span>Batch {academicProfile.batch}</span>
                   </div>
                 </div>
@@ -103,46 +103,46 @@ export const About = () => {
               <div className="space-y-3 text-xs sm:text-sm">
                 
                 {/* Institution */}
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-lg bg-surface border border-border-subtle text-terracotta flex-shrink-0">
+                <div className="flex items-start gap-2.5 sm:gap-3">
+                  <div className="p-1.5 sm:p-2 rounded-lg bg-surface border border-border-subtle text-terracotta flex-shrink-0 mt-0.5">
                     <GraduationCap size={15} />
                   </div>
                   <div className="min-w-0 flex-1">
                     <span className="block text-[10px] font-mono text-text-mute uppercase">Institution</span>
-                    <span className="font-medium text-text-main block truncate sm:whitespace-normal">{academicProfile.institution}</span>
+                    <span className="font-medium text-text-main block break-words leading-snug">{academicProfile.institution}</span>
                   </div>
                 </div>
 
                 {/* CGPA Badge */}
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-lg bg-surface border border-border-subtle text-terracotta flex-shrink-0">
+                <div className="flex items-start gap-2.5 sm:gap-3">
+                  <div className="p-1.5 sm:p-2 rounded-lg bg-surface border border-border-subtle text-terracotta flex-shrink-0 mt-0.5">
                     <Award size={15} />
                   </div>
-                  <div className="flex-1 flex items-center justify-between gap-2 min-w-0">
-                    <div>
+                  <div className="flex-1 flex flex-wrap sm:flex-nowrap items-center justify-between gap-1.5 min-w-0">
+                    <div className="min-w-0">
                       <span className="block text-[10px] font-mono text-text-mute uppercase">Cumulative GPA</span>
                       <span className="font-serif text-base sm:text-lg font-bold text-text-main">{academicProfile.cgpa}</span>
                     </div>
-                    <span className="px-2 py-0.5 rounded-md bg-terracotta/10 border border-terracotta/30 text-terracotta text-[11px] font-mono font-bold whitespace-nowrap flex-shrink-0">
+                    <span className="px-2 py-0.5 rounded-md bg-terracotta/10 border border-terracotta/30 text-terracotta text-[10px] sm:text-[11px] font-mono font-bold flex-shrink-0">
                       Top Decile
                     </span>
                   </div>
                 </div>
 
                 {/* Research Focus */}
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-lg bg-surface border border-border-subtle text-terracotta flex-shrink-0">
+                <div className="flex items-start gap-2.5 sm:gap-3">
+                  <div className="p-1.5 sm:p-2 rounded-lg bg-surface border border-border-subtle text-terracotta flex-shrink-0 mt-0.5">
                     <Microscope size={15} />
                   </div>
                   <div className="min-w-0 flex-1">
                     <span className="block text-[10px] font-mono text-text-mute uppercase">Research Focus</span>
-                    <span className="font-medium text-text-main block truncate sm:whitespace-normal">{academicProfile.researchFocus}</span>
+                    <span className="font-medium text-text-main block break-words leading-snug">{academicProfile.researchFocus}</span>
                   </div>
                 </div>
 
                 {/* Location */}
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-lg bg-surface border border-border-subtle text-terracotta flex-shrink-0">
+                <div className="flex items-start gap-2.5 sm:gap-3">
+                  <div className="p-1.5 sm:p-2 rounded-lg bg-surface border border-border-subtle text-terracotta flex-shrink-0 mt-0.5">
                     <MapPin size={15} />
                   </div>
                   <div className="min-w-0 flex-1">
@@ -155,7 +155,7 @@ export const About = () => {
             </div>
 
             {/* Interests & Explorations Card */}
-            <div className="bg-card border border-border-subtle rounded-2xl p-4 sm:p-5 shadow-sm space-y-3 w-full">
+            <div className="bg-card border border-border-subtle rounded-2xl p-4 sm:p-5 shadow-sm space-y-2.5 sm:space-y-3 w-full">
               <h4 className="text-xs font-mono uppercase tracking-widest text-text-mute font-semibold flex items-center gap-1.5">
                 <Sparkles size={14} className="text-terracotta" />
                 <span>Interests &amp; Explorations</span>
@@ -167,7 +167,7 @@ export const About = () => {
                   return (
                     <span
                       key={i}
-                      className={`px-2.5 py-1 rounded-md text-[11px] font-mono font-medium transition-colors cursor-default max-w-full break-words ${
+                      className={`px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md text-[10px] sm:text-[11px] font-mono font-medium transition-colors cursor-default max-w-full break-words ${
                         isSpecial
                           ? 'bg-terracotta/10 border border-terracotta/30 text-terracotta'
                           : 'bg-surface border border-border-subtle text-text-main hover:border-terracotta/40'
@@ -185,10 +185,10 @@ export const About = () => {
           {/* =========================================================================
              RIGHT PANEL (7 Cols): Narrative, Core Pillars, Milestones, Mission
              ========================================================================= */}
-          <div className="lg:col-span-7 space-y-10 sm:space-y-12 w-full">
+          <div className="lg:col-span-7 space-y-8 sm:space-y-12 w-full min-w-0">
             
             {/* Core Engineering Pillars */}
-            <div className="space-y-5 sm:space-y-6 w-full">
+            <div className="space-y-4 sm:space-y-6 w-full">
               <div>
                 <span className="text-xs font-mono uppercase tracking-widest text-terracotta font-semibold block mb-1">
                   Technical Pillars
@@ -198,23 +198,23 @@ export const About = () => {
                 </h3>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-4 w-full">
+              <div className="grid sm:grid-cols-2 gap-3.5 sm:gap-4 w-full">
                 {corePillars.map((pillar: any) => (
                   <div
                     key={pillar.id}
-                    className="bg-card border border-border-subtle hover:border-terracotta/40 rounded-2xl p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md flex flex-col justify-between group w-full"
+                    className="bg-card border border-border-subtle hover:border-terracotta/40 rounded-2xl p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md flex flex-col justify-between group w-full"
                   >
                     <div>
                       <div className="flex items-center justify-between mb-3 pb-2 border-b border-border-subtle/60">
-                        <div className="p-2 rounded-lg bg-surface border border-border-subtle group-hover:border-terracotta/30 transition-colors">
-                          {pillarIconMap[pillar.id] || <Code2 size={20} className="text-terracotta" />}
+                        <div className="p-1.5 sm:p-2 rounded-lg bg-surface border border-border-subtle group-hover:border-terracotta/30 transition-colors">
+                          {pillarIconMap[pillar.id] || <Code2 size={18} className="text-terracotta" />}
                         </div>
                         <span className="text-[10px] font-mono uppercase tracking-wider text-text-mute px-2 py-0.5 rounded bg-surface border border-border-subtle">
                           {pillar.tag}
                         </span>
                       </div>
 
-                      <h4 className="font-serif text-base sm:text-lg font-bold text-text-main mb-2 group-hover:text-terracotta transition-colors">
+                      <h4 className="font-serif text-base sm:text-lg font-bold text-text-main mb-1.5 group-hover:text-terracotta transition-colors leading-snug">
                         {pillar.title}
                       </h4>
 
@@ -228,7 +228,7 @@ export const About = () => {
             </div>
 
             {/* Academic & Research Milestones Timeline */}
-            <div className="space-y-5 sm:space-y-6 w-full">
+            <div className="space-y-4 sm:space-y-6 w-full">
               <div>
                 <span className="text-xs font-mono uppercase tracking-widest text-terracotta font-semibold block mb-1">
                   Trajectory
@@ -238,10 +238,10 @@ export const About = () => {
                 </h3>
               </div>
 
-              <div className="relative pl-5 sm:pl-7 border-l-2 border-border-default space-y-8 sm:space-y-10 ml-2 sm:ml-3">
+              <div className="relative pl-5 sm:pl-7 border-l-2 border-border-default space-y-7 sm:space-y-10 ml-3 sm:ml-4">
                 {timeline.map((item: any, i: number) => (
-                  <div key={i} className="relative group">
-                    {/* Timeline Terracotta Bullet - Centered on 2px border */}
+                  <div key={i} className="relative group min-w-0">
+                    {/* Timeline Terracotta Bullet - Centered on 2px border line */}
                     <div className="absolute -left-[27px] sm:-left-[35px] top-1.5 w-3 h-3 rounded-full bg-card border-2 border-terracotta group-hover:scale-125 transition-transform" />
 
                     {/* Date Tag */}
@@ -251,12 +251,12 @@ export const About = () => {
                     </div>
 
                     {/* Title & Narrative */}
-                    <h4 className="font-serif text-base sm:text-lg font-bold text-text-main mb-1">
+                    <h4 className="font-serif text-base sm:text-lg font-bold text-text-main mb-1 break-words leading-snug">
                       {item.title}
                     </h4>
 
                     {item.titleSecondary && (
-                      <p className="text-xs font-mono text-terracotta/90 font-medium mb-1.5">
+                      <p className="text-xs font-mono text-terracotta/90 font-medium mb-1.5 break-words">
                         {item.titleSecondary}
                       </p>
                     )}
@@ -270,13 +270,13 @@ export const About = () => {
             </div>
 
             {/* Engineering Mission & Guiding Principles */}
-            <div className="bg-card border border-border-subtle rounded-2xl p-5 sm:p-7 shadow-sm space-y-5 sm:space-y-6 w-full">
+            <div className="bg-card border border-border-subtle rounded-2xl p-4 sm:p-7 shadow-sm space-y-4 sm:space-y-6 w-full">
               <div>
-                <div className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-terracotta font-semibold mb-2.5">
+                <div className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-terracotta font-semibold mb-2">
                   <Compass size={14} />
                   <span>Engineering Mission</span>
                 </div>
-                <blockquote className="font-serif text-base sm:text-lg italic text-text-main leading-relaxed border-l-2 border-terracotta/50 pl-3.5 sm:pl-4 my-2 text-justify">
+                <blockquote className="font-serif text-sm sm:text-base md:text-lg italic text-text-main leading-relaxed border-l-2 border-terracotta/50 pl-3 sm:pl-4 my-2 text-justify">
                   "{mission}"
                 </blockquote>
               </div>
@@ -284,7 +284,7 @@ export const About = () => {
               <div className="w-full h-px bg-border-subtle" />
 
               <div>
-                <div className="text-xs font-mono uppercase tracking-wider text-text-mute font-semibold mb-3 flex items-center gap-1">
+                <div className="text-xs font-mono uppercase tracking-wider text-text-mute font-semibold mb-2.5 flex items-center gap-1">
                   <Heart size={13} className="text-terracotta" />
                   <span>Guiding Principles</span>
                 </div>
@@ -292,7 +292,7 @@ export const About = () => {
                   {values.map((val: string, i: number) => (
                     <span
                       key={i}
-                      className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-surface border border-border-subtle text-text-main text-xs font-mono font-medium hover:border-terracotta/30 transition-colors max-w-full break-words"
+                      className="px-2 sm:px-3 py-0.5 sm:py-1.5 rounded-lg bg-surface border border-border-subtle text-text-main text-[11px] sm:text-xs font-mono font-medium hover:border-terracotta/30 transition-colors max-w-full break-words"
                     >
                       {val}
                     </span>

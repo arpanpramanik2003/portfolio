@@ -101,22 +101,22 @@ Built with **Next.js 16 (App Router)**, **React 19**, **TypeScript**, and **Tail
 ### 1. **CampusSphere — Smart Campus Social Hub**
 - **Architecture**: Next.js (App Router), Node.js, Express, MongoDB, Socket.io, Tailwind CSS.
 - **Features**: Real-time peer collaboration, event management, verified academic credentials, sub-millisecond WebSocket messaging, and JWT authentication.
-- **Links**: [Live Platform](https://campus-sphere-vert.vercel.app/) • [GitHub Repo](https://github.com/chandadiya2004/CampusSphere)
+- **Links**: [Live Platform](https://ssh.arpanpramanik.dev/) • [GitHub Repo](https://github.com/chandadiya2004/CampusSphere)
 
 ### 2. **JalDrishti — IoT & ML Water Contamination Detection**
 - **Architecture**: Python, Scikit-learn, Random Forest, Streamlit, Pandas, IoT Hardware Sensors.
 - **Features**: Real-time turbidity, pH, dissolved oxygen, and TDS stream classification, delivering 94.2% contamination prediction accuracy with visual telemetry dashboards.
-- **Links**: [Live Demo](https://jaldrishti.streamlit.app/) • [GitHub Repo](https://github.com/chandadiya2004/JalDrishti)
+- **Links**: [GitHub Repo](https://github.com/chandadiya2004/JalDrishti-AI)
 
 ### 3. **RecipeAI — Deep Learning Culinary Assistant**
-- **Architecture**: Python, Flask, MobileNetV2, PyTorch, Edamam API, SQLite, Vanilla CSS.
-- **Features**: Real-time ingredient image recognition using transfer learning, dynamic macronutrient breakdown calculation, and dietary constraint recipe generation.
-- **Links**: [Live Demo](https://recipe-ai-assistant.onrender.com/) • [GitHub Repo](https://github.com/chandadiya2004/RecipeAI)
+- **Architecture**: React 18, TypeScript, FastAPI, Python, Groq Llama-3.3-70B, Clerk Auth, Supabase Postgres, Tailwind CSS.
+- **Features**: Context-aware culinary AI assistant with Pantry Chef zero-waste cooking, on-demand recipe generation, and Supabase activity history.
+- **Links**: [Live Demo](https://recipe-ai-diya.vercel.app/) • [GitHub Repo](https://github.com/chandadiya2004/RecipeAI)
 
 ### 4. **FruitQ-GradeX Prototype — Automated Grading Engine**
-- **Architecture**: Python, PyTorch, OpenCV, CNN Architectures, Streamlit.
-- **Features**: Live industrial camera stream defect segmentation, maturity level scoring, and hardware-accelerated batch inference.
-- **Links**: [GitHub Repo](https://github.com/chandadiya2004/FruitQ-GradeX)
+- **Architecture**: TensorFlow, Keras, Multi-Headed CNN, Grad-CAM, OpenCV, Streamlit, Python.
+- **Features**: Dual-head prediction with 98.21% quality assessment accuracy, Grad-CAM decision heatmaps, and real-time webcam inference.
+- **Links**: [Live Demo](https://fruitq-quality-classifier.streamlit.app/) • [GitHub Repo](https://github.com/chandadiya2004/FruitQ-GradeX)
 
 ---
 

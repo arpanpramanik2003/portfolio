@@ -51,11 +51,11 @@ export const ProjectsClient = ({
   const displayedProjects = showAllProjects ? projects : projects.slice(0, 2);
 
   return (
-    <section id="projects" className="py-20 sm:py-24 px-4 sm:px-6 border-t border-border-subtle transition-colors w-full overflow-hidden">
+    <section id="projects" className="py-16 sm:py-24 px-3.5 sm:px-6 border-t border-border-subtle transition-colors w-full max-w-full overflow-hidden">
       <div className="max-w-6xl mx-auto w-full">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <p className="text-xs font-mono uppercase tracking-widest text-terracotta font-semibold mb-2 flex items-center justify-center gap-1.5">
             <Sparkles size={14} />
             <span>{eyebrow || 'Production Platforms & Deep Learning Systems'}</span>
@@ -64,13 +64,13 @@ export const ProjectsClient = ({
             {heading}
           </h2>
           <div className="w-12 h-0.5 bg-terracotta mx-auto mb-4" />
-          <p className="text-text-sub text-sm sm:text-base md:text-lg leading-relaxed px-2">
+          <p className="text-text-sub text-xs sm:text-base md:text-lg leading-relaxed text-justify px-1 sm:px-2">
             {description}
           </p>
         </div>
 
         {/* Featured Projects Showcase */}
-        <div className="space-y-8 sm:space-y-12">
+        <div className="space-y-6 sm:space-y-12 w-full">
           {displayedProjects.map((project, index) => {
             const isEven = index % 2 === 1;
             const isDetailsOpen = Boolean(expandedDetails[project.id]);
@@ -78,13 +78,13 @@ export const ProjectsClient = ({
             return (
               <article
                 key={project.id}
-                className="bg-card border border-border-subtle hover:border-terracotta/40 rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:shadow-terracotta/10 transition-all duration-300 group"
+                className="bg-card border border-border-subtle hover:border-terracotta/40 rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:shadow-terracotta/10 transition-all duration-300 group w-full min-w-0"
               >
                 <div className="grid lg:grid-cols-12 gap-0 items-stretch">
                   
                   {/* Image Column */}
                   <div
-                    className={`lg:col-span-5 relative h-48 sm:h-64 lg:h-auto min-h-[190px] sm:min-h-[280px] overflow-hidden bg-surface ${
+                    className={`lg:col-span-5 relative h-48 sm:h-64 lg:h-auto min-h-[180px] sm:min-h-[280px] overflow-hidden bg-surface ${
                       isEven ? 'lg:order-2 border-t lg:border-t-0 lg:border-l border-border-subtle' : 'border-b lg:border-b-0 lg:border-r border-border-subtle'
                     }`}
                   >
@@ -100,22 +100,22 @@ export const ProjectsClient = ({
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent lg:hidden" />
 
                     {/* Status Pill Badge */}
-                    <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10 flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-card/90 backdrop-blur-md border border-border-subtle text-[10px] sm:text-[11px] font-mono font-medium text-text-main shadow-sm">
-                      <span className={`w-2 h-2 rounded-full ${project.demo ? 'bg-emerald-500 animate-pulse' : 'bg-terracotta'}`} />
-                      <span>{project.status}</span>
+                    <div className="absolute top-2.5 left-2.5 sm:top-4 sm:left-4 z-10 flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-card/90 backdrop-blur-md border border-border-subtle text-[10px] sm:text-[11px] font-mono font-medium text-text-main shadow-sm max-w-[85%] truncate">
+                      <span className={`w-2 h-2 rounded-full flex-shrink-0 ${project.demo ? 'bg-emerald-500 animate-pulse' : 'bg-terracotta'}`} />
+                      <span className="truncate">{project.status}</span>
                     </div>
 
                     {/* Category Tag */}
-                    <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 z-10 px-2.5 py-1 rounded-md bg-card/90 backdrop-blur-md border border-border-subtle text-[10px] sm:text-[11px] font-mono font-medium text-terracotta shadow-xs">
+                    <div className="absolute bottom-2.5 left-2.5 sm:bottom-4 sm:left-4 z-10 px-2.5 py-1 rounded-md bg-card/90 backdrop-blur-md border border-border-subtle text-[10px] sm:text-[11px] font-mono font-medium text-terracotta shadow-xs">
                       {project.category}
                     </div>
                   </div>
 
                   {/* Content Column */}
-                  <div className={`lg:col-span-7 p-5 sm:p-8 lg:p-10 flex flex-col justify-between ${isEven ? 'lg:order-1' : ''}`}>
+                  <div className={`lg:col-span-7 p-4 sm:p-8 lg:p-10 flex flex-col justify-between min-w-0 ${isEven ? 'lg:order-1' : ''}`}>
                     <div>
                       {/* Sub-header Index */}
-                      <div className="flex items-center justify-between gap-2 text-xs font-mono text-terracotta font-semibold mb-2">
+                      <div className="flex items-center justify-between gap-2 text-xs font-mono text-terracotta font-semibold mb-1.5 sm:mb-2">
                         <span className="flex items-center gap-1.5">
                           <Layers size={13} />
                           <span>Index 0{project.id}</span>
@@ -126,10 +126,10 @@ export const ProjectsClient = ({
                       </div>
 
                       {/* Title & Tagline */}
-                      <h3 className="font-serif text-xl sm:text-2xl lg:text-3xl font-bold text-text-main group-hover:text-terracotta transition-colors mb-1 leading-snug">
+                      <h3 className="font-serif text-lg sm:text-2xl lg:text-3xl font-bold text-text-main group-hover:text-terracotta transition-colors mb-1 leading-snug break-words">
                         {project.title}
                       </h3>
-                      <p className="text-xs sm:text-sm font-mono text-text-mute font-medium mb-3 sm:mb-4">
+                      <p className="text-xs sm:text-sm font-mono text-text-mute font-medium mb-3 sm:mb-4 break-words">
                         {project.tagline}
                       </p>
 
@@ -138,12 +138,12 @@ export const ProjectsClient = ({
                         {project.description}
                       </p>
 
-                      {/* Key Architectural Highlights (Always visible on desktop, toggleable or compact on mobile) */}
+                      {/* Key Architectural Highlights */}
                       <div className="mb-4 sm:mb-6">
                         {/* Mobile Toggle Button */}
                         <button
                           onClick={() => toggleDetails(project.id)}
-                          className="lg:hidden w-full flex items-center justify-between px-3.5 py-2 rounded-xl bg-surface border border-border-subtle text-xs font-mono text-text-main font-medium mb-2 cursor-pointer"
+                          className="lg:hidden w-full flex items-center justify-between px-3 py-2 rounded-xl bg-surface border border-border-subtle text-xs font-mono text-text-main font-medium mb-2 cursor-pointer"
                         >
                           <span>{isDetailsOpen ? 'Hide Capabilities & Specs' : 'View Key Capabilities & Specs'}</span>
                           {isDetailsOpen ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
@@ -156,9 +156,9 @@ export const ProjectsClient = ({
                           </span>
                           <div className="grid sm:grid-cols-2 gap-1.5 sm:gap-2">
                             {project.highlights.map((highlight, hIdx) => (
-                              <div key={hIdx} className="flex items-start gap-1.5 sm:gap-2 text-xs text-text-main">
+                              <div key={hIdx} className="flex items-start gap-1.5 sm:gap-2 text-xs text-text-main min-w-0">
                                 <CheckCircle2 size={13} className="text-terracotta flex-shrink-0 mt-0.5" />
-                                <span>{highlight}</span>
+                                <span className="break-words leading-tight">{highlight}</span>
                               </div>
                             ))}
                           </div>
@@ -166,11 +166,11 @@ export const ProjectsClient = ({
                       </div>
 
                       {/* Tech Stack Chips */}
-                      <div className="flex flex-wrap gap-1.5 mb-6 sm:mb-8">
+                      <div className="flex flex-wrap gap-1.5 mb-5 sm:mb-8 w-full">
                         {project.tech.map((tech, tIdx) => (
                           <span
                             key={tIdx}
-                            className="text-[10px] sm:text-[11px] font-mono bg-surface border border-border-subtle text-text-sub px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md"
+                            className="text-[10px] sm:text-[11px] font-mono bg-surface border border-border-subtle text-text-sub px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md max-w-full break-words"
                           >
                             {tech}
                           </span>
@@ -179,13 +179,13 @@ export const ProjectsClient = ({
                     </div>
 
                     {/* Action Links Bar */}
-                    <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-3 sm:pt-4 border-t border-border-subtle">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3 pt-3 sm:pt-4 border-t border-border-subtle w-full">
                       {project.demo && (
                         <a
                           href={project.demo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center gap-1.5 bg-terracotta hover:bg-terracotta-hover text-white font-medium px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg shadow-xs transition-colors text-xs sm:text-sm flex-1 sm:flex-none"
+                          className="inline-flex items-center justify-center gap-1.5 bg-terracotta hover:bg-terracotta-hover text-white font-medium px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-lg shadow-xs transition-colors text-xs sm:text-sm flex-1 sm:flex-none text-center"
                         >
                           <span>Launch Live App</span>
                           <ArrowUpRight size={14} />
@@ -197,7 +197,7 @@ export const ProjectsClient = ({
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center gap-1.5 bg-surface hover:bg-card border border-border hover:border-terracotta/40 text-text-main hover:text-terracotta font-medium px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg shadow-xs transition-colors text-xs sm:text-sm flex-1 sm:flex-none"
+                          className="inline-flex items-center justify-center gap-1.5 bg-surface hover:bg-card border border-border hover:border-terracotta/40 text-text-main hover:text-terracotta font-medium px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-lg shadow-xs transition-colors text-xs sm:text-sm flex-1 sm:flex-none text-center"
                         >
                           <GithubIcon size={15} />
                           <span>GitHub Repo</span>
@@ -206,7 +206,7 @@ export const ProjectsClient = ({
 
                       {!project.demo && (
                         <span className="inline-flex items-center gap-1.5 text-xs font-mono text-text-mute py-1.5">
-                          <Activity size={13} className="text-terracotta" />
+                          <Activity size={13} className="text-terracotta flex-shrink-0" />
                           <span>Research &amp; Advisory Engine</span>
                         </span>
                       )}
@@ -225,7 +225,7 @@ export const ProjectsClient = ({
           <div className="flex justify-center mt-8 sm:mt-12">
             <button
               onClick={() => setShowAllProjects(!showAllProjects)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-surface hover:bg-card border border-border hover:border-terracotta/50 text-text-main hover:text-terracotta text-xs sm:text-sm font-mono font-medium shadow-xs transition-all duration-200 cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-surface hover:bg-card border border-border hover:border-terracotta/50 text-text-main hover:text-terracotta text-xs sm:text-sm font-mono font-medium shadow-xs transition-all duration-200 cursor-pointer"
             >
               <span>
                 {showAllProjects
