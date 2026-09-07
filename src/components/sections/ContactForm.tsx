@@ -41,14 +41,14 @@ export const ContactForm = () => {
   };
 
   return (
-    <div className="bg-card border border-border-subtle rounded-2xl p-6 sm:p-8 shadow-sm">
-      <h3 className="font-serif text-xl sm:text-2xl font-bold text-text-main mb-6">
+    <div className="bg-card border border-border-subtle rounded-2xl p-4 sm:p-8 shadow-sm w-full">
+      <h3 className="font-serif text-lg sm:text-2xl font-bold text-text-main mb-4 sm:mb-6">
         Send a Message
       </h3>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
         <div>
-          <label htmlFor="contact-name" className="block text-xs font-mono font-medium text-text-sub uppercase mb-1.5">
+          <label htmlFor="contact-name" className="block text-[11px] sm:text-xs font-mono font-medium text-text-sub uppercase mb-1">
             Your Name <span className="text-terracotta">*</span>
           </label>
           <input
@@ -61,12 +61,12 @@ export const ContactForm = () => {
             required
             aria-required="true"
             placeholder="Enter your name"
-            className="w-full bg-surface border border-border-default focus:border-terracotta rounded-lg px-4 py-2.5 text-text-main placeholder:text-text-mute text-sm transition-colors outline-none"
+            className="w-full bg-surface border border-border-default focus:border-terracotta rounded-lg px-3.5 sm:px-4 py-2 sm:py-2.5 text-text-main placeholder:text-text-mute text-xs sm:text-sm transition-colors outline-none"
           />
         </div>
 
         <div>
-          <label htmlFor="contact-email" className="block text-xs font-mono font-medium text-text-sub uppercase mb-1.5">
+          <label htmlFor="contact-email" className="block text-[11px] sm:text-xs font-mono font-medium text-text-sub uppercase mb-1">
             Email Address <span className="text-terracotta">*</span>
           </label>
           <input
@@ -79,12 +79,12 @@ export const ContactForm = () => {
             required
             aria-required="true"
             placeholder="name@example.com"
-            className="w-full bg-surface border border-border-default focus:border-terracotta rounded-lg px-4 py-2.5 text-text-main placeholder:text-text-mute text-sm transition-colors outline-none"
+            className="w-full bg-surface border border-border-default focus:border-terracotta rounded-lg px-3.5 sm:px-4 py-2 sm:py-2.5 text-text-main placeholder:text-text-mute text-xs sm:text-sm transition-colors outline-none"
           />
         </div>
 
         <div>
-          <label htmlFor="contact-message" className="block text-xs font-mono font-medium text-text-sub uppercase mb-1.5">
+          <label htmlFor="contact-message" className="block text-[11px] sm:text-xs font-mono font-medium text-text-sub uppercase mb-1">
             Message <span className="text-terracotta">*</span>
           </label>
           <textarea
@@ -96,14 +96,14 @@ export const ContactForm = () => {
             aria-required="true"
             placeholder="Write your note or project inquiry..."
             rows={4}
-            className="w-full bg-surface border border-border-default focus:border-terracotta rounded-lg px-4 py-2.5 text-text-main placeholder:text-text-mute text-sm transition-colors outline-none resize-none"
+            className="w-full bg-surface border border-border-default focus:border-terracotta rounded-lg px-3.5 sm:px-4 py-2 sm:py-2.5 text-text-main placeholder:text-text-mute text-xs sm:text-sm transition-colors outline-none resize-none"
           />
         </div>
 
         <button
           type="submit"
           disabled={loading}
-          className="w-full inline-flex items-center justify-center gap-2 bg-terracotta hover:bg-terracotta-hover disabled:opacity-60 text-white font-medium py-3 rounded-lg shadow-sm transition-colors text-sm cursor-pointer"
+          className="w-full inline-flex items-center justify-center gap-2 bg-terracotta hover:bg-terracotta-hover disabled:opacity-60 text-white font-medium py-2.5 sm:py-3 rounded-lg shadow-sm transition-colors text-xs sm:text-sm cursor-pointer"
         >
           {loading ? (
             <>
@@ -122,9 +122,9 @@ export const ContactForm = () => {
           <div
             role="status"
             aria-live="polite"
-            className="flex items-center gap-2 p-3.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-400 rounded-lg text-xs font-mono"
+            className="flex items-center gap-2 p-3 bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-400 rounded-lg text-[11px] sm:text-xs font-mono"
           >
-            <CheckCircle2 size={16} className="flex-shrink-0" />
+            <CheckCircle2 size={15} className="flex-shrink-0" />
             <span>Thank you! Your message was transmitted directly to Diya.</span>
           </div>
         )}
@@ -133,9 +133,9 @@ export const ContactForm = () => {
           <div
             role="alert"
             aria-live="assertive"
-            className="flex items-center gap-2 p-3.5 bg-rose-500/10 border border-rose-500/30 text-rose-700 dark:text-rose-400 rounded-lg text-xs font-mono"
+            className="flex items-center gap-2 p-3 bg-rose-500/10 border border-rose-500/30 text-rose-700 dark:text-rose-400 rounded-lg text-[11px] sm:text-xs font-mono"
           >
-            <AlertCircle size={16} className="flex-shrink-0" />
+            <AlertCircle size={15} className="flex-shrink-0" />
             <span>{error}</span>
           </div>
         )}
