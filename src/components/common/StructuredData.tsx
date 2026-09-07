@@ -1,9 +1,22 @@
 export const StructuredData = () => {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://diyachanda.dev';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://diyachanda.tech';
 
   const schemaData = {
     '@context': 'https://schema.org',
     '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': `${baseUrl}/#organization`,
+        name: 'Diya Chanda',
+        url: baseUrl,
+        logo: `${baseUrl}/images/logo.png`,
+        image: `${baseUrl}/images/og-image.png`,
+        sameAs: [
+          'https://github.com/chandadiya2004',
+          'https://www.linkedin.com/in/diya-chanda2004/',
+          'https://www.researchgate.net/profile/Diya-Chanda',
+        ],
+      },
       {
         '@type': 'Person',
         '@id': `${baseUrl}/#person`,
@@ -48,6 +61,9 @@ export const StructuredData = () => {
           '@id': `${baseUrl}/#website`,
           name: 'Diya Chanda Portfolio',
           url: baseUrl,
+          publisher: {
+            '@id': `${baseUrl}/#organization`,
+          },
         },
         about: {
           '@id': `${baseUrl}/#person`,

@@ -23,7 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://diyachanda.dev';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://diyachanda.tech';
 
 export const viewport: Viewport = {
   themeColor: [
@@ -88,9 +88,9 @@ export const metadata: Metadata = {
     siteName: 'Diya Chanda Portfolio',
     images: [
       {
-        url: '/images/profile.webp',
-        width: 800,
-        height: 800,
+        url: '/images/og-image.png',
+        width: 1200,
+        height: 630,
         alt: 'Diya Chanda — AI Researcher & Machine Learning Engineer',
       },
     ],
@@ -100,18 +100,31 @@ export const metadata: Metadata = {
     title: 'Diya Chanda — AI Researcher & Machine Learning Engineer',
     description:
       'Undergraduate AI researcher and software engineer specializing in explainable deep learning, computer vision, and precision agricultural AI.',
-    images: ['/images/profile.webp'],
+    images: [
+      {
+        url: '/images/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Diya Chanda — AI Researcher & Machine Learning Engineer',
+      },
+    ],
     creator: '@chandadiya2004',
   },
   icons: {
     icon: [
-      { url: '/favicon.ico' },
-      { url: '/icon0.svg', type: 'image/svg+xml' },
-      { url: '/icon1.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon-48x48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/icon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/icon-192x192.png', sizes: '192x192', type: 'image/png' },
     ],
     apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
   },
   manifest: '/manifest.json',
+  verification: {
+    google:
+      process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION ||
+      'DgWUYbYjs7ksUTmBAM02lYUhcDVcuZre7V3cTYHIlj4',
+  },
 };
 
 export default function RootLayout({
