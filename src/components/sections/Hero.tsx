@@ -3,7 +3,7 @@ import researchData from '../../data/sections/research.json';
 import certificatesData from '../../data/sections/certificates.json';
 import projectsData from '../../data/sections/projects.json';
 import TypingSubtitle from '../home/TypingSubtitle';
-import { TextScramble } from '../common/TextScramble';
+import { WaveTitle } from '../home/WaveTitle';
 import { ArrowUpRight, Mail, FileDown, BookOpen, Award, FolderGit2, Sparkles } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, ResearchGateIcon } from '../common/Icons';
 
@@ -40,7 +40,7 @@ export const Hero = () => {
 
         {/* Extra Large Centered Editorial Name */}
         <h1 className="font-serif text-3xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight text-text-main leading-[1.05] sm:leading-[0.95] mb-4 sm:mb-6 select-none max-w-full break-words">
-          <TextScramble text={heroData.name} />
+          <WaveTitle text={heroData.name} />
         </h1>
 
         {/* Dynamic Typing Subtitle */}
