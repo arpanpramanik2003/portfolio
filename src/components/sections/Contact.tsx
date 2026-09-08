@@ -22,10 +22,10 @@ export const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-6 sm:gap-10 items-start w-full">
+        <div className="grid lg:grid-cols-12 gap-6 sm:gap-10 items-stretch w-full">
           
           {/* Contact Details (5 cols) */}
-          <div className="lg:col-span-5 space-y-3 sm:space-y-3.5 w-full min-w-0">
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-3 sm:space-y-3.5 w-full min-w-0">
             <h3 className="font-serif text-lg sm:text-xl font-bold text-text-main mb-3 sm:mb-4">
               Direct Channels &amp; Profiles
             </h3>
@@ -147,7 +147,7 @@ export const Contact = () => {
           </div>
 
           {/* Contact Form (7 cols) */}
-          <div className="lg:col-span-7 w-full min-w-0">
+          <div className="lg:col-span-7 w-full min-w-0 h-full flex flex-col">
             <ContactForm />
           </div>
 
