@@ -235,7 +235,7 @@ export const ResearchClient = ({ heading, papers }: ResearchClientProps) => {
             </div>
 
             {/* Modal Content */}
-            <div className="overflow-y-auto space-y-3.5 sm:space-y-4 pr-1">
+            <div data-lenis-prevent className="overflow-y-auto space-y-3.5 sm:space-y-4 pr-1">
               <div className="bg-surface/50 rounded-xl p-3.5 sm:p-4 border border-border-subtle/70">
                 <span className="block text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-text-mute font-semibold mb-1.5">
                   Complete Abstract
