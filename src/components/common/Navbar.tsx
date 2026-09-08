@@ -14,6 +14,7 @@ export const Navbar = () => {
   const navLinks = [
     { label: 'About', href: '#about', id: 'about' },
     { label: 'Skills', href: '#skills', id: 'skills' },
+    { label: 'Experience', href: '#experience', id: 'experience' },
     { label: 'Projects', href: '#projects', id: 'projects' },
     { label: 'Certificates', href: '#certificates', id: 'certificates' },
     { label: 'Research', href: '#research', id: 'research' },
@@ -22,7 +23,6 @@ export const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 160;
       setScrolled(window.scrollY > 20);
 
       const sectionIds = [
@@ -35,12 +35,29 @@ export const Navbar = () => {
         'research',
         'contact',
       ];
+
+      // Near top of document
+      if (window.scrollY < 120) {
+        setActiveSection('home');
+        return;
+      }
+
+      // Near bottom of document
+      if (
+        window.innerHeight + Math.round(window.scrollY) >=
+        document.documentElement.scrollHeight - 60
+      ) {
+        setActiveSection('contact');
+        return;
+      }
+
+      // Viewport probe line at Y = 200px (comfortably below floating navbar)
+      const probeY = 200;
       for (const id of sectionIds) {
         const el = document.getElementById(id);
         if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= probeY && rect.bottom > probeY) {
             setActiveSection(id);
             break;
           }
