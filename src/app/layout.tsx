@@ -23,7 +23,10 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.diyachanda.tech';
+const siteUrl =
+  process.env.SITE_URL ||
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  'https://www.diyachanda.tech';
 
 export const viewport: Viewport = {
   themeColor: [
@@ -122,6 +125,7 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
   verification: {
     google:
+      process.env.GOOGLE_VERIFICATION ||
       process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION ||
       'DgWUYbYjs7ksUTmBAM02lYUhcDVcuZre7V3cTYHIlj4',
   },

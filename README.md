@@ -260,10 +260,10 @@ Create a `.env.local` file in the `portfolio/` directory with the following vari
 
 ```env
 # Public Site URL for SEO, OpenGraph & Sitemaps
-NEXT_PUBLIC_SITE_URL=https://www.diyachanda.tech
+SITE_URL=https://www.diyachanda.tech
 
 # Google Search Console Verification Token
-NEXT_PUBLIC_GOOGLE_VERIFICATION=DgWUYbYjs7ksUTmBAM02lYUhcDVcuZre7V3cTYHIlj4
+GOOGLE_VERIFICATION=DgWUYbYjs7ksUTmBAM02lYUhcDVcuZre7V3cTYHIlj4
 
 # EmailJS Configuration for Next.js Server Actions
 # Kept securely on the server side to protect credentials
