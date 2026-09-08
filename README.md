@@ -13,7 +13,7 @@
 
 **A state-of-the-art personal portfolio, research hub, and interactive showcase for Diya Chanda — AI Researcher, Machine Learning Engineer, and Full-Stack Developer.**
 
-[Explore Live Demo](https://diyachanda.tech) • [Research Publications](#-peer-reviewed-research-publications) • [Production Systems](#-featured-software--ai-systems) • [Contact](#-contact--connect)
+[Explore Live Demo](https://www.diyachanda.tech) • [Research Publications](#-peer-reviewed-research-publications) • [Production Systems](#-featured-software--ai-systems) • [Contact](#-contact--connect)
 
 </div>
 
@@ -260,7 +260,7 @@ Create a `.env.local` file in the `portfolio/` directory with the following vari
 
 ```env
 # Public Site URL for SEO, OpenGraph & Sitemaps
-NEXT_PUBLIC_SITE_URL=https://diyachanda.tech
+NEXT_PUBLIC_SITE_URL=https://www.diyachanda.tech
 
 # Google Search Console Verification Token
 NEXT_PUBLIC_GOOGLE_VERIFICATION=DgWUYbYjs7ksUTmBAM02lYUhcDVcuZre7V3cTYHIlj4
@@ -298,7 +298,7 @@ EMAILJS_PRIVATE_KEY=your_emailjs_private_key
 - **LinkedIn**: [linkedin.com/in/diya-chanda2004](https://www.linkedin.com/in/diya-chanda2004/)
 - **GitHub**: [github.com/chandadiya2004](https://github.com/chandadiya2004)
 - **ResearchGate**: [researchgate.net/profile/Diya-Chanda](https://www.researchgate.net/profile/Diya-Chanda)
-- **Portfolio Website**: [diyachanda.tech](https://diyachanda.tech)
+- **Portfolio Website**: [diyachanda.tech](https://www.diyachanda.tech)
 
 ---
 
