@@ -1,7 +1,10 @@
 import researchData from '../../data/sections/research.json';
 
 export const StructuredData = () => {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://diyachanda.tech';
+  const baseUrl =
+    process.env.SITE_URL ||
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    'https://www.diyachanda.tech';
 
   const schemaData = {
     '@context': 'https://schema.org',
