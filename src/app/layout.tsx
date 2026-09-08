@@ -89,7 +89,7 @@ export const metadata: Metadata = {
     title: 'Diya Chanda — AI Researcher & Machine Learning Engineer',
     description:
       'Undergraduate AI researcher and software engineer specializing in explainable deep learning, computer vision, and agricultural intelligence systems.',
-    siteName: 'Diya Chanda Portfolio',
+    siteName: 'Diya Chanda',
     images: [
       {
         url: '/images/og-image.png',
@@ -145,6 +145,11 @@ export default function RootLayout({
     >
       <head>
         <StructuredData />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon-48x48.png" type="image/png" sizes="48x48" />
+        <link rel="icon" href="/icon-96x96.png" type="image/png" sizes="96x96" />
+        <link rel="icon" href="/icon-192x192.png" type="image/png" sizes="192x192" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" sizes="180x180" />
       </head>
       <body
         suppressHydrationWarning

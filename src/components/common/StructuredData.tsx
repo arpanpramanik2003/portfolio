@@ -23,21 +23,33 @@ export const StructuredData = () => {
         ],
       },
       {
+        '@type': 'WebSite',
+        '@id': `${baseUrl}/#website`,
+        name: 'Diya Chanda',
+        alternateName: [
+          'Diya Chanda Portfolio',
+          'diyachanda.tech',
+          'Diya Chanda Tech',
+          'Diya Chanda AI',
+        ],
+        url: baseUrl,
+        description:
+          'Official portfolio of Diya Chanda — AI Researcher & Machine Learning Engineer.',
+        publisher: {
+          '@id': `${baseUrl}/#organization`,
+        },
+        inLanguage: 'en-US',
+      },
+      {
         '@type': 'ProfilePage',
         '@id': `${baseUrl}/#profilepage`,
         url: baseUrl,
-        name: 'Diya Chanda — AI Researcher & Machine Learning Engineer Portfolio',
+        name: 'Diya Chanda — AI Researcher & Machine Learning Engineer',
         description:
           'Undergraduate AI researcher and software engineer specializing in explainable deep learning, computer vision, and agricultural intelligence systems. Published IEEE and Springer author.',
         inLanguage: 'en-US',
         isPartOf: {
-          '@type': 'WebSite',
           '@id': `${baseUrl}/#website`,
-          name: 'Diya Chanda Portfolio',
-          url: baseUrl,
-          publisher: {
-            '@id': `${baseUrl}/#organization`,
-          },
         },
         mainEntity: {
           '@type': 'Person',
