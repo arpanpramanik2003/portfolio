@@ -24,7 +24,7 @@ function AnchorScrollHandler() {
       if (href === '#' || href === '#top') {
         e.preventDefault();
         lenis.scrollTo(0, {
-          duration: 1.2,
+          duration: 0.9,
           easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         });
         window.history.pushState(null, '', ' ');
@@ -39,7 +39,7 @@ function AnchorScrollHandler() {
         const offset = targetId === 'home' ? 0 : -80;
         lenis.scrollTo(targetElement, {
           offset,
-          duration: 1.2,
+          duration: 0.9,
           easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         });
         window.history.pushState(null, '', href);
@@ -58,11 +58,11 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
     <ReactLenis
       root
       options={{
-        lerp: 0.08,
-        duration: 1.2,
+        lerp: 0.1,
         smoothWheel: true,
-        wheelMultiplier: 1.0,
-        touchMultiplier: 1.5,
+        syncTouch: false,
+        wheelMultiplier: 0.75,
+        touchMultiplier: 1.0,
         infinite: false,
       }}
     >
