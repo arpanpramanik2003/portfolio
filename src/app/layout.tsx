@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Newsreader, Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
 import { ThemeProvider } from '../context/ThemeContext';
 import { StructuredData } from '../components/common/StructuredData';
+import { SmoothScroll } from '../components/common/SmoothScroll';
 import './globals.css';
 
 const newsreader = Newsreader({
@@ -149,7 +150,9 @@ export default function RootLayout({
         suppressHydrationWarning
         className="antialiased selection:bg-terracotta/20 selection:text-terracotta"
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <SmoothScroll>{children}</SmoothScroll>
+        </ThemeProvider>
       </body>
     </html>
   );

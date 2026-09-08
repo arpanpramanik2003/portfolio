@@ -386,7 +386,7 @@ export const CertificatesClient = ({
             </div>
 
             {/* Certificate Image Scan via next/image */}
-            <div className="overflow-y-auto rounded-lg bg-surface/50 border border-border-subtle p-2 flex items-center justify-center">
+            <div data-lenis-prevent className="overflow-y-auto rounded-lg bg-surface/50 border border-border-subtle p-2 flex items-center justify-center">
               <div className="relative w-full h-[55vh] sm:h-[65vh]">
                 <Image
                   src={certificateImages[selectedCert.id]}
