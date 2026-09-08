@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useTheme } from '../../hooks/useTheme';
-import { Sun, Moon, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Sun, Moon, Menu, X, ArrowUpRight, Sparkles } from 'lucide-react';
 
 export const Navbar = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -22,10 +22,19 @@ export const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 180;
+      const scrollPosition = window.scrollY + 160;
       setScrolled(window.scrollY > 20);
 
-      const sectionIds = ['home', 'about', 'skills', 'projects', 'certificates', 'research', 'contact'];
+      const sectionIds = [
+        'home',
+        'about',
+        'skills',
+        'experience',
+        'projects',
+        'certificates',
+        'research',
+        'contact',
+      ];
       for (const id of sectionIds) {
         const el = document.getElementById(id);
         if (el) {
@@ -45,40 +54,48 @@ export const Navbar = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 px-3 sm:px-6 pt-2 sm:pt-3 transition-all duration-300">
+    <header className="fixed top-0 inset-x-0 z-50 px-3 sm:px-6 lg:px-8 pt-2.5 sm:pt-4 transition-all duration-300">
       <div
-        className={`max-w-5xl mx-auto px-4 sm:px-6 h-14 sm:h-16 rounded-2xl flex justify-between items-center transition-all duration-300 ${
+        className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 rounded-2xl flex justify-between items-center transition-all duration-300 ${
           scrolled
-            ? 'bg-canvas/90 dark:bg-card/90 backdrop-blur-xl border border-border/80 shadow-lg shadow-black/5'
-            : 'bg-canvas/75 dark:bg-canvas/75 backdrop-blur-md border border-border-subtle/80 shadow-xs'
+            ? 'bg-canvas/90 dark:bg-card/90 backdrop-blur-xl border border-border/80 shadow-[0_8px_30px_rgb(0,0,0,0.06)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.25)]'
+            : 'bg-canvas/70 dark:bg-canvas/70 backdrop-blur-md border border-border-subtle/80 shadow-xs'
         }`}
       >
-        {/* Brand Logo & Name */}
+        {/* Brand Identity */}
         <a
           href="#home"
           onClick={() => setActiveSection('home')}
-          className="flex items-center gap-2.5 group cursor-pointer"
+          className="flex items-center gap-3 group cursor-pointer select-none"
         >
-          <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-lg overflow-hidden border border-border-subtle bg-surface flex items-center justify-center p-0.5 group-hover:border-terracotta/50 transition-colors">
+          <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-xl overflow-hidden border border-border-subtle bg-surface flex items-center justify-center p-0.5 group-hover:border-terracotta/60 group-hover:shadow-[0_0_12px_rgba(194,94,56,0.25)] transition-all duration-300">
             <Image
               src="/images/logo.png"
-              alt="Diya Chanda Logo"
+              alt="Diya Chanda"
               width={32}
               height={32}
               priority
               className="w-full h-full object-contain"
             />
           </div>
-          <span className="font-serif text-lg sm:text-xl font-bold tracking-tight text-text-main group-hover:text-terracotta transition-colors">
-            Diya Chanda
-          </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-terracotta inline-block group-hover:scale-150 transition-transform" />
+
+          <div className="flex flex-col">
+            <div className="flex items-center gap-1.5">
+              <span className="font-serif text-lg sm:text-xl font-bold tracking-tight text-text-main group-hover:text-terracotta transition-colors">
+                Diya Chanda
+              </span>
+              <span className="w-1.5 h-1.5 rounded-full bg-terracotta inline-block group-hover:scale-125 transition-transform" />
+            </div>
+            <span className="hidden xl:block text-[10px] font-mono text-text-mute tracking-wider uppercase -mt-0.5">
+              AI Researcher &amp; ML Engineer
+            </span>
+          </div>
         </a>
 
-        {/* Desktop Menu Navigation */}
-        <div className="hidden md:flex items-center gap-5 lg:gap-6">
-          <nav>
-            <ul className="flex items-center gap-1 text-xs font-medium text-text-sub">
+        {/* Desktop Navigation Links — Centered Floating Capsule */}
+        <div className="hidden md:flex items-center">
+          <nav className="p-1 rounded-xl bg-surface/70 dark:bg-surface/40 border border-border-subtle/60 backdrop-blur-xs">
+            <ul className="flex items-center gap-0.5 sm:gap-1 text-xs font-medium text-text-sub">
               {navLinks.map((link) => {
                 const isActive = activeSection === link.id;
                 return (
@@ -86,66 +103,74 @@ export const Navbar = () => {
                     <a
                       href={link.href}
                       onClick={() => setActiveSection(link.id)}
-                      className={`px-3 py-1.5 rounded-lg transition-colors duration-200 relative font-mono text-[13px] inline-flex items-center justify-center border focus:outline-none font-medium select-none ${
+                      className={`px-3 lg:px-3.5 py-1.5 rounded-lg transition-all duration-200 relative font-mono text-xs lg:text-[13px] inline-flex items-center justify-center font-medium select-none cursor-pointer ${
                         isActive
-                          ? 'bg-surface text-terracotta border-border-subtle shadow-xs'
-                          : 'border-transparent text-text-sub hover:text-text-main hover:bg-surface/60'
+                          ? 'bg-card text-terracotta shadow-xs border border-border-subtle/80 font-semibold'
+                          : 'text-text-sub hover:text-text-main hover:bg-card/50 border border-transparent'
                       }`}
                     >
                       <span>{link.label}</span>
-                      <span
-                        className={`absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-terracotta transition-opacity duration-200 ${
-                          isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                        }`}
-                      />
+                      {isActive && (
+                        <span className="ml-1.5 w-1 h-1 rounded-full bg-terracotta animate-pulse" />
+                      )}
                     </a>
                   </li>
                 );
               })}
             </ul>
           </nav>
+        </div>
 
-          <div className="w-px h-4 bg-border-subtle" />
-
+        {/* Desktop Right Action Cluster */}
+        <div className="hidden md:flex items-center gap-3">
           {/* Quick Resume Link */}
           <a
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             download="Diya_Chanda_Resume.pdf"
-            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface hover:bg-card border border-border-subtle hover:border-terracotta/40 text-text-main hover:text-terracotta text-xs font-mono font-semibold shadow-xs transition-all duration-200"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-surface hover:bg-card border border-border-subtle hover:border-terracotta/50 text-text-main hover:text-terracotta text-xs font-mono font-medium shadow-xs transition-all duration-200 group"
           >
-            <span>CV</span>
-            <ArrowUpRight size={12} className="text-terracotta" />
+            <span>Resume</span>
+            <ArrowUpRight
+              size={13}
+              className="text-terracotta group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+            />
           </a>
+
+          <div className="w-px h-5 bg-border-subtle" />
 
           {/* Theme Switcher Toggle */}
           <button
             onClick={toggleTheme}
             aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-            className="p-2 rounded-lg border border-border-subtle bg-surface hover:border-terracotta/40 text-text-sub hover:text-terracotta transition-all shadow-xs cursor-pointer"
+            className="p-2 rounded-xl border border-border-subtle bg-surface hover:bg-card hover:border-terracotta/40 text-text-sub hover:text-terracotta transition-all shadow-xs cursor-pointer"
           >
             {theme === 'dark' ? (
-              <Sun size={15} className="stroke-[2.2]" />
+              <Sun size={16} className="stroke-[2.2] text-amber-400" />
             ) : (
-              <Moon size={15} className="stroke-[2.2]" />
+              <Moon size={16} className="stroke-[2.2] text-terracotta" />
             )}
           </button>
         </div>
 
-        {/* Mobile Actions */}
+        {/* Mobile Actions Button Cluster */}
         <div className="flex items-center gap-2 md:hidden">
           <button
             onClick={toggleTheme}
             aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-            className="p-2 rounded-lg border border-border-subtle bg-surface text-text-sub hover:text-terracotta transition-colors cursor-pointer"
+            className="p-2 rounded-xl border border-border-subtle bg-surface text-text-sub hover:text-terracotta transition-colors cursor-pointer"
           >
-            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+            {theme === 'dark' ? (
+              <Sun size={16} className="text-amber-400" />
+            ) : (
+              <Moon size={16} className="text-terracotta" />
+            )}
           </button>
 
           <button
             onClick={() => setOpen(!open)}
-            className="p-2 rounded-lg border border-border-subtle bg-surface text-text-main cursor-pointer"
+            className="p-2 rounded-xl border border-border-subtle bg-surface text-text-main hover:border-terracotta/40 transition-colors cursor-pointer"
             aria-label="Toggle navigation menu"
             aria-expanded={open}
             aria-controls="mobile-nav-drawer"
@@ -155,13 +180,13 @@ export const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Glass Drawer */}
+      {/* Mobile Glass Navigation Drawer */}
       {open && (
         <div
           id="mobile-nav-drawer"
-          className="md:hidden max-w-5xl mx-auto mt-2 bg-card/95 backdrop-blur-xl border border-border rounded-2xl p-5 transition-all shadow-xl animate-fadeIn"
+          className="md:hidden max-w-7xl mx-auto mt-2 bg-card/95 backdrop-blur-xl border border-border rounded-2xl p-4 sm:p-5 transition-all shadow-2xl animate-fadeIn"
         >
-          <ul className="flex flex-col gap-2 text-sm font-medium text-text-main font-mono">
+          <ul className="flex flex-col gap-1.5 text-sm font-medium text-text-main font-mono">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
@@ -172,13 +197,13 @@ export const Navbar = () => {
                       setActiveSection(link.id);
                       setOpen(false);
                     }}
-                    className={`flex items-center justify-between p-2.5 rounded-xl transition-colors ${
+                    className={`flex items-center justify-between p-2.5 rounded-xl transition-all ${
                       isActive
                         ? 'bg-surface text-terracotta font-semibold border border-border-subtle shadow-xs'
-                        : 'hover:bg-surface hover:text-terracotta'
+                        : 'text-text-sub hover:bg-surface hover:text-text-main'
                     }`}
                   >
-                    <span className="flex items-center gap-2">
+                    <span className="flex items-center gap-2.5">
                       <span
                         className={`w-1.5 h-1.5 rounded-full bg-terracotta transition-opacity ${
                           isActive ? 'opacity-100' : 'opacity-0'
@@ -191,15 +216,16 @@ export const Navbar = () => {
                 </li>
               );
             })}
-            <li className="pt-2 border-t border-border-subtle mt-1">
+            <li className="pt-2.5 border-t border-border-subtle mt-1.5">
               <a
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 download="Diya_Chanda_Resume.pdf"
                 onClick={() => setOpen(false)}
-                className="flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-terracotta text-white font-medium text-xs font-mono text-center shadow-xs"
+                className="flex items-center justify-center gap-2 p-2.5 rounded-xl bg-terracotta hover:bg-terracotta-hover text-white font-medium text-xs font-mono text-center shadow-xs transition-colors"
               >
+                <Sparkles size={14} />
                 <span>Download Resume / CV</span>
                 <ArrowUpRight size={14} />
               </a>
