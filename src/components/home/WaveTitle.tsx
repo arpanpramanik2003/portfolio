@@ -40,10 +40,11 @@ export const WaveTitle: FC<WaveTitleProps> = ({ text, className = '' }) => {
       });
     }, entranceDuration);
 
+    const currentTimeouts = timeoutRefs.current;
     return () => {
       clearTimeout(timer);
       // Clear any pending ripple timeouts
-      Object.values(timeoutRefs.current).forEach(clearTimeout);
+      Object.values(currentTimeouts).forEach(clearTimeout);
     };
   }, [totalChars]);
 
