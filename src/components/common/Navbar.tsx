@@ -96,7 +96,7 @@ export const Navbar = () => {
           onClick={() => setActiveSection('home')}
           className="flex items-center gap-2.5 sm:gap-3 group cursor-pointer select-none flex-shrink-0"
         >
-          <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-xl overflow-hidden border border-border-subtle dark:border-white/[0.08] bg-surface flex items-center justify-center p-0.5 group-hover:border-terracotta group-hover:shadow-[0_0_12px_rgba(194,94,56,0.25)] transition-all duration-300">
+          <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-xl overflow-hidden border border-border-subtle dark:border-white/20 bg-surface dark:bg-white flex items-center justify-center p-0.5 sm:p-1 group-hover:border-terracotta group-hover:shadow-[0_0_12px_rgba(194,94,56,0.25)] transition-all duration-300">
             <Image
               src="/images/logo.png"
               alt="Diya Chanda"
