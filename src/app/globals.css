@@ -152,18 +152,9 @@ body::before {
    ========================================================================== */
 
 @media (pointer: fine) {
-  html,
-  body,
-  a,
-  button,
-  [role="button"],
-  input,
-  select,
-  textarea,
-  label,
-  summary,
-  [data-cursor="interactive"],
-  [data-cursor="text"] {
+  *,
+  *::before,
+  *::after {
     cursor: none !important;
   }
 }
