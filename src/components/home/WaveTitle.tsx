@@ -62,7 +62,8 @@ export const WaveTitle: FC<WaveTitleProps> = ({ text, className = '' }) => {
                   letterRefs.current[index] = el;
                 }}
                 aria-hidden="true"
-                className={`inline-block cursor-pointer transition-colors duration-200 ease-out hover:text-terracotta ${
+                data-cursor="interactive"
+                className={`inline-block select-none transition-colors duration-200 ease-out hover:text-terracotta ${
                   !initialEntranceComplete ? 'animate-sea-wave' : ''
                 }`}
                 style={{
