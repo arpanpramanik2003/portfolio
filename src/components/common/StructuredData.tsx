@@ -70,7 +70,10 @@ export const StructuredData = () => {
           alumniOf: {
             '@type': 'EducationalOrganization',
             name: 'The Neotia University',
-            department: 'Computer Science & Engineering (AI & ML)',
+            department: {
+              '@type': 'Organization',
+              name: 'Computer Science & Engineering (AI & ML)',
+            },
           },
           knowsAbout: [
             'Artificial Intelligence',
