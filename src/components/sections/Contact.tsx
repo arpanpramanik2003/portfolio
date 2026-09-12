@@ -51,7 +51,7 @@ export const Contact = () => {
               <div className="space-y-3 font-mono text-xs pt-2">
                 {/* Email */}
                 <div className="p-3.5 rounded-lg border border-hairline bg-surface/50 dark:bg-card/50 flex items-center gap-3">
-                  <div className="p-2 rounded border border-hairline bg-canvas dark:bg-[#11100F] text-terracotta flex-shrink-0">
+                  <div className="p-2 rounded border border-hairline bg-canvas text-terracotta flex-shrink-0">
                     <Mail size={16} />
                   </div>
                   <div className="min-w-0 flex-1">
@@ -67,7 +67,7 @@ export const Contact = () => {
 
                 {/* Phone */}
                 <div className="p-3.5 rounded-lg border border-hairline bg-surface/50 dark:bg-card/50 flex items-center gap-3">
-                  <div className="p-2 rounded border border-hairline bg-canvas dark:bg-[#11100F] text-terracotta flex-shrink-0">
+                  <div className="p-2 rounded border border-hairline bg-canvas text-terracotta flex-shrink-0">
                     <Phone size={16} />
                   </div>
                   <div className="min-w-0 flex-1">
@@ -83,7 +83,7 @@ export const Contact = () => {
 
                 {/* Location */}
                 <div className="p-3.5 rounded-lg border border-hairline bg-surface/50 dark:bg-card/50 flex items-center gap-3">
-                  <div className="p-2 rounded border border-hairline bg-canvas dark:bg-[#11100F] text-terracotta flex-shrink-0">
+                  <div className="p-2 rounded border border-hairline bg-canvas text-terracotta flex-shrink-0">
                     <MapPin size={16} />
                   </div>
                   <div className="min-w-0 flex-1">

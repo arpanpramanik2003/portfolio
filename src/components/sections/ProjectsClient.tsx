@@ -99,7 +99,7 @@ export const ProjectsClient = ({
                         />
 
                         {/* Status Overlay Pill */}
-                        <div className="absolute top-2.5 left-2.5 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded bg-canvas/90 dark:bg-[#11100F]/90 backdrop-blur-md border border-hairline text-[10px] font-mono font-medium text-text-main shadow-xs">
+                        <div className="absolute top-2.5 left-2.5 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded bg-canvas/90 backdrop-blur-md border border-hairline text-[10px] font-mono font-medium text-text-main shadow-xs">
                           <span
                             className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
                               project.demo ? 'bg-emerald-500 animate-pulse' : 'bg-terracotta'

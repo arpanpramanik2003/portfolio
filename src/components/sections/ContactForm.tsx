@@ -47,7 +47,7 @@ export const ContactForm = () => {
           <h3 className="font-serif text-lg sm:text-2xl font-bold text-text-main">
             Send a Transmission
           </h3>
-          <span className="text-[10px] font-mono text-terracotta uppercase tracking-wider px-2 py-0.5 rounded border border-hairline bg-canvas dark:bg-[#11100F]">
+          <span className="text-[10px] font-mono text-terracotta uppercase tracking-wider px-2 py-0.5 rounded border border-hairline bg-canvas">
             Direct Line
           </span>
         </div>
@@ -70,7 +70,7 @@ export const ContactForm = () => {
               required
               aria-required="true"
               placeholder="Enter your name"
-              className="w-full bg-canvas/80 dark:bg-[#11100F]/80 border border-hairline focus:border-terracotta rounded-md px-3.5 sm:px-4 py-2 sm:py-2.5 text-text-main placeholder:text-text-mute text-xs sm:text-sm transition-colors outline-none"
+              className="w-full bg-canvas/80 border border-hairline focus:border-terracotta rounded-md px-3.5 sm:px-4 py-2 sm:py-2.5 text-text-main placeholder:text-text-mute text-xs sm:text-sm transition-colors outline-none"
             />
           </div>
 
@@ -91,7 +91,7 @@ export const ContactForm = () => {
               required
               aria-required="true"
               placeholder="name@example.com"
-              className="w-full bg-canvas/80 dark:bg-[#11100F]/80 border border-hairline focus:border-terracotta rounded-md px-3.5 sm:px-4 py-2 sm:py-2.5 text-text-main placeholder:text-text-mute text-xs sm:text-sm transition-colors outline-none"
+              className="w-full bg-canvas/80 border border-hairline focus:border-terracotta rounded-md px-3.5 sm:px-4 py-2 sm:py-2.5 text-text-main placeholder:text-text-mute text-xs sm:text-sm transition-colors outline-none"
             />
           </div>
 
@@ -111,7 +111,7 @@ export const ContactForm = () => {
               aria-required="true"
               placeholder="Write your note, collaboration proposal, or project inquiry..."
               rows={5}
-              className="w-full bg-canvas/80 dark:bg-[#11100F]/80 border border-hairline focus:border-terracotta rounded-md px-3.5 sm:px-4 py-2.5 text-text-main placeholder:text-text-mute text-xs sm:text-sm transition-colors outline-none resize-none min-h-[135px] sm:min-h-[155px]"
+              className="w-full bg-canvas/80 border border-hairline focus:border-terracotta rounded-md px-3.5 sm:px-4 py-2.5 text-text-main placeholder:text-text-mute text-xs sm:text-sm transition-colors outline-none resize-none min-h-[135px] sm:min-h-[155px]"
             />
           </div>
 

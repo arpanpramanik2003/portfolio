@@ -9,7 +9,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="w-full border-t border-hairline bg-canvas dark:bg-[#11100F] text-text-mute py-12 sm:py-16 mt-20 transition-colors">
+    <footer className="w-full border-t border-hairline bg-canvas text-text-mute py-12 sm:py-16 mt-20 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Colophon Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">

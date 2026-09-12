@@ -85,7 +85,7 @@ export const SkillsClient = ({
                 {/* Category Header */}
                 <div className="flex items-start justify-between pb-3 mb-3.5 border-b border-hairline gap-3">
                   <div className="flex items-center gap-2.5">
-                    <div className="p-2 rounded border border-hairline bg-canvas dark:bg-[#11100F] text-terracotta flex-shrink-0">
+                    <div className="p-2 rounded border border-hairline bg-canvas text-terracotta flex-shrink-0">
                       {iconMap[category.id] || <Cpu size={18} className="text-terracotta" />}
                     </div>
                     <div>
@@ -98,7 +98,7 @@ export const SkillsClient = ({
                     </div>
                   </div>
 
-                  <span className="text-[10px] font-mono text-text-mute px-2 py-0.5 rounded border border-hairline bg-canvas dark:bg-[#11100F] flex-shrink-0">
+                  <span className="text-[10px] font-mono text-text-mute px-2 py-0.5 rounded border border-hairline bg-canvas flex-shrink-0">
                     0{category.skills.length} tools
                   </span>
                 </div>
@@ -113,7 +113,7 @@ export const SkillsClient = ({
                   {category.skills.map((skill, sIdx) => (
                     <span
                       key={sIdx}
-                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-hairline bg-canvas/80 dark:bg-[#11100F]/80 text-[11px] font-mono text-text-main font-medium group-hover:border-hairline"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-hairline bg-canvas/80 text-[11px] font-mono text-text-main font-medium group-hover:border-hairline"
                     >
                       <span className="w-1.5 h-1.5 rounded-full bg-terracotta flex-shrink-0" />
                       <span>{skill}</span>

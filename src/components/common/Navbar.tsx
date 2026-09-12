@@ -99,8 +99,8 @@ export const Navbar = () => {
     <header
       className={`fixed top-0 inset-x-0 z-50 w-full transition-all duration-300 border-b ${
         scrolled
-          ? 'bg-canvas/92 dark:bg-[#11100F]/95 backdrop-blur-md border-hairline shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)]'
-          : 'bg-canvas/80 dark:bg-[#11100F]/80 backdrop-blur-sm border-hairline'
+          ? 'bg-canvas/92 backdrop-blur-md border-hairline shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)]'
+          : 'bg-canvas/80 backdrop-blur-sm border-hairline'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between">
@@ -250,7 +250,7 @@ export const Navbar = () => {
       {open && (
         <div
           id="mobile-nav-drawer"
-          className="lg:hidden border-t border-hairline bg-canvas/98 dark:bg-[#11100F]/98 backdrop-blur-xl px-5 py-6 transition-all shadow-xl animate-fadeIn max-h-[calc(100vh-4rem)] overflow-y-auto"
+          className="lg:hidden border-t border-hairline bg-canvas/98 backdrop-blur-xl px-5 py-6 transition-all shadow-xl animate-fadeIn max-h-[calc(100vh-4rem)] overflow-y-auto"
         >
           <div className="text-[10px] font-mono text-text-mute uppercase tracking-widest mb-3 px-2">
             Table of Contents

@@ -151,7 +151,7 @@ export const CertificatesClient = ({
                         className="object-cover object-center group-hover/img:scale-[1.03] transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/30 transition-colors flex items-center justify-center">
-                        <span className="opacity-0 group-hover/img:opacity-100 transition-opacity bg-canvas/90 dark:bg-[#11100F]/90 backdrop-blur-md px-3 py-1.5 rounded text-xs font-mono font-medium text-text-main flex items-center gap-1.5 border border-hairline shadow-sm">
+                        <span className="opacity-0 group-hover/img:opacity-100 transition-opacity bg-canvas/90 backdrop-blur-md px-3 py-1.5 rounded text-xs font-mono font-medium text-text-main flex items-center gap-1.5 border border-hairline shadow-sm">
                           <Eye size={12} className="text-terracotta" />
                           <span>Inspect Document</span>
                         </span>
@@ -187,7 +187,7 @@ export const CertificatesClient = ({
                   {cert.skills.map((skill, sIdx) => (
                     <span
                       key={sIdx}
-                      className="text-[10px] font-mono px-2 py-0.5 rounded border border-hairline bg-canvas/80 dark:bg-[#11100F]/80 text-text-mute font-medium"
+                      className="text-[10px] font-mono px-2 py-0.5 rounded border border-hairline bg-canvas/80 text-text-mute font-medium"
                     >
                       {skill}
                     </span>

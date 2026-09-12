@@ -147,7 +147,7 @@ export const About = () => {
                 {interests.map((interest: string, i: number) => (
                   <span
                     key={i}
-                    className="px-2.5 py-1 rounded border border-hairline bg-canvas/80 dark:bg-[#11100F]/80 text-[11px] font-mono text-text-sub font-medium"
+                    className="px-2.5 py-1 rounded border border-hairline bg-canvas/80 text-[11px] font-mono text-text-sub font-medium"
                   >
                     {interest}
                   </span>
@@ -175,10 +175,10 @@ export const About = () => {
                   >
                     <div>
                       <div className="flex items-center justify-between pb-2 mb-2.5 border-b border-hairline">
-                        <div className="p-1.5 rounded border border-hairline bg-canvas dark:bg-[#11100F]">
+                        <div className="p-1.5 rounded border border-hairline bg-canvas">
                           {pillarIconMap[pillar.id] || <Code2 size={16} className="text-terracotta" />}
                         </div>
-                        <span className="text-[10px] font-mono uppercase tracking-wider text-text-mute px-2 py-0.5 rounded border border-hairline bg-canvas dark:bg-[#11100F]">
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-text-mute px-2 py-0.5 rounded border border-hairline bg-canvas">
                           {pillar.tag}
                         </span>
                       </div>
@@ -207,7 +207,7 @@ export const About = () => {
                 {timeline.map((item: any, i: number) => (
                   <div key={i} className="relative group">
                     {/* Hairline Bullet */}
-                    <div className="absolute -left-[30px] top-1 w-2.5 h-2.5 rounded-full bg-canvas dark:bg-[#11100F] border border-terracotta group-hover:scale-125 transition-transform" />
+                    <div className="absolute -left-[30px] top-1 w-2.5 h-2.5 rounded-full bg-canvas border border-terracotta group-hover:scale-125 transition-transform" />
 
                     <div className="text-xs font-mono font-bold text-terracotta mb-1 flex items-center gap-1.5">
                       <span>{item.year}</span>
@@ -242,7 +242,7 @@ export const About = () => {
                 {values.map((val: string, i: number) => (
                   <span
                     key={i}
-                    className="px-3 py-1 rounded border border-hairline bg-canvas/80 dark:bg-[#11100F]/80 text-text-main text-xs font-mono font-medium"
+                    className="px-3 py-1 rounded border border-hairline bg-canvas/80 text-text-main text-xs font-mono font-medium"
                   >
                     {val}
                   </span>
