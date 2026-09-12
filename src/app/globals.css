@@ -7,6 +7,7 @@
    ========================================================================== */
 
 :root {
+  color-scheme: light;
   /* Canvas & Surfaces (Warm Ivory / Cream) */
   --bg-canvas: #FAF8F5;
   --bg-surface: #F3EFE9;
@@ -46,6 +47,7 @@
 }
 
 [data-theme="dark"] {
+  color-scheme: dark;
   /* Canvas & Surfaces (Deep Warm Charcoal) */
   --bg-canvas: #121110;
   --bg-surface: #1B1917;
@@ -93,10 +95,15 @@
 }
 
 html {
-  color-scheme: light dark;
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+}
+
+input, textarea, select {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border-color: var(--border-hairline);
 }
 
 html.lenis,
