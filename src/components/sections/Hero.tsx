@@ -22,13 +22,13 @@ export const Hero = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Asymmetric Monograph Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-start">
           
-          {/* Left Column: Monograph Narrative & Credentials (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col">
+          {/* Left Column: Monograph Narrative & Credentials (7 cols lg, 8 cols xl) */}
+          <div className="lg:col-span-7 xl:col-span-8 flex flex-col">
             
             {/* Monograph Chapter & Availability Marker */}
-            <div className="flex flex-wrap items-center gap-2 mb-4 sm:mb-5">
+            <div className="flex flex-wrap items-center gap-2 mb-3.5 sm:mb-4">
               <span className="text-[11px] font-mono text-terracotta tracking-wider uppercase font-semibold">
                 § 00 // Monograph 2026
               </span>
@@ -40,12 +40,12 @@ export const Hero = () => {
             </div>
 
             {/* Editorial Title */}
-            <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl xl:text-8xl font-bold tracking-tight text-text-main leading-[1.02] mb-3">
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight text-text-main leading-[1.02] mb-2.5">
               {heroData.name}
             </h1>
 
             {/* Disciplines & Academic Stance */}
-            <p className="font-mono text-xs sm:text-sm text-text-sub mb-6 flex flex-wrap items-center gap-x-2 gap-y-1">
+            <p className="font-mono text-xs sm:text-[13px] text-text-sub mb-4 flex flex-wrap items-center gap-x-2 gap-y-1">
               <span className="text-terracotta font-medium">B.Tech CSE (AI &amp; ML)</span>
               <span className="text-border-hairline font-sans">|</span>
               <span>The Neotia University (9.48 CGPA)</span>
@@ -54,22 +54,22 @@ export const Hero = () => {
             </p>
 
             {/* Editorial Serif Quotation / Stance */}
-            <div className="border-l-2 border-terracotta/70 pl-4 sm:pl-5 my-3 sm:my-4 py-1">
-              <p className="text-base sm:text-lg md:text-xl text-text-main font-serif italic leading-snug">
+            <div className="border-l-2 border-terracotta/70 pl-4 sm:pl-5 my-2.5 sm:my-3 py-1">
+              <p className="text-sm sm:text-base md:text-lg text-text-main font-serif italic leading-snug">
                 &ldquo;Bridging empirical deep learning research with production systems engineering—specializing in explainable AI, multi-task vision architectures, and grounded RAG pipelines.&rdquo;
               </p>
             </div>
 
             {/* Technical Narrative Prose */}
-            <p className="text-xs sm:text-sm text-text-sub leading-relaxed max-w-2xl my-4 sm:my-5">
+            <p className="text-xs sm:text-[13px] text-text-sub leading-relaxed max-w-2xl my-3 sm:my-4">
               {heroData.description}
             </p>
 
             {/* Primary Action Suite */}
-            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-2 mb-6 sm:mb-8">
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-1 mb-5 sm:mb-6">
               <a
                 href="#research"
-                className="inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-hover text-white font-mono text-xs sm:text-sm font-medium px-4 sm:px-5 py-2.5 rounded-md shadow-xs transition-colors group"
+                className="inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-hover text-white font-mono text-xs font-medium px-4 py-2.5 rounded-md shadow-xs transition-colors group"
               >
                 <span>Read Selected Research</span>
                 <ArrowDownRight size={14} className="group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-transform" />
@@ -77,7 +77,7 @@ export const Hero = () => {
 
               <a
                 href="#projects"
-                className="inline-flex items-center gap-2 bg-surface dark:bg-card hover:bg-card border border-hairline hover:border-terracotta text-text-main hover:text-terracotta font-mono text-xs sm:text-sm font-medium px-4 sm:px-5 py-2.5 rounded-md transition-colors"
+                className="inline-flex items-center gap-2 bg-surface dark:bg-card hover:bg-card border border-hairline hover:border-terracotta text-text-main hover:text-terracotta font-mono text-xs font-medium px-4 py-2.5 rounded-md transition-colors"
               >
                 <span>Inspect Applied Systems</span>
                 <ArrowUpRight size={14} />
@@ -88,7 +88,7 @@ export const Hero = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 download="Diya_Chanda_Resume.pdf"
-                className="inline-flex items-center gap-1.5 bg-surface dark:bg-card hover:bg-card border border-hairline hover:border-terracotta text-text-sub hover:text-terracotta font-mono text-xs sm:text-sm font-medium px-3.5 py-2.5 rounded-md transition-colors"
+                className="inline-flex items-center gap-1.5 bg-surface dark:bg-card hover:bg-card border border-hairline hover:border-terracotta text-text-sub hover:text-terracotta font-mono text-xs font-medium px-3.5 py-2.5 rounded-md transition-colors"
               >
                 <FileDown size={14} className="text-terracotta" />
                 <span>Curriculum Vitae</span>
@@ -96,8 +96,8 @@ export const Hero = () => {
             </div>
 
             {/* Quick Scholarly Directories */}
-            <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-text-sub pt-1">
-              <span className="text-[11px] uppercase tracking-wider text-text-mute">
+            <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-text-sub pt-0.5">
+              <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-text-mute font-semibold">
                 Scholarly Indices:
               </span>
               <a
@@ -132,53 +132,53 @@ export const Hero = () => {
             </div>
           </div>
 
-          {/* Right Column: Photographic Plate & Dossier Ledger (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col gap-4">
+          {/* Right Column: Photographic Plate & Dossier Ledger (Aligned with Left Column Height) */}
+          <div className="lg:col-span-5 xl:col-span-4 flex flex-col gap-2.5 w-full max-w-[260px] sm:max-w-[280px] lg:max-w-[270px] xl:max-w-[280px] mx-auto lg:ml-auto">
             
             {/* Photographic Plate with Archival Registration Marks */}
-            <div className="relative p-2.5 sm:p-3 bg-surface dark:bg-card border border-hairline rounded-lg shadow-xs group">
+            <div className="relative p-2 bg-surface dark:bg-card border border-hairline rounded-lg shadow-xs group">
               {/* Corner Registration Marks (Monograph Style) */}
-              <span className="absolute -top-1 -left-1 w-2.5 h-2.5 border-t-2 border-l-2 border-terracotta" />
-              <span className="absolute -top-1 -right-1 w-2.5 h-2.5 border-t-2 border-r-2 border-terracotta" />
-              <span className="absolute -bottom-1 -left-1 w-2.5 h-2.5 border-b-2 border-l-2 border-terracotta" />
-              <span className="absolute -bottom-1 -right-1 w-2.5 h-2.5 border-b-2 border-r-2 border-terracotta" />
+              <span className="absolute -top-1 -left-1 w-2 h-2 border-t-2 border-l-2 border-terracotta" />
+              <span className="absolute -top-1 -right-1 w-2 h-2 border-t-2 border-r-2 border-terracotta" />
+              <span className="absolute -bottom-1 -left-1 w-2 h-2 border-b-2 border-l-2 border-terracotta" />
+              <span className="absolute -bottom-1 -right-1 w-2 h-2 border-b-2 border-r-2 border-terracotta" />
 
-              {/* Framed Portrait Image */}
+              {/* Framed Square Portrait Image (Full Head & Face Unclipped) */}
               <div className="relative aspect-square w-full overflow-hidden rounded border border-hairline bg-canvas/50">
                 <Image
                   src="/images/profile-square.png"
                   alt="Diya Chanda — AI Researcher & Machine Learning Engineer"
                   fill
                   priority
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 420px"
-                  className="object-cover object-center group-hover:scale-[1.015] transition-transform duration-500"
+                  sizes="280px"
+                  className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
                 />
               </div>
 
               {/* Plate Caption */}
-              <div className="flex items-center justify-between text-[10px] font-mono text-text-mute uppercase tracking-wider pt-2.5 px-0.5">
+              <div className="flex items-center justify-between text-[10px] font-mono text-text-mute uppercase tracking-wider pt-2 px-0.5">
                 <span>Plate 01 // Diya Chanda</span>
-                <span>Kolkata, WB, IN</span>
+                <span>Kolkata, IN</span>
               </div>
             </div>
 
             {/* Structured Dossier Ledger */}
-            <div className="border border-hairline rounded-lg p-4 bg-surface/60 dark:bg-card/60 font-mono text-xs divide-y divide-hairline">
-              <div className="flex justify-between items-center py-2">
-                <span className="text-text-mute">Institutional Seat</span>
-                <span className="text-text-main font-medium text-right">The Neotia Univ. (AI &amp; ML)</span>
+            <div className="border border-hairline rounded-lg p-2.5 sm:p-3 bg-surface/60 dark:bg-card/60 font-mono text-[11px] divide-y divide-hairline">
+              <div className="flex justify-between items-center py-1">
+                <span className="text-text-mute">Seat</span>
+                <span className="text-text-main font-medium text-right truncate ml-2">The Neotia Univ.</span>
               </div>
-              <div className="flex justify-between items-center py-2">
-                <span className="text-text-mute">Academic Index</span>
-                <span className="text-terracotta font-semibold">9.48 / 10.0 CGPA</span>
+              <div className="flex justify-between items-center py-1">
+                <span className="text-text-mute">CGPA</span>
+                <span className="text-terracotta font-semibold">9.48 / 10.0</span>
               </div>
-              <div className="flex justify-between items-center py-2">
-                <span className="text-text-mute">Peer-Reviewed Papers</span>
+              <div className="flex justify-between items-center py-1">
+                <span className="text-text-mute">Papers</span>
                 <span className="text-text-main font-medium">4 (IEEE &amp; Springer)</span>
               </div>
-              <div className="flex justify-between items-center py-2">
-                <span className="text-text-mute">Laboratory Focus</span>
-                <span className="text-text-main font-medium text-right">Explainable AI · Vision · RAG</span>
+              <div className="flex justify-between items-center py-1">
+                <span className="text-text-mute">Focus</span>
+                <span className="text-text-main font-medium text-right truncate ml-2">XAI · Vision · RAG</span>
               </div>
             </div>
 
